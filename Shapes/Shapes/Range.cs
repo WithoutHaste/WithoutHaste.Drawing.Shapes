@@ -38,7 +38,19 @@ namespace WithoutHaste.Drawing.Shapes
 			return (Start <= b && End >= b);
 		}
 
-		public override string ToString()
+		/// <summary>
+		/// Convert a value in originalRange to one in newRange, assuming that the original range is re-scaled to the new range.
+		/// </summary>
+		public static double ConvertValue(Range originalRange, Range newRange, double value)
+		{
+			if(originalRange.Start != newRange.Start)
+				throw new NotImplementedException("Not implemented: Range.ConvertValue when ranges have different minimum values.");
+
+			double scale = newRange.Span / originalRange.Span;
+			return ((value - originalRange.Start) * scale) + newRange.Start;
+		}
+
+	public override string ToString()
 		{
 			return String.Format("{0}-{1}", Start, End);
 		}
