@@ -2,6 +2,12 @@
 
 A wedge (aka circular sector) is a slice of a circle.
 
+## Properties
+
+### Point ArcPoint
+
+The point at the center of the arc, furthest from the center.
+
 ## Methods
 
 ### ArcOverlaps(LineSegment)

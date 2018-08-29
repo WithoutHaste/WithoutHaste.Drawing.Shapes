@@ -1,6 +1,56 @@
 # Circle
 
-A circle shape.
+A circle shape. Immutable.
+
+## Fields
+
+### Constant Fields
+
+#### Int32 DEGREES_IN_CIRCLE
+
+#### Int32 DEGREES_IN_HALF_CIRCLE
+
+#### Double RADIANS_180DEGREES
+
+#### Double RADIANS_270DEGREES
+
+#### Double RADIANS_360DEGREES
+
+#### Double RADIANS_90DEGREES
+
+### Normal Fields
+
+#### Double Radius
+
+#### Double X
+
+Center x coordinate.
+
+#### Double Y
+
+Center y coordinate.
+
+## Properties
+
+### Point Center
+
+### Double Diameter
+
+### Double MaxX
+
+From IDraw
+
+### Double MaxXDegrees
+
+Based on coordinate plane, which degree points towards the MaxX coordinate?
+
+### Double MaxY
+
+From IDraw
+
+### Double MaxYDegrees
+
+Based on coordinate plane, which degree points towards the MaxY coordinate?
 
 ## Methods
 

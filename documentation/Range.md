@@ -4,7 +4,9 @@ A linear range of values.
 
 ## Fields
 
-### Start
+### Normal Fields
+
+#### Double Start
 
 For non-circular ranges, operations assume that Start is the minimum value.
 

@@ -4,9 +4,17 @@ Line of infinite length passing between points A and B.
 
 ## Fields
 
-### IsDirected
+### Normal Fields
+
+#### Boolean IsDirected
 
 When directed, the direction is A to B.
+
+## Properties
+
+### Double Slope
+
+Slope assumes direction from A to B.
 
 ## Methods
 

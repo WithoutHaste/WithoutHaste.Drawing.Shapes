@@ -3,7 +3,7 @@
 ## Types
 
 [Circle](Circle.md)  
-A circle shape.
+A circle shape. Immutable.
 
 [Line](Line.md)  
 Line of infinite length passing between points A and B.

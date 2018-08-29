@@ -15,7 +15,9 @@ Determines how cardinal directions apply to coordinates.
 
 ## Fields
 
-### MarginOfError
+### Normal Fields
+
+#### Double MarginOfError
 
 When determining equality, all values have a +- margin of error.
 

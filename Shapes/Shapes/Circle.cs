@@ -8,26 +8,40 @@ using System.Threading.Tasks;
 namespace WithoutHaste.Drawing.Shapes
 {
 	/// <summary>
-	/// A circle shape.
+	/// A circle shape. Immutable.
 	/// </summary>
 	public class Circle : Shape, IDraw
 	{
+		/// <summary></summary>
 		public static readonly int DEGREES_IN_CIRCLE = 360;
+		/// <summary></summary>
 		public static readonly int DEGREES_IN_HALF_CIRCLE = 180;
+		/// <summary></summary>
 		public static readonly double RADIANS_90DEGREES = Math.PI / 2;
+		/// <summary></summary>
 		public static readonly double RADIANS_180DEGREES = Math.PI;
+		/// <summary></summary>
 		public static readonly double RADIANS_270DEGREES = 3 * Math.PI / 2;
+		/// <summary></summary>
 		public static readonly double RADIANS_360DEGREES = 2 * Math.PI;
 
+		/// <summary>Center x coordinate.</summary>
 		public readonly double X;
+		/// <summary>Center y coordinate.</summary>
 		public readonly double Y;
+		/// <summary></summary>
 		public readonly double Radius;
 
+		/// <summary></summary>
 		public Point Center { get { return new Point(X, Y); } }
+		/// <summary></summary>
 		public double Diameter { get { return 2 * Radius; } }
+		/// <summary>From IDraw</summary>
 		public double MaxX { get { return X + Radius; } }
+		/// <summary>From IDraw</summary>
 		public double MaxY { get { return Y + Radius; } }
 
+		/// <summary>Based on coordinate plane, which degree points towards the MaxX coordinate?</summary>
 		public double MaxXDegrees {
 			get {
 				switch(Geometry.CoordinatePlane)
@@ -38,6 +52,7 @@ namespace WithoutHaste.Drawing.Shapes
 				}
 			}
 		}
+		/// <summary>Based on coordinate plane, which degree points towards the MaxY coordinate?</summary>
 		public double MaxYDegrees {
 			get {
 				switch(Geometry.CoordinatePlane)

@@ -6,8 +6,53 @@
     <members>
         <member name="T:WithoutHaste.Drawing.Shapes.Circle">
             <summary>
-            A circle shape.
+            A circle shape. Immutable.
             </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.DEGREES_IN_CIRCLE">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.DEGREES_IN_HALF_CIRCLE">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.RADIANS_90DEGREES">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.RADIANS_180DEGREES">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.RADIANS_270DEGREES">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.RADIANS_360DEGREES">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.X">
+            <summary>Center x coordinate.</summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.Y">
+            <summary>Center y coordinate.</summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Circle.Radius">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Circle.Center">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Circle.Diameter">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxX">
+            <summary>From IDraw</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxY">
+            <summary>From IDraw</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxXDegrees">
+            <summary>Based on coordinate plane, which degree points towards the MaxX coordinate?</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxYDegrees">
+            <summary>Based on coordinate plane, which degree points towards the MaxY coordinate?</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
@@ -81,7 +126,6 @@
             <summary>
             Miscellaneous settings and operations.
             </summary>
-            <static/>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Geometry.MarginOfError">
             <summary>
@@ -124,7 +168,6 @@
             <summary>
             Anything that can be drawn on a Graphics object.
             </summary>
-            <interface/>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Line">
             <summary>

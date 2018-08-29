@@ -9,7 +9,6 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// Miscellaneous settings and operations.
 	/// </summary>
-	/// <static/>
     public static class Geometry
     {
 		//todo: make sure MarginOfError is applied to all equality in shapes operations, like Circle.ContainsPoint
