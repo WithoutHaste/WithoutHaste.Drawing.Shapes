@@ -1,10 +1,12 @@
 # WithoutHaste.Drawing.Shapes
 
-C# Library of shape and geometry calculations and operations.
+C# library of shape/geometry calculations and operations.
 
 This library is under active development. Report bugs and request features on Github, or to wohaste@gmail.com.
 
 ## Shapes
+
+All shapes are derived from the abstract `Shape` class.
 
 [Point](documentation/Point.md)  
 [Line](documentation/Line.md)  
@@ -34,7 +36,7 @@ Paint the shape on the provided `Graphics` object.
 
 `shape.Paint(Graphics, Pen, decimal scale);`
 
-`scale` is the ratio of shape "units" to graphics pixels.
+`scale` is the ratio of shape "units" to `Graphics` pixels.
 
 ## Geometry static class
 
