@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WithoutHaste.Drawing.Shapes</name>
+    </assembly>
+    <members>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Circle)">
+            <summary>
+            Returns null (no intersection), an array of length 1, or an array of length 2.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetTangentPoints(WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            Find the two tangent points on the circle that form lines to point B.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Overlaps(WithoutHaste.Drawing.Shapes.Circle)">
+            <summary>
+            Any part of this circle overlaps any part of circle B.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
+            <summary>
+            Any part of this circle overlaps any part of line segment B.
+            If line B lies within the circle, that counts as overlapping.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.ContainsOrIsContained(WithoutHaste.Drawing.Shapes.Circle)">
+            <summary>
+            This circle entirely contains circle B, or B entirely contains this circle, or they exactly overlap.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Contains(WithoutHaste.Drawing.Shapes.Circle)">
+            <summary>
+            This circle entirely contains circle B, or they exactly overlap.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Contains(WithoutHaste.Drawing.Shapes.Wedge)">
+            <summary>
+            This circle entirely contains wedge B.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Contains(WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            Point B lies within or on this circle.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.PointAtRadians(System.Double)">
+            <summary>
+            Return the point on the circle at this radians. 0 radians is East of center, increases clockwise.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.PointAtDegrees(System.Double)">
+            <summary>
+            Return the point on the circle at this degree. 0 degrees is East of center, increases clockwise.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.DegreesAtPoint(WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            Given a line from the center of a circle to a point, what degrees is the line angle at? 0 degrees is East from center, and increases clockwise.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Line)">
+            <summary>
+            Returns null (no intercepts), or array of length 1 or 2.
+            </summary>
+            <param name="line"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.op_Division(WithoutHaste.Drawing.Shapes.Circle,System.Double)">
+            <summary>
+            Scale circle down by B amount. Affects length and location measures.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.MarginOfError">
+            <summary>
+            When determining equality, all values have a +- margin of error.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.CoordinatePlanes.Screen">
+            <summary>
+            Computer screens have (0,0) in the upper-left corner and increase to the right and down.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.CoordinatePlanes.Paper">
+            <summary>
+            Paper graphs have (0,0) in the lower-left corner and increase to the right and up.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.PointOnLine(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Double)">
+            <summary>
+            Calculates point along line AB, starting at A and moving towards B
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.PointPastLine(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Double)">
+            <summary>
+            Calculates point along line AB, starting at B and moving away from A
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.LineDirection(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            Given directed line A to B, what direction is it pointing?
+            North, South, East, and West are precise. The inbetween directions are vague.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.Line">
+            <summary>
+            Line of infinite length passing between points A and B.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Line.IsDirected">
+            <summary>
+            When directed, the direction is A to B.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Line.Slope">
+            <summary>
+            Slope assumes direction from A to B.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.GetPerpendicularIntersect(WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            Get the point where a perpendicular line passing through point C intersects this line.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.op_Division(WithoutHaste.Drawing.Shapes.Line,System.Double)">
+            <summary>
+            Scale line down by B amount. Affects length and location measures.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.Distance(WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            Distance between this point and point B.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_LessThan(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            Greater than/less than is judged along the x-axis first, then the y-axis
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Range.Start">
+            <summary>
+            For non-circular ranges, operations assume that Start is the minimum value.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.ConvertValue(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range,System.Double)">
+            <summary>
+            Convert a value in originalRange to one in newRange, assuming that the original range is re-scaled to the new range.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.op_Addition(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range)">
+            <summary>
+            Returns a range that covers all the area both A and B cover, including any gap in between.
+            This operation is commutative.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Addition(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)">
+            <summary>
+            Returns a range that covers all the area both A and B cover, including any gap in between.
+            If the ranges overlap, there is no gap filled in.
+            Gaps are covered from direction A to B, therefore this operation is not commutative.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Mod(System.Double,System.Int32)">
+            <summary>
+            Returns number modulus m. Ensures a positive result.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.Wedge">
+            <summary>
+            A wedge (aka circular sector) is a slice of a circle.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Wedge.ArcPoint">
+            <summary>
+            The point at the center of the arc, furthest from the center.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Overlaps(WithoutHaste.Drawing.Shapes.Circle)">
+            <summary>
+            Any part of this wedge overlaps any part of circle B.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Overlaps(WithoutHaste.Drawing.Shapes.Wedge)">
+            <summary>
+            Any part of this wedge overlaps any part of wedge B.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.ArcOverlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
+            <summary>
+            The arc is the curved circle segment part of the wedge.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.ArcOverlapsArc(WithoutHaste.Drawing.Shapes.Wedge)">
+            <summary>
+            The arc is the curved circle segment part of the wedge.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Contains(WithoutHaste.Drawing.Shapes.Circle)">
+            <summary>
+            Circle B lies entirely within this wedge.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Contains(WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            This wedge contains point B, including point B being on an edge of the wedge.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.op_Division(WithoutHaste.Drawing.Shapes.Wedge,System.Double)">
+            <summary>
+            Scale wedge down by B amount. Affects length and location measures, but not degrees.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.WedgeUnbound">
+            <summary>
+            A wedge (aka circular sector) is a slice of a circle.
+            An unbounded wedge is a slice of circle that extends outward with no limit.
+            </summary>
+        </member>
+    </members>
+</doc>

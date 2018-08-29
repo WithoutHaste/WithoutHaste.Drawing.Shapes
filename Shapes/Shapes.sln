@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes", "Shapes.csproj", "{D94437CC-FAB2-4E04-B71E-AF49F65CE053}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesTest", "..\ShapesTest\ShapesTest.csproj", "{98C6772B-E8DF-4E90-B7F0-8AA670D63567}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D94437CC-FAB2-4E04-B71E-AF49F65CE053} = {D94437CC-FAB2-4E04-B71E-AF49F65CE053}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
