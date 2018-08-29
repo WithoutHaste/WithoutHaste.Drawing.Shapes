@@ -36,9 +36,9 @@ namespace WithoutHaste.Drawing.Shapes
 		public Point Center { get { return new Point(X, Y); } }
 		/// <summary></summary>
 		public double Diameter { get { return 2 * Radius; } }
-		/// <summary>From IDraw</summary>
+		/// <summary>See <see cref="IDraw"/>.</summary>
 		public double MaxX { get { return X + Radius; } }
-		/// <summary>From IDraw</summary>
+		/// <summary>See <see cref="IDraw"/>.</summary>
 		public double MaxY { get { return Y + Radius; } }
 
 		/// <summary>Based on coordinate plane, which degree points towards the MaxX coordinate?</summary>

@@ -38,7 +38,7 @@ Center y coordinate.
 
 ### Double MaxX
 
-From IDraw
+See [IDraw](IDraw.md).
 
 ### Double MaxXDegrees
 
@@ -46,7 +46,7 @@ Based on coordinate plane, which degree points towards the MaxX coordinate?
 
 ### Double MaxY
 
-From IDraw
+See [IDraw](IDraw.md).
 
 ### Double MaxYDegrees
 

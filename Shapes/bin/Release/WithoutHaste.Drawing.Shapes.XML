@@ -43,10 +43,10 @@
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxX">
-            <summary>From IDraw</summary>
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxY">
-            <summary>From IDraw</summary>
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxXDegrees">
             <summary>Based on coordinate plane, which degree points towards the MaxX coordinate?</summary>
