@@ -150,5 +150,6 @@ namespace WithoutHaste.Drawing.Shapes
 				return (a.Y < b.Y) ? Direction.NorthWest : Direction.SouthWest;
 			}
 		}
+
 	}
 }
