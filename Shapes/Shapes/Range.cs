@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	/// <summary>
+	/// A linear range of values.
+	/// </summary>
 	public class Range : Shape
 	{
 		/// <summary>

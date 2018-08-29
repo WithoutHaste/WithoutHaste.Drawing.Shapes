@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	/// <summary>
+	/// Miscellaneous settings and operations.
+	/// </summary>
+	/// <static/>
     public static class Geometry
     {
 		//todo: make sure MarginOfError is applied to all equality in shapes operations, like Circle.ContainsPoint
@@ -18,6 +22,10 @@ namespace WithoutHaste.Drawing.Shapes
 
 		public static CoordinatePlanes CoordinatePlane = CoordinatePlanes.Screen;
 
+		/// <summary>
+		/// Determines how cardinal directions apply to coordinates.
+		/// </summary>
+		/// <enum/>
 		public enum CoordinatePlanes : int {
 			None = 0,
 			/// <summary>

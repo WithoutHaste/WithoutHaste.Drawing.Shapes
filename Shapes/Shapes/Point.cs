@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	/// <summary>
+	/// An (X, Y) coordinate.
+	/// </summary>
 	public class Point : Shape, IDraw
 	{
 		public readonly double X;

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	/// <summary>
+	/// A circle shape.
+	/// </summary>
 	public class Circle : Shape, IDraw
 	{
 		public static readonly int DEGREES_IN_CIRCLE = 360;

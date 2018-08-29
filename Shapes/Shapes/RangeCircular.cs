@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	/// <summary>
+	/// A circular range of values.
+	/// </summary>
 	public class RangeCircular : Range
 	{
 		public readonly int CircularModulus;

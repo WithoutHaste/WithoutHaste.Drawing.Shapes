@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	/// <summary>
+	/// Anything that can be drawn on a Graphics object.
+	/// </summary>
 	public interface IDraw
 	{
 		double MaxX { get; }

@@ -4,20 +4,15 @@ C# library of shape/geometry calculations and operations.
 
 This library is under active development. Report bugs and request features on Github, or to wohaste@gmail.com.
 
-## Shapes
+## Documentation
 
-All shapes are derived from the abstract `Shape` class.
+[Table of Contents](documentation/TableOfContents.md)
 
-[Point](documentation/Point.md)  
-[Line](documentation/Line.md)  
-[LineSegment](documentation/LineSegment.md)  
 
-[Range](documentation/Range.md)  
-[RangeCircular](documentation/RangeCircular.md)  
 
-[Circle](documentation/Circle.md)  
-[Wedge](documentation/Wedge.md)  
-[WedgeUnbound](documentation/WedgeUnbound.md)  
+
+
+
 
 ## IDraw interface
 

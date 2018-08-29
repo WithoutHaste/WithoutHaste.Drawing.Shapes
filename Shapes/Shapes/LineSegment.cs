@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	/// <summary>
+	/// Line segment from point A to point B.
+	/// </summary>
 	public class LineSegment : Line, IDraw
 	{
 		public double MaxX { get { return Math.Max(A.X, B.X); } }

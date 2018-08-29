@@ -4,6 +4,11 @@
         <name>WithoutHaste.Drawing.Shapes</name>
     </assembly>
     <members>
+        <member name="T:WithoutHaste.Drawing.Shapes.Circle">
+            <summary>
+            A circle shape.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
             Returns null (no intersection), an array of length 1, or an array of length 2.
@@ -72,10 +77,22 @@
             Scale circle down by B amount. Affects length and location measures.
             </summary>
         </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.Geometry">
+            <summary>
+            Miscellaneous settings and operations.
+            </summary>
+            <static/>
+        </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Geometry.MarginOfError">
             <summary>
             When determining equality, all values have a +- margin of error.
             </summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.Geometry.CoordinatePlanes">
+            <summary>
+            Determines how cardinal directions apply to coordinates.
+            </summary>
+            <enum/>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Geometry.CoordinatePlanes.Screen">
             <summary>
@@ -103,6 +120,11 @@
             North, South, East, and West are precise. The inbetween directions are vague.
             </summary>
         </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.IDraw">
+            <summary>
+            Anything that can be drawn on a Graphics object.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Line">
             <summary>
             Line of infinite length passing between points A and B.
@@ -128,6 +150,16 @@
             Scale line down by B amount. Affects length and location measures.
             </summary>
         </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.LineSegment">
+            <summary>
+            Line segment from point A to point B.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.Point">
+            <summary>
+            An (X, Y) coordinate.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Point.Distance(WithoutHaste.Drawing.Shapes.Point)">
             <summary>
             Distance between this point and point B.
@@ -136,6 +168,11 @@
         <member name="M:WithoutHaste.Drawing.Shapes.Point.op_LessThan(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
             <summary>
             Greater than/less than is judged along the x-axis first, then the y-axis
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.Range">
+            <summary>
+            A linear range of values.
             </summary>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Range.Start">
@@ -152,6 +189,11 @@
             <summary>
             Returns a range that covers all the area both A and B cover, including any gap in between.
             This operation is commutative.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.RangeCircular">
+            <summary>
+            A circular range of values.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Addition(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)">
