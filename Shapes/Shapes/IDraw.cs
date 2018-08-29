@@ -10,6 +10,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// Anything that can be drawn on a Graphics object.
 	/// </summary>
+	/// <interface/>
 	public interface IDraw
 	{
 		double MaxX { get; }

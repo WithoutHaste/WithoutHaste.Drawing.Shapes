@@ -124,6 +124,7 @@
             <summary>
             Anything that can be drawn on a Graphics object.
             </summary>
+            <interface/>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Line">
             <summary>

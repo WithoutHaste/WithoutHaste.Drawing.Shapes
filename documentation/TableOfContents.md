@@ -1,13 +1,9 @@
 # Contents
 
+## Types
+
 [Circle](Circle.md)  
 A circle shape.
-
-[Geometry](Geometry.md)  
-Miscellaneous settings and operations.
-
-[IDraw](IDraw.md)  
-Anything that can be drawn on a Graphics object.
 
 [Line](Line.md)  
 Line of infinite length passing between points A and B.
@@ -30,4 +26,14 @@ A wedge (aka circular sector) is a slice of a circle.
 [WedgeUnbound](WedgeUnbound.md)  
 A wedge (aka circular sector) is a slice of a circle.
             An unbounded wedge is a slice of circle that extends outward with no limit.
+
+## Static Types
+
+[Geometry](Geometry.md)  
+Miscellaneous settings and operations.
+
+## Interfaces
+
+[IDraw](IDraw.md)  
+Anything that can be drawn on a Graphics object.
 

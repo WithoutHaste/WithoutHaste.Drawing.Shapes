@@ -1,5 +1,7 @@
 # Geometry
 
+Static type.
+
 Miscellaneous settings and operations.
 
 ## Enums
