@@ -64,6 +64,7 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
+		/// <summary></summary>
 		public Circle(double x, double y, double radius)
 		{
 			X = x;
@@ -71,6 +72,7 @@ namespace WithoutHaste.Drawing.Shapes
 			Radius = radius;
 		}
 
+		/// <summary></summary>
 		public Circle(Point center, double radius)
 		{
 			X = center.X;
@@ -78,9 +80,7 @@ namespace WithoutHaste.Drawing.Shapes
 			Radius = radius;
 		}
 
-		/// <summary>
-		/// Returns null (no intersection), an array of length 1, or an array of length 2.
-		/// </summary>
+		/// <returns>Null (no intersection), an array of length 1, or an array of length 2.</returns>
 		public Point[] GetIntersectionPoints(Circle b)
 		{
 			//following the method in math/intersectionCircleCircle.png
@@ -117,6 +117,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Find the two tangent points on the circle that form lines to point B.
 		/// </summary>
+		/// <returns>Array of 2 Points.</returns>
 		public Point[] GetTangentPoints(Point b)
 		{
 			//point C and D are the tangents
@@ -141,8 +142,8 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Any part of this circle overlaps any part of line segment B.
-		/// If line B lies within the circle, that counts as overlapping.
+		/// <para>Any part of this circle overlaps any part of line segment B.</para>
+		/// <para>If line B lies within the circle, that counts as overlapping.</para>
 		/// </summary>
 		public bool Overlaps(LineSegment b)
 		{
@@ -300,11 +301,7 @@ namespace WithoutHaste.Drawing.Shapes
 			throw new NotImplementedException(String.Format("Direction not supported: {0}.", direction));
 		}
 
-		/// <summary>
-		/// Returns null (no intercepts), or array of length 1 or 2.
-		/// </summary>
-		/// <param name="line"></param>
-		/// <returns></returns>
+		/// <returns>Null (no intercepts), or array of length 1 or 2.</returns>
 		public Point[] GetIntersectionPoints(Line line)
 		{
 			//line does not intersect if perpendicular line from circle-center to line is longer than circle-radius
@@ -350,6 +347,9 @@ namespace WithoutHaste.Drawing.Shapes
 			return result.ToArray();
 		}
 
+		//todo: is it worth making a Degree and a Radian struct? for being precise in what data is expected/returned?
+
+		/// <returns>Null (no intercepts), or array of length 1 or 2.</returns>
 		public Point[] GetIntersectionPoints(LineSegment lineSegment)
 		{
 			Point[] lineIntersectionPoints = GetIntersectionPoints(lineSegment.ToLine());
@@ -366,11 +366,17 @@ namespace WithoutHaste.Drawing.Shapes
 			return segmentIntersectionPoints.ToArray();
 		}
 
+		/// <summary>
+		/// Convert degrees to radians.
+		/// </summary>
 		public static double DegreesToRadians(double degrees)
 		{
 			return degrees * Math.PI / 180;
 		}
 
+		/// <summary>
+		/// Convert radians to degrees.
+		/// </summary>
 		public static double RadiansToDegrees(double radians)
 		{
 			return radians * 180 / Math.PI;

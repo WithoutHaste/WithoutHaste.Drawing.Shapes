@@ -52,58 +52,83 @@ See [IDraw](IDraw.md).
 
 Based on coordinate plane, which degree points towards the MaxY coordinate?
 
+## Constructors
+
+### Circle(System.Double, System.Double, System.Double)
+
+### Circle(Point, System.Double)
+
+## Static Methods
+
+### Double DegreesToRadians(System.Double)
+
+Convert degrees to radians.
+
+### Double RadiansToDegrees(System.Double)
+
+Convert radians to degrees.
+
 ## Methods
 
-### Contains(Circle)
+### Boolean Contains(Circle)
 
 This circle entirely contains circle B, or they exactly overlap.
 
-### Contains(Wedge)
+### Boolean Contains(Wedge)
 
 This circle entirely contains wedge B.
 
-### Contains(Point)
+### Boolean Contains(Point)
 
 Point B lies within or on this circle.
 
-### ContainsOrIsContained(Circle)
+### Boolean ContainsOrIsContained(Circle)
 
 This circle entirely contains circle B, or B entirely contains this circle, or they exactly overlap.
 
-### DegreesAtPoint(Point)
+### Double DegreesAtPoint(Point)
 
 Given a line from the center of a circle to a point, what degrees is the line angle at? 0 degrees is East from center, and increases clockwise.
 
-### GetIntersectionPoints(Circle)
+### Point[] GetIntersectionPoints(Circle)
 
-Returns null (no intersection), an array of length 1, or an array of length 2.
+Returns: Null (no intersection), an array of length 1, or an array of length 2.
 
-### GetIntersectionPoints(Line)
+### Point[] GetIntersectionPoints(Line)
 
-Returns null (no intercepts), or array of length 1 or 2.
+Returns: Null (no intercepts), or array of length 1 or 2.
 
-### GetTangentPoints(Point)
+### Point[] GetIntersectionPoints(LineSegment)
+
+Returns: Null (no intercepts), or array of length 1 or 2.
+
+### Point[] GetTangentPoints(Point)
 
 Find the two tangent points on the circle that form lines to point B.
 
-### op_Division(Circle, System.Double)
+Returns: Array of 2 Points.
 
-Scale circle down by B amount. Affects length and location measures.
-
-### Overlaps(Circle)
+### Boolean Overlaps(Circle)
 
 Any part of this circle overlaps any part of circle B.
 
-### Overlaps(LineSegment)
+### Boolean Overlaps(LineSegment)
 
 Any part of this circle overlaps any part of line segment B.
-            If line B lies within the circle, that counts as overlapping.
 
-### PointAtDegrees(System.Double)
+If line B lies within the circle, that counts as overlapping.
+
+### Point PointAtDegrees(System.Double)
 
 Return the point on the circle at this degree. 0 degrees is East of center, increases clockwise.
 
-### PointAtRadians(System.Double)
+### Point PointAtRadians(System.Double)
 
 Return the point on the circle at this radians. 0 radians is East of center, increases clockwise.
+
+## Operators
+
+### Circle = Circle / System.Double
+
+Scale circle down by B amount. Affects length and location measures.
 

@@ -54,15 +54,20 @@
         <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxYDegrees">
             <summary>Based on coordinate plane, which degree points towards the MaxY coordinate?</summary>
         </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.#ctor(System.Double,System.Double,System.Double)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.#ctor(WithoutHaste.Drawing.Shapes.Point,System.Double)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Circle)">
-            <summary>
-            Returns null (no intersection), an array of length 1, or an array of length 2.
-            </summary>
+            <returns>Null (no intersection), an array of length 1, or an array of length 2.</returns>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetTangentPoints(WithoutHaste.Drawing.Shapes.Point)">
             <summary>
             Find the two tangent points on the circle that form lines to point B.
             </summary>
+            <returns>Array of 2 Points.</returns>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Overlaps(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
@@ -71,8 +76,8 @@
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
             <summary>
-            Any part of this circle overlaps any part of line segment B.
-            If line B lies within the circle, that counts as overlapping.
+            <para>Any part of this circle overlaps any part of line segment B.</para>
+            <para>If line B lies within the circle, that counts as overlapping.</para>
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.ContainsOrIsContained(WithoutHaste.Drawing.Shapes.Circle)">
@@ -111,11 +116,20 @@
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Line)">
+            <returns>Null (no intercepts), or array of length 1 or 2.</returns>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.LineSegment)">
+            <returns>Null (no intercepts), or array of length 1 or 2.</returns>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.DegreesToRadians(System.Double)">
             <summary>
-            Returns null (no intercepts), or array of length 1 or 2.
+            Convert degrees to radians.
             </summary>
-            <param name="line"></param>
-            <returns></returns>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.RadiansToDegrees(System.Double)">
+            <summary>
+            Convert radians to degrees.
+            </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.op_Division(WithoutHaste.Drawing.Shapes.Circle,System.Double)">
             <summary>

@@ -18,11 +18,13 @@ Slope assumes direction from A to B.
 
 ## Methods
 
-### GetPerpendicularIntersect(Point)
+### Point GetPerpendicularIntersect(Point)
 
 Get the point where a perpendicular line passing through point C intersects this line.
 
-### op_Division(Line, System.Double)
+## Operators
+
+### Line = Line / System.Double
 
 Scale line down by B amount. Affects length and location measures.
 

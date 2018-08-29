@@ -10,31 +10,33 @@ The point at the center of the arc, furthest from the center.
 
 ## Methods
 
-### ArcOverlaps(LineSegment)
+### Boolean ArcOverlaps(LineSegment)
 
 The arc is the curved circle segment part of the wedge.
 
-### ArcOverlapsArc(Wedge)
+### Boolean ArcOverlapsArc(Wedge)
 
 The arc is the curved circle segment part of the wedge.
 
-### Contains(Circle)
+### Boolean Contains(Circle)
 
 Circle B lies entirely within this wedge.
 
-### Contains(Point)
+### Boolean Contains(Point)
 
 This wedge contains point B, including point B being on an edge of the wedge.
 
-### op_Division(Wedge, System.Double)
-
-Scale wedge down by B amount. Affects length and location measures, but not degrees.
-
-### Overlaps(Circle)
+### Boolean Overlaps(Circle)
 
 Any part of this wedge overlaps any part of circle B.
 
-### Overlaps(Wedge)
+### Boolean Overlaps(Wedge)
 
 Any part of this wedge overlaps any part of wedge B.
+
+## Operators
+
+### Wedge = Wedge / System.Double
+
+Scale wedge down by B amount. Affects length and location measures, but not degrees.
 
