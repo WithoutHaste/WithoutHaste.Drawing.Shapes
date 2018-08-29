@@ -36,6 +36,8 @@ namespace WithoutHaste.Drawing.Shapes
 			return (a >= b - MarginOfError && a <= b + MarginOfError);
 		}
 
+		//todo: better names for PointOnLine and PointPastLine, they are misleading
+
 		/// <summary>
 		/// Calculates point along line AB, starting at A and moving towards B
 		/// </summary>
