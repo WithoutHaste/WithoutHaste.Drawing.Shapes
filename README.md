@@ -84,4 +84,22 @@ Calculates a point along line BA (from B to A) at the specified distance beyond 
 
 `Point point = Geometry.PointPastLine(Point a, Point b, double distance);`
 
+## Related Projects
+
+Other C# libraries:  
+
+[WithoutHaste.Drawing.Colors](https://github.com/WithoutHaste/WithoutHaste.Drawing.Colors):  
+- load and save color palette files
+- convert between color spaces
+
+[WithoutHaste.Windows.GUI](https://github.com/WithoutHaste/WithoutHaste.Windows.GUI):  
+- Windows Forms layout helper
+- custom controls
+- icon manager
+- history data structure
+
+## Version
+
+Version 1 in development.
+
 

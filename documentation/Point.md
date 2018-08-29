@@ -5,7 +5,7 @@ Represents an (X, Y) point.
 Immutable.
 
 Derived from the `Shape` class and `IDraw` interface.  
-Interface properties and methods are not included here.  
+(Interface properties and methods are not included here.)  
 
 ## Properties
 
