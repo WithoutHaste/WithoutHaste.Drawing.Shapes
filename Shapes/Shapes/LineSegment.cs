@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace WithoutHaste.Drawing.Shapes
 {
 	/// <summary>
-	/// Line segment from point A to point B.
+	/// Line segment from point A to point B. Immutable.
 	/// </summary>
 	public class LineSegment : Line, IDraw
 	{

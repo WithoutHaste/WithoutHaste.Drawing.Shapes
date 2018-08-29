@@ -268,7 +268,7 @@
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.LineSegment">
             <summary>
-            Line segment from point A to point B.
+            Line segment from point A to point B. Immutable.
             </summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.MaxX">

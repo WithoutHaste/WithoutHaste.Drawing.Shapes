@@ -9,7 +9,7 @@ A circle shape. Immutable.
 Line of infinite length passing through points A and B. Immutable.
 
 [LineSegment](LineSegment.md)  
-Line segment from point A to point B.
+Line segment from point A to point B. Immutable.
 
 [Point](Point.md)  
 An (X, Y) coordinate. Immutable.

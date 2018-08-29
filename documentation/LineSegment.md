@@ -1,6 +1,6 @@
 # LineSegment
 
-Line segment from point A to point B.
+Line segment from point A to point B. Immutable.
 
 Base Type: [Line](Line.md)
 
