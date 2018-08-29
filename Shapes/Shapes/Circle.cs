@@ -390,16 +390,19 @@ namespace WithoutHaste.Drawing.Shapes
 			return new Circle(a.Center / b, a.Radius / b);
 		}
 
+		/// <summary></summary>
 		public static bool operator ==(Circle a, Circle b)
 		{
 			return (a.Center == b.Center && a.Radius == b.Radius);
 		}
 
+		/// <summary></summary>
 		public static bool operator !=(Circle a, Circle b)
 		{
 			return (a.Center != b.Center || a.Radius != b.Radius);
 		}
 
+		/// <summary></summary>
 		public override bool Equals(Object b)
 		{
 			if(b != null && b is Circle)
@@ -409,16 +412,19 @@ namespace WithoutHaste.Drawing.Shapes
 			return false;
 		}
 
+		/// <summary></summary>
 		public override int GetHashCode()
 		{
 			return Center.GetHashCode() ^ Radius.GetHashCode();
 		}
 
+		/// <summary>Format "C:(x,y) R:radius"</summary>
 		public override string ToString()
 		{
 			return String.Format("C:({0},{1}) R:{2}", X, Y, Radius);
 		}
 
+		/// <summary>See <see cref="IDraw"/>.</summary>
 		public void Paint(Graphics graphics, Pen pen, double unitsToPixels)
 		{
 			graphics.DrawArc(pen, 

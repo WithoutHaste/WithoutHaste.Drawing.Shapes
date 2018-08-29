@@ -8,21 +8,45 @@ using System.Threading.Tasks;
 namespace WithoutHaste.Drawing.Shapes
 {
 	/// <summary>
-	/// A wedge (aka circular sector) is a slice of a circle.
+	/// A wedge is a slice of a circle. It is also known as a circular sector. Immutable.
 	/// </summary>
 	public class Wedge : WedgeUnbound, IDraw
 	{
+		/// <summary></summary>
 		public readonly double Radius;
 
+		/// <summary>Full circle that this Wedge is a part of.</summary>
 		public Circle Circle { get { return new Circle(Center, Radius); } }
+		/// <summary>Point on circumference of Circle where Wedge begins.</summary>
 		public Point StartPoint { get { return Circle.PointAtDegrees(Degrees.Start); } }
+		/// <summary>Point on circumference of Circle where Wedge ends.</summary>
 		public Point EndPoint { get { return Circle.PointAtDegrees(Degrees.End); } }
-		/// <summary>
-		/// The point at the center of the arc, furthest from the center.
-		/// </summary>
+		/// <summary>The point at the middle of the arc.</summary>
 		public Point ArcPoint { get { return Circle.PointAtDegrees(Degrees.Middle); } }
+		/// <summary>
+		///  <list type="bullet">
+		///   <listheader>
+		///    The boundary points of the Wedge:
+		///   </listheader>
+		///   <item>the center of the circle</item>
+		///   <item>StartPoint</item>
+		///   <item>EndPoint</item>
+		///   <item>ArcPoint</item>
+		///  </list>
+		/// </summary>
 		public Point[] FourPoints { get { return new Point[] { Circle.Center, StartPoint, EndPoint, ArcPoint }; } }
+		/// <summary>
+		///  <list type="bullet">
+		///   <listheader>
+		///    The straight edges of the Wedge:
+		///   </listheader>
+		///   <item>Center to StartPoint</item>
+		///   <item>Center to EndPoint</item>
+		///  </list>
+		/// </summary>
 		public LineSegment[] LineEdges { get { return new LineSegment[] { new LineSegment(Circle.Center, StartPoint), new LineSegment(Circle.Center, EndPoint) }; } }
+
+		/// <summary>See <see cref="IDraw"/>.</summary>
 		public double MaxX {
 			get {
 				double maxX = Math.Max(StartPoint.X, EndPoint.X);
@@ -33,6 +57,7 @@ namespace WithoutHaste.Drawing.Shapes
 				return maxX;
 			}
 		}
+		/// <summary>See <see cref="IDraw"/>.</summary>
 		public double MaxY {
 			get {
 				double maxY = Math.Max(StartPoint.Y, EndPoint.Y);
@@ -44,14 +69,16 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
-		public Wedge(Circle c, RangeCircular r) : base(c.Center, r)
+		/// <summary></summary>
+		public Wedge(Circle circle, RangeCircular radius) : base(circle.Center, radius)
 		{
-			Radius = c.Radius;
+			Radius = circle.Radius;
 		}
 
-		public Wedge(Circle c, double rangeStart, double rangeEnd) : base(c.Center, rangeStart, rangeEnd)
+		/// <summary></summary>
+		public Wedge(Circle circle, double rangeStart, double rangeEnd) : base(circle.Center, rangeStart, rangeEnd)
 		{
-			Radius = c.Radius;
+			Radius = circle.Radius;
 		}
 
 		/// <summary>
@@ -217,6 +244,7 @@ namespace WithoutHaste.Drawing.Shapes
 			return new Wedge(a.Circle / b, a.Degrees);
 		}
 
+		/// <summary>See <see cref="IDraw"/>.</summary>
 		public void Paint(Graphics graphics, Pen pen, double unitsToPixels)
 		{
 			graphics.DrawArc(pen, 
@@ -240,6 +268,7 @@ namespace WithoutHaste.Drawing.Shapes
 			);
 		}
 
+		/// <summary></summary>
 		public override string ToString()
 		{
 			return String.Format("{0} Degrees:{1}", Circle, Degrees);

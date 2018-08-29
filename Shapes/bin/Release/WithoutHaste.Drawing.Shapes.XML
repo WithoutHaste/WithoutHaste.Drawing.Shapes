@@ -136,6 +136,24 @@
             Scale circle down by B amount. Affects length and location measures.
             </summary>
         </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.op_Equality(WithoutHaste.Drawing.Shapes.Circle,WithoutHaste.Drawing.Shapes.Circle)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.op_Inequality(WithoutHaste.Drawing.Shapes.Circle,WithoutHaste.Drawing.Shapes.Circle)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Equals(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetHashCode">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.ToString">
+            <summary>Format "C:(x,y) R:radius"</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Geometry">
             <summary>
             Miscellaneous settings and operations.
@@ -183,10 +201,28 @@
             Anything that can be drawn on a Graphics object.
             </summary>
         </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.IDraw.MaxX">
+            <summary>Maximum x coordinate required to draw the figure.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.IDraw.MaxY">
+            <summary>Maximum y coordinate required to draw the figure.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.IDraw.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
+            <summary>
+            Draw the figure on the Graphics with the Pen.
+            </summary>
+            <param name="unitsToPixels">Conversion ratio from figure units to pixels.</param>
+        </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Line">
             <summary>
-            Line of infinite length passing between points A and B.
+            Line of infinite length passing through points A and B. Immutable.
             </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Line.A">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Line.B">
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Line.IsDirected">
             <summary>
@@ -194,9 +230,28 @@
             </summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Line.Slope">
-            <summary>
-            Slope assumes direction from A to B.
-            </summary>
+            <summary>Slope assumes direction from A to B.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Line.PerpendicularSlope">
+            <summary>Slope of line perpendicular to this one.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Line.YIntercept">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Line.IsVertical">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Line.IsHorizontal">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.ToLineSegment">
+            <summary>Convert to <see cref="T:WithoutHaste.Drawing.Shapes.LineSegment"/>.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Line.GetPerpendicularIntersect(WithoutHaste.Drawing.Shapes.Point)">
             <summary>
@@ -208,29 +263,124 @@
             Scale line down by B amount. Affects length and location measures.
             </summary>
         </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.ToString">
+            <summary>Format "(x,y) to (x,y)"</summary>
+        </member>
         <member name="T:WithoutHaste.Drawing.Shapes.LineSegment">
             <summary>
             Line segment from point A to point B.
             </summary>
         </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.MaxX">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.MaxY">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.Length">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.ToLine">
+            <summary>Convert to <see cref="T:WithoutHaste.Drawing.Shapes.Line"/>.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Overlaps(WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.ToString">
+            <summary>Format "(x,y) to (x,y)"</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Point">
             <summary>
-            An (X, Y) coordinate.
+            An (X, Y) coordinate. Immutable.
             </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Point.X">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Point.Y">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Point.MaxX">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Point.MaxY">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.#ctor(System.Double,System.Double)">
+            <summary></summary>
+            <param name="x">Cannot be NaN or Infinity.</param>
+            <param name="y">Cannot be NaN or Infinity.</param>
+            <exception cref="T:System.ArgumentException">X or Y was NaN or Infinity.</exception>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Point.Distance(WithoutHaste.Drawing.Shapes.Point)">
             <summary>
             Distance between this point and point B.
             </summary>
         </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Addition(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Subtraction(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Multiply(System.Double,WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Multiply(WithoutHaste.Drawing.Shapes.Point,System.Double)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Division(System.Double,WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Division(WithoutHaste.Drawing.Shapes.Point,System.Double)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Point.op_LessThan(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
             <summary>
             Greater than/less than is judged along the x-axis first, then the y-axis
             </summary>
         </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_GreaterThan(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary>
+            Greater than/less than is judged along the x-axis first, then the y-axis
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Equality(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Inequality(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.Equals(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.GetHashCode">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.ToString">
+            <summary>Format "(X,Y)"</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Point.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Range">
             <summary>
-            A linear range of values.
+            A linear range of values. Immutable.
             </summary>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Range.Start">
@@ -238,43 +388,164 @@
             For non-circular ranges, operations assume that Start is the minimum value.
             </summary>
         </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Range.End">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Range.Span">
+            <summary>End minus Start.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Range.Middle">
+            <summary>Middle value between Start and End.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.#ctor(System.Double,System.Double)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.Centered(System.Double,System.Double)">
+            <summary>Create a range with this span and middle value.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.Overlaps(WithoutHaste.Drawing.Shapes.Range)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.Overlaps(System.Double)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Range.ConvertValue(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range,System.Double)">
             <summary>
             Convert a value in originalRange to one in newRange, assuming that the original range is re-scaled to the new range.
             </summary>
         </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.ToString">
+            <summary>Format "start-end"</summary>
+        </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Range.op_Addition(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range)">
             <summary>
-            Returns a range that covers all the area both A and B cover, including any gap in between.
-            This operation is commutative.
+            <para>Returns a range that covers all the area both A and B cover, including any gap in between.</para>
+            <para>This operation is commutative.</para>.
             </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.op_Equality(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.op_Inequality(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.Equals(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Range.GetHashCode">
+            <summary></summary>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.RangeCircular">
             <summary>
-            A circular range of values.
+            A range on a circular scale within range [0, CircularModulus). Immutable.
             </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.RangeCircular.CircularModulus">
+            <summary>The value where the range loops back to 0.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.RangeCircular.Span">
+            <summary>Length from Start to End.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.RangeCircular.Middle">
+            <summary>Middle value in range.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.#ctor(System.Double,System.Double,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Centered(System.Double,System.Double,System.Int32)">
+            <summary>Create a range with this span, middle value, and modulus.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Overlaps(WithoutHaste.Drawing.Shapes.RangeCircular)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Overlaps(System.Double)">
+            <summary></summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Addition(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)">
             <summary>
-            Returns a range that covers all the area both A and B cover, including any gap in between.
-            If the ranges overlap, there is no gap filled in.
-            Gaps are covered from direction A to B, therefore this operation is not commutative.
+            <para>Returns a range that covers all the area both A and B cover, including any gap in between.</para>
+            <para>If the ranges overlap, there is no gap filled in.</para>
+            <para>Gaps are covered from direction A to B, therefore this operation is not commutative.</para>
             </summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Mod(System.Double)">
+            <summary>Convert a number into this range.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Mod(System.Double,System.Int32)">
             <summary>
             Returns number modulus m. Ensures a positive result.
             </summary>
         </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Equality(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Inequality(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Equals(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.GetHashCode">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.Shape">
+            <summary>Main base class for library.</summary>
+        </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Wedge">
             <summary>
-            A wedge (aka circular sector) is a slice of a circle.
+            A wedge is a slice of a circle. It is also known as a circular sector. Immutable.
             </summary>
         </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Wedge.Radius">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Wedge.Circle">
+            <summary>Full circle that this Wedge is a part of.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Wedge.StartPoint">
+            <summary>Point on circumference of Circle where Wedge begins.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Wedge.EndPoint">
+            <summary>Point on circumference of Circle where Wedge ends.</summary>
+        </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.ArcPoint">
+            <summary>The point at the middle of the arc.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Wedge.FourPoints">
             <summary>
-            The point at the center of the arc, furthest from the center.
+             <list type="bullet">
+              <listheader>
+               The boundary points of the Wedge:
+              </listheader>
+              <item>the center of the circle</item>
+              <item>StartPoint</item>
+              <item>EndPoint</item>
+              <item>ArcPoint</item>
+             </list>
             </summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Wedge.LineEdges">
+            <summary>
+             <list type="bullet">
+              <listheader>
+               The straight edges of the Wedge:
+              </listheader>
+              <item>Center to StartPoint</item>
+              <item>Center to EndPoint</item>
+             </list>
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Wedge.MaxX">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.Wedge.MaxY">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.#ctor(WithoutHaste.Drawing.Shapes.Circle,WithoutHaste.Drawing.Shapes.RangeCircular)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.#ctor(WithoutHaste.Drawing.Shapes.Circle,System.Double,System.Double)">
+            <summary></summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Overlaps(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
@@ -311,11 +582,37 @@
             Scale wedge down by B amount. Affects length and location measures, but not degrees.
             </summary>
         </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
+            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.ToString">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.Drawing.Shapes.WedgeUnbound">
             <summary>
-            A wedge (aka circular sector) is a slice of a circle.
-            An unbounded wedge is a slice of circle that extends outward with no limit.
+            A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward with no limit. Immutable.
             </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.WedgeUnbound.Center">
+            <summary>Center of the circle that defines this wedge.</summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.WedgeUnbound.Degrees">
+            <summary>The degrees of the defining circle that this Wedge extends through.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.WedgeUnbound.Span">
+            <summary>The total degrees this wedge covers.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.WedgeUnbound.Start">
+            <summary>Starting degree.</summary>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.WedgeUnbound.End">
+            <summary>Ending degree.</summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.WedgeUnbound.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.RangeCircular)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.WedgeUnbound.#ctor(WithoutHaste.Drawing.Shapes.Point,System.Double,System.Double)">
+            <summary></summary>
         </member>
     </members>
 </doc>

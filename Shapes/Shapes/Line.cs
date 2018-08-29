@@ -7,26 +7,31 @@ using System.Threading.Tasks;
 namespace WithoutHaste.Drawing.Shapes
 {
 	/// <summary>
-	/// Line of infinite length passing between points A and B.
+	/// Line of infinite length passing through points A and B. Immutable.
 	/// </summary>
 	public class Line : Shape
 	{
+		/// <summary></summary>
 		public readonly Point A;
+		/// <summary></summary>
 		public readonly Point B;
 		/// <summary>
 		/// When directed, the direction is A to B.
 		/// </summary>
 		public readonly bool IsDirected;
 
-		/// <summary>
-		/// Slope assumes direction from A to B.
-		/// </summary>
+		/// <summary>Slope assumes direction from A to B.</summary>
 		public double Slope { get { return ((B.Y - A.Y) / (B.X - A.X)); } }
+		/// <summary>Slope of line perpendicular to this one.</summary>
 		public double PerpendicularSlope { get { return -1 * (1 / Slope); } }
+		/// <summary></summary>
 		public double YIntercept { get { return A.Y - (Slope * A.X); } }
+		/// <summary></summary>
 		public bool IsVertical { get { return (A.X == B.X); } }
+		/// <summary></summary>
 		public bool IsHorizontal { get { return (A.Y == B.Y); } }
 
+		/// <summary></summary>
 		public Line(Point a, Point b)
 		{
 			if(a == b)
@@ -36,6 +41,7 @@ namespace WithoutHaste.Drawing.Shapes
 			IsDirected = false;
 		}
 
+		/// <summary></summary>
 		public Line(Point a, Point b, bool isDirected)
 		{
 			if(a == b)
@@ -45,6 +51,7 @@ namespace WithoutHaste.Drawing.Shapes
 			IsDirected = isDirected;
 		}
 
+		/// <summary>Convert to <see cref="LineSegment"/>.</summary>
 		public LineSegment ToLineSegment()
 		{
 			return new LineSegment(A, B, IsDirected);
@@ -80,6 +87,7 @@ namespace WithoutHaste.Drawing.Shapes
 			return new Line(a.A / b, a.B / b);
 		}
 
+		/// <summary>Format "(x,y) to (x,y)"</summary>
 		public override string ToString()
 		{
 			return String.Format("{0} to {1}", A, B);

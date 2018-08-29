@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 namespace WithoutHaste.Drawing.Shapes
 {
 	/// <summary>
-	/// A circular range of values.
+	/// A range on a circular scale within range [0, CircularModulus). Immutable.
 	/// </summary>
 	public class RangeCircular : Range
 	{
+		/// <summary>The value where the range loops back to 0.</summary>
 		public readonly int CircularModulus;
 
+		/// <summary>Length from Start to End.</summary>
 		public override double Span {
 			get {
 				if(Start == End)
@@ -23,6 +25,7 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
+		/// <summary>Middle value in range.</summary>
 		public override double Middle {
 			get {
 				if(Start == End)
@@ -33,6 +36,7 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
+		/// <summary></summary>
 		public RangeCircular(double s, double e, int mod) : base(Mod(s, mod), Mod(e, mod))
 		{
 			if(mod <= 0)
@@ -40,16 +44,19 @@ namespace WithoutHaste.Drawing.Shapes
 			CircularModulus = mod;
 		}
 
+		/// <summary>Create a range with this span, middle value, and modulus.</summary>
 		public static RangeCircular Centered(double center, double span, int mod)
 		{
 			return new RangeCircular(center - (span / 2), center + (span / 2), mod);
 		}
 
+		/// <summary></summary>
 		public bool Overlaps(RangeCircular b)
 		{
 			return (this.Overlaps(b.Start) || this.Overlaps(b.End) || b.Overlaps(this.Start) || b.Overlaps(this.End));
 		}
 
+		/// <summary></summary>
 		public override bool Overlaps(double b)
 		{
 			b = Mod(b);
@@ -65,9 +72,9 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Returns a range that covers all the area both A and B cover, including any gap in between.
-		/// If the ranges overlap, there is no gap filled in.
-		/// Gaps are covered from direction A to B, therefore this operation is not commutative.
+		/// <para>Returns a range that covers all the area both A and B cover, including any gap in between.</para>
+		/// <para>If the ranges overlap, there is no gap filled in.</para>
+		/// <para>Gaps are covered from direction A to B, therefore this operation is not commutative.</para>
 		/// </summary>
 		public static RangeCircular operator +(RangeCircular a, RangeCircular b)
 		{
@@ -78,6 +85,7 @@ namespace WithoutHaste.Drawing.Shapes
 			return new RangeCircular(a.Start, b.End, a.CircularModulus);
 		}
 
+		/// <summary>Convert a number into this range.</summary>
 		public double Mod(double number)
 		{
 			return Mod(number, CircularModulus);
@@ -95,16 +103,19 @@ namespace WithoutHaste.Drawing.Shapes
 			return number % m;
 		}
 
+		/// <summary></summary>
 		public static bool operator ==(RangeCircular a, RangeCircular b)
 		{
 			return (Geometry.WithinMarginOfError(a.Start, b.Start) && Geometry.WithinMarginOfError(a.End, b.End));
 		}
 
+		/// <summary></summary>
 		public static bool operator !=(RangeCircular a, RangeCircular b)
 		{
 			return (!Geometry.WithinMarginOfError(a.Start, b.Start) || !Geometry.WithinMarginOfError(a.End, b.End));
 		}
 
+		/// <summary></summary>
 		public override bool Equals(Object b)
 		{
 			if(b != null && b is RangeCircular)
@@ -114,6 +125,7 @@ namespace WithoutHaste.Drawing.Shapes
 			return false;
 		}
 
+		/// <summary></summary>
 		public override int GetHashCode()
 		{
 			return Start.GetHashCode() ^ End.GetHashCode() ^ CircularModulus.GetHashCode();

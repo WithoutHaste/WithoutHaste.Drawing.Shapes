@@ -6,26 +6,28 @@
 A circle shape. Immutable.
 
 [Line](Line.md)  
-Line of infinite length passing between points A and B.
+Line of infinite length passing through points A and B. Immutable.
 
 [LineSegment](LineSegment.md)  
 Line segment from point A to point B.
 
 [Point](Point.md)  
-An (X, Y) coordinate.
+An (X, Y) coordinate. Immutable.
 
 [Range](Range.md)  
-A linear range of values.
+A linear range of values. Immutable.
 
 [RangeCircular](RangeCircular.md)  
-A circular range of values.
+A range on a circular scale within range [0, CircularModulus). Immutable.
+
+[Shape](Shape.md)  
+Main base class for library.
 
 [Wedge](Wedge.md)  
-A wedge (aka circular sector) is a slice of a circle.
+A wedge is a slice of a circle. It is also known as a circular sector. Immutable.
 
 [WedgeUnbound](WedgeUnbound.md)  
-A wedge (aka circular sector) is a slice of a circle.
-            An unbounded wedge is a slice of circle that extends outward with no limit.
+A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward with no limit. Immutable.
 
 ## Static Types
 
