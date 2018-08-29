@@ -156,19 +156,26 @@
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Geometry">
             <summary>
-            Miscellaneous settings and operations.
+            Global settings and miscellaneous operations.
             </summary>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Geometry.MarginOfError">
             <summary>
-            When determining equality, all values have a +- margin of error.
+            When determining equality, all values have a +/- margin of error. This setting is used in all Shape operations that check equality.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.CoordinatePlane">
+            <summary>
+            This coordinate plane is used in all Shape operations that require one.
             </summary>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Geometry.CoordinatePlanes">
             <summary>
             Determines how cardinal directions apply to coordinates.
             </summary>
-            <enum/>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.CoordinatePlanes.None">
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Geometry.CoordinatePlanes.Screen">
             <summary>
@@ -179,6 +186,41 @@
             <summary>
             Paper graphs have (0,0) in the lower-left corner and increase to the right and up.
             </summary>
+        </member>
+        <member name="T:WithoutHaste.Drawing.Shapes.Geometry.Direction">
+            <summary>
+            Cardinal directions.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.None">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.East">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.SouthEast">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.South">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.SouthWest">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.West">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.NorthWest">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.North">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.Drawing.Shapes.Geometry.Direction.NorthEast">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.WithinMarginOfError(System.Double,System.Double)">
+            <summary>Check if values are equal, within the MarginOfError.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Geometry.PointOnLine(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Double)">
             <summary>
@@ -192,8 +234,8 @@
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Geometry.LineDirection(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
             <summary>
-            Given directed line A to B, what direction is it pointing?
-            North, South, East, and West are precise. The inbetween directions are vague.
+            <para>Given directed line A to B, what direction is it pointing?</para>
+            <para>North, South, East, and West are precise. The inbetween directions are vague.</para>
             </summary>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.IDraw">

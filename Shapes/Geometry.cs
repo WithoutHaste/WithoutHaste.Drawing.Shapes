@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WithoutHaste.Drawing.Shapes
 {
 	/// <summary>
-	/// Miscellaneous settings and operations.
+	/// Global settings and miscellaneous operations.
 	/// </summary>
     public static class Geometry
     {
@@ -15,17 +15,20 @@ namespace WithoutHaste.Drawing.Shapes
 		//todo: is there reason to allow different margins of error for different shapes? like, they could override the global geometry margin of error if they are set
 
 		/// <summary>
-		/// When determining equality, all values have a +- margin of error.
+		/// When determining equality, all values have a +/- margin of error. This setting is used in all Shape operations that check equality.
 		/// </summary>
 		public static double MarginOfError = 0.00000001;
 
+		/// <summary>
+		/// This coordinate plane is used in all Shape operations that require one.
+		/// </summary>
 		public static CoordinatePlanes CoordinatePlane = CoordinatePlanes.Screen;
 
 		/// <summary>
 		/// Determines how cardinal directions apply to coordinates.
 		/// </summary>
-		/// <enum/>
 		public enum CoordinatePlanes : int {
+			/// <summary></summary>
 			None = 0,
 			/// <summary>
 			/// Computer screens have (0,0) in the upper-left corner and increase to the right and down.
@@ -36,8 +39,32 @@ namespace WithoutHaste.Drawing.Shapes
 			/// </summary>
 			Paper
 		};
-		public enum Direction : int { None = 0, East, SouthEast, South, SouthWest, West, NorthWest, North, NorthEast };
 
+		/// <summary>
+		/// Cardinal directions.
+		/// </summary>
+		public enum Direction : int {
+			/// <summary></summary>
+			None = 0,
+			/// <summary></summary>
+			East,
+			/// <summary></summary>
+			SouthEast,
+			/// <summary></summary>
+			South,
+			/// <summary></summary>
+			SouthWest,
+			/// <summary></summary>
+			West,
+			/// <summary></summary>
+			NorthWest,
+			/// <summary></summary>
+			North,
+			/// <summary></summary>
+			NorthEast
+		};
+
+		/// <summary>Check if values are equal, within the MarginOfError.</summary>
 		public static bool WithinMarginOfError(double a, double b)
 		{
 			return (a >= b - MarginOfError && a <= b + MarginOfError);
@@ -69,8 +96,8 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Given directed line A to B, what direction is it pointing?
-		/// North, South, East, and West are precise. The inbetween directions are vague.
+		/// <para>Given directed line A to B, what direction is it pointing?</para>
+		/// <para>North, South, East, and West are precise. The inbetween directions are vague.</para>
 		/// </summary>
 		public static Direction LineDirection(Point a, Point b)
 		{

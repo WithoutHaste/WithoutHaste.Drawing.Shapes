@@ -32,7 +32,7 @@ A wedge is a slice of a circle. An unbounded wedge is a slice of circle that ext
 ## Static Types
 
 [Geometry](Geometry.md)  
-Miscellaneous settings and operations.
+Global settings and miscellaneous operations.
 
 ## Interfaces
 
