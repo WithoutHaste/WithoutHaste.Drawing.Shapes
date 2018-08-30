@@ -11,10 +11,10 @@ namespace GeometryTests
 		public void GetIntersectionPointsCircle_NoIntersection_SameX()
 		{
 			//assign
-			Circle a = new Circle(new Point(-2, 0), 1);
-			Circle b = new Circle(new Point(2, 0), 1);
+			Circle a = new Circle(new Dot(-2, 0), 1);
+			Circle b = new Circle(new Dot(2, 0), 1);
 			//act
-			Point[] result = a.GetIntersectionPoints(b);
+			Dot[] result = a.GetIntersectionPoints(b);
 			//assert
 			Assert.IsNull(result);
 		}
@@ -23,42 +23,42 @@ namespace GeometryTests
 		public void GetIntersectionPointsCircle_SingleIntersection_SameX()
 		{
 			//assign
-			Circle a = new Circle(new Point(-1, 0), 1);
-			Circle b = new Circle(new Point(1, 0), 1);
+			Circle a = new Circle(new Dot(-1, 0), 1);
+			Circle b = new Circle(new Dot(1, 0), 1);
 			//act
-			Point[] result = a.GetIntersectionPoints(b);
+			Dot[] result = a.GetIntersectionPoints(b);
 			//assert
 			Assert.AreEqual(1, result.Length);
-			Assert.AreEqual(new Point(0, 0), result[0]);
+			Assert.AreEqual(new Dot(0, 0), result[0]);
 		}
 
 		[TestMethod]
 		public void GetIntersectionPointsCircle_SingleIntersection_SameX_DiffRadius()
 		{
 			//assign
-			Circle a = new Circle(new Point(-2, 0), 2);
-			Circle b = new Circle(new Point(1, 0), 1);
+			Circle a = new Circle(new Dot(-2, 0), 2);
+			Circle b = new Circle(new Dot(1, 0), 1);
 			//act
-			Point[] result = a.GetIntersectionPoints(b);
+			Dot[] result = a.GetIntersectionPoints(b);
 			//assert
 			Assert.AreEqual(1, result.Length);
-			Assert.AreEqual(new Point(0, 0), result[0]);
+			Assert.AreEqual(new Dot(0, 0), result[0]);
 		}
 
 		[TestMethod]
 		public void GetIntersectionPointsCircle_DoubleIntersection_SameX()
 		{
 			//assign
-			Circle a = new Circle(new Point(-0.5, 0), 1);
-			Circle b = new Circle(new Point(0.5, 0), 1);
+			Circle a = new Circle(new Dot(-0.5, 0), 1);
+			Circle b = new Circle(new Dot(0.5, 0), 1);
 			//act
-			Point[] result = a.GetIntersectionPoints(b);
-			Point minResult = (result[0] < result[1]) ? result[0] : result[1];
-			Point maxResult = (minResult == result[0]) ? result[1] : result[0];
+			Dot[] result = a.GetIntersectionPoints(b);
+			Dot minResult = (result[0] < result[1]) ? result[0] : result[1];
+			Dot maxResult = (minResult == result[0]) ? result[1] : result[0];
 			//assert
 			Assert.AreEqual(2, result.Length);
-			Assert.AreEqual(new Point(0, -0.5 * Math.Sqrt(3)), minResult);
-			Assert.AreEqual(new Point(0, 0.5 * Math.Sqrt(3)), maxResult);
+			Assert.AreEqual(new Dot(0, -0.5 * Math.Sqrt(3)), minResult);
+			Assert.AreEqual(new Dot(0, 0.5 * Math.Sqrt(3)), maxResult);
 		}
 
 		[TestMethod]
@@ -66,12 +66,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(53.8075, 29.1875), 4.6825) / Utilities.UNITS_TO_PIXELS;
-			Line b = new Line(new Point(51.27, 25), new Point(51.27, 19.125)) / Utilities.UNITS_TO_PIXELS;
+			Circle a = new Circle(new Dot(53.8075, 29.1875), 4.6825) / Utilities.UNITS_TO_PIXELS;
+			Line b = new Line(new Dot(51.27, 25), new Dot(51.27, 19.125)) / Utilities.UNITS_TO_PIXELS;
 			//account
 			Utilities.SaveDiagram(new IDraw[] { a, b.ToLineSegment() }, nameof(TestCircle));
 			//act
-			Point[] result = a.GetIntersectionPoints(b);
+			Dot[] result = a.GetIntersectionPoints(b);
 			//assert
 			Assert.AreEqual(2, result.Length);
 		}
@@ -82,34 +82,34 @@ namespace GeometryTests
 			//assign
 			Geometry.MarginOfError = 0.01;
 			//(x - 2)^2 + (y + 3)^2 = 4 
-			Circle a = new Circle(new Point(2, -3), 2);
+			Circle a = new Circle(new Dot(2, -3), 2);
 			//2x + 2y = -1 
-			LineSegment c = new LineSegment(new Point(5, -11.0/2.0), new Point(0, -1.0/2.0));
+			LineSegment c = new LineSegment(new Dot(5, -11.0/2.0), new Dot(0, -1.0/2.0));
 			//account
 			Utilities.SaveDiagram(new IDraw[] { a, c }, nameof(TestCircle));
 			//act
-			Point[] result = a.GetIntersectionPoints(c);
-			Point minResult = (result[0] < result[1]) ? result[0] : result[1];
-			Point maxResult = (minResult == result[0]) ? result[1] : result[0];
+			Dot[] result = a.GetIntersectionPoints(c);
+			Dot minResult = (result[0] < result[1]) ? result[0] : result[1];
+			Dot maxResult = (minResult == result[0]) ? result[1] : result[0];
 			//assert
 			Assert.AreEqual(2, result.Length);
-			Assert.IsTrue(new Point(0.86, -1.36) == minResult);
-			Assert.IsTrue(new Point(3.64, -4.14) == maxResult);
+			Assert.IsTrue(new Dot(0.86, -1.36) == minResult);
+			Assert.IsTrue(new Dot(3.64, -4.14) == maxResult);
 		}
 
 		//Resource: https://www.geogebra.org/m/qBfHYSTQ
-		//gives points around a unit circle
+		//gives Dots around a unit circle
 
 		[TestMethod]
 		public void PointAtDegrees_0()
 		{
 			//assign
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 0;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(1, 0), result);
+			Assert.AreEqual(new Dot(1, 0), result);
 		}
 
 		[TestMethod]
@@ -117,12 +117,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 30;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(0.87, 0.5), result);
+			Assert.AreEqual(new Dot(0.87, 0.5), result);
 		}
 
 		[TestMethod]
@@ -130,12 +130,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 45;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(0.71, 0.71), result);
+			Assert.AreEqual(new Dot(0.71, 0.71), result);
 		}
 
 		[TestMethod]
@@ -143,24 +143,24 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 60;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(0.5, 0.87), result);
+			Assert.AreEqual(new Dot(0.5, 0.87), result);
 		}
 
 		[TestMethod]
 		public void PointAtDegrees_90()
 		{
 			//assign
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 90;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(0, 1), result);
+			Assert.AreEqual(new Dot(0, 1), result);
 		}
 
 		[TestMethod]
@@ -168,12 +168,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 120;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(-0.5, 0.87), result);
+			Assert.AreEqual(new Dot(-0.5, 0.87), result);
 		}
 
 		[TestMethod]
@@ -181,12 +181,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 135;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(-0.71, 0.71), result);
+			Assert.AreEqual(new Dot(-0.71, 0.71), result);
 		}
 
 		[TestMethod]
@@ -194,24 +194,24 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 150;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(-0.87, 0.5), result);
+			Assert.AreEqual(new Dot(-0.87, 0.5), result);
 		}
 
 		[TestMethod]
 		public void PointAtDegrees_180()
 		{
 			//assign
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 180;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(-1, 0), result);
+			Assert.AreEqual(new Dot(-1, 0), result);
 		}
 
 		[TestMethod]
@@ -219,12 +219,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 210;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(-0.87, -0.5), result);
+			Assert.AreEqual(new Dot(-0.87, -0.5), result);
 		}
 
 		[TestMethod]
@@ -232,12 +232,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 225;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(-0.71, -0.71), result);
+			Assert.AreEqual(new Dot(-0.71, -0.71), result);
 		}
 
 		[TestMethod]
@@ -245,24 +245,24 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 240;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(-0.5, -0.87), result);
+			Assert.AreEqual(new Dot(-0.5, -0.87), result);
 		}
 
 		[TestMethod]
 		public void PointAtDegrees_270()
 		{
 			//assign
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 270;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(0, -1), result);
+			Assert.AreEqual(new Dot(0, -1), result);
 		}
 
 		[TestMethod]
@@ -270,12 +270,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 300;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(0.5, -0.87), result);
+			Assert.AreEqual(new Dot(0.5, -0.87), result);
 		}
 
 		[TestMethod]
@@ -283,12 +283,12 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 315;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(0.71, -0.71), result);
+			Assert.AreEqual(new Dot(0.71, -0.71), result);
 		}
 
 		[TestMethod]
@@ -296,24 +296,24 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.01;
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 330;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(0.87, -0.5), result);
+			Assert.AreEqual(new Dot(0.87, -0.5), result);
 		}
 
 		[TestMethod]
 		public void PointAtDegrees_360()
 		{
 			//assign
-			Circle a = new Circle(new Point(0, 0), 1);
+			Circle a = new Circle(new Dot(0, 0), 1);
 			double degrees = 360;
 			//act
-			Point result = a.PointAtDegrees(degrees);
+			Dot result = a.PointAtDegrees(degrees);
 			//assert
-			Assert.AreEqual(new Point(1, 0), result);
+			Assert.AreEqual(new Dot(1, 0), result);
 		}
 
 		[TestMethod]
@@ -368,8 +368,8 @@ namespace GeometryTests
 			//assign
 			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
 			Geometry.MarginOfError = 0.1;
-			Circle circle = new Circle(new Point(0, 0), 1);
-			Point lineEnd = new Point(13, 22.5166604984);
+			Circle circle = new Circle(new Dot(0, 0), 1);
+			Dot lineEnd = new Dot(13, 22.5166604984);
 			//act
 			double degrees = circle.DegreesAtPoint(lineEnd);
 			//assert
@@ -382,8 +382,8 @@ namespace GeometryTests
 			//assign
 			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			Geometry.MarginOfError = 0.1;
-			Circle circle = new Circle(new Point(0, 0), 1);
-			Point lineEnd = new Point(13, 22.5166604984);
+			Circle circle = new Circle(new Dot(0, 0), 1);
+			Dot lineEnd = new Dot(13, 22.5166604984);
 			//act
 			double degrees = circle.DegreesAtPoint(lineEnd);
 			//assert
@@ -396,8 +396,8 @@ namespace GeometryTests
 			//assign
 			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			Geometry.MarginOfError = 5;
-			Circle circle = new Circle(new Point(2019, 866), 1);
-			Point lineEnd = new Point(1500, 1000);
+			Circle circle = new Circle(new Dot(2019, 866), 1);
+			Dot lineEnd = new Dot(1500, 1000);
 			//act
 			double degrees = circle.DegreesAtPoint(lineEnd);
 			//assert
@@ -410,8 +410,8 @@ namespace GeometryTests
 			//assign
 			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			Geometry.MarginOfError = 5;
-			Circle circle = new Circle(new Point(1737, 1730), 1);
-			Point lineEnd = new Point(1573, 1227);
+			Circle circle = new Circle(new Dot(1737, 1730), 1);
+			Dot lineEnd = new Dot(1573, 1227);
 			//act
 			double degrees = circle.DegreesAtPoint(lineEnd);
 			//assert

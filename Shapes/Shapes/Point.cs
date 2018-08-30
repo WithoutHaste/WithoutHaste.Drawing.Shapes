@@ -10,7 +10,8 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// An (X, Y) coordinate. Immutable.
 	/// </summary>
-	public class Point : Shape, IDraw
+	/// <remarks>It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.</remarks>
+	public class Dot : Shape, IDraw
 	{
 		/// <summary></summary>
 		public readonly double X;
@@ -26,7 +27,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <param name="x">Cannot be NaN or Infinity.</param>
 		/// <param name="y">Cannot be NaN or Infinity.</param>
 		/// <exception cref="ArgumentException">X or Y was NaN or Infinity.</exception>
-		public Point(double x, double y)
+		public Dot(double x, double y)
 		{
 			if(double.IsNaN(x))
 				throw new ArgumentException("Point.X cannot be NaN."); //todo: specific exceptions
@@ -43,7 +44,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Distance between this point and point B.
 		/// </summary>
-		public double Distance(Point b)
+		public double Distance(Dot b)
 		{
 			return Math.Sqrt(Math.Pow(b.X - this.X, 2) + Math.Pow(b.Y - this.Y, 2));
 		}
@@ -55,45 +56,45 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary></summary>
-		public static Point operator +(Point a, Point b)
+		public static Dot operator +(Dot a, Dot b)
 		{
-			return new Point(a.X + b.X, a.Y + b.Y);
+			return new Dot(a.X + b.X, a.Y + b.Y);
 		}
 
 		/// <summary></summary>
-		public static Point operator -(Point a, Point b)
+		public static Dot operator -(Dot a, Dot b)
 		{
-			return new Point(a.X - b.X, a.Y - b.Y);
+			return new Dot(a.X - b.X, a.Y - b.Y);
 		}
 
 		/// <summary></summary>
-		public static Point operator *(double a, Point b)
+		public static Dot operator *(double a, Dot b)
 		{
-			return new Point(a * b.X, a * b.Y);
+			return new Dot(a * b.X, a * b.Y);
 		}
 
 		/// <summary></summary>
-		public static Point operator *(Point a, double b)
+		public static Dot operator *(Dot a, double b)
 		{
-			return new Point(a.X * b, a.Y * b);
+			return new Dot(a.X * b, a.Y * b);
 		}
 
 		/// <summary></summary>
-		public static Point operator /(double a, Point b)
+		public static Dot operator /(double a, Dot b)
 		{
-			return new Point(a / b.X, a / b.Y);
+			return new Dot(a / b.X, a / b.Y);
 		}
 
 		/// <summary></summary>
-		public static Point operator /(Point a, double b)
+		public static Dot operator /(Dot a, double b)
 		{
-			return new Point(a.X / b, a.Y / b);
+			return new Dot(a.X / b, a.Y / b);
 		}
 
 		/// <summary>
 		/// Greater than/less than is judged along the x-axis first, then the y-axis
 		/// </summary>
-		public static bool operator <(Point a, Point b)
+		public static bool operator <(Dot a, Dot b)
 		{
 			return (a.X < b.X || (a.X == b.X && a.Y < b.Y));
 		}
@@ -101,19 +102,19 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Greater than/less than is judged along the x-axis first, then the y-axis
 		/// </summary>
-		public static bool operator >(Point a, Point b)
+		public static bool operator >(Dot a, Dot b)
 		{
 			return (a.X > b.X || (a.X == b.X && a.Y > b.Y));
 		}
 
 		/// <summary></summary>
-		public static bool operator ==(Point a, Point b)
+		public static bool operator ==(Dot a, Dot b)
 		{
 			return (Geometry.WithinMarginOfError(a.X, b.X) && Geometry.WithinMarginOfError(a.Y, b.Y));
 		}
 
 		/// <summary></summary>
-		public static bool operator !=(Point a, Point b)
+		public static bool operator !=(Dot a, Dot b)
 		{
 			return (!Geometry.WithinMarginOfError(a.X, b.X) || !Geometry.WithinMarginOfError(a.Y, b.Y));
 		}
@@ -121,9 +122,9 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary></summary>
 		public override bool Equals(Object b)
 		{
-			if(b != null && b is Point)
+			if(b != null && b is Dot)
 			{
-				return (this == (Point)b);
+				return (this == (Dot)b);
 			}
 			return false;
 		}

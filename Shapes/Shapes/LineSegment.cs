@@ -18,12 +18,12 @@ namespace WithoutHaste.Drawing.Shapes
 		public double MaxY { get { return Math.Max(A.Y, B.Y); } }
 
 		/// <summary></summary>
-		public LineSegment(Point a, Point b) : base(a, b)
+		public LineSegment(Dot a, Dot b) : base(a, b)
 		{
 		}
 
 		/// <summary></summary>
-		public LineSegment(Point a, Point b, bool isDirected) : base(a, b, isDirected)
+		public LineSegment(Dot a, Dot b, bool isDirected) : base(a, b, isDirected)
 		{
 		}
 
@@ -37,7 +37,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary></summary>
-		public bool Overlaps(Point c)
+		public bool Overlaps(Dot c)
 		{
 			if(IsVertical)
 			{
@@ -85,7 +85,7 @@ namespace WithoutHaste.Drawing.Shapes
 			{
 				y = b.A.Y;
 			}
-			Point interceptPoint = new Point(x, y);
+			Dot interceptPoint = new Dot(x, y);
 			return (a.Overlaps(interceptPoint) && b.Overlaps(interceptPoint));
 		}
 

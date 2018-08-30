@@ -10,14 +10,14 @@ Main base class for library.
 [Circle](Circle.md)  
 A circle shape. Immutable.
 
+[Dot](Dot.md)  
+An (X, Y) coordinate. Immutable.
+
 [Line](Line.md)  
 Line of infinite length passing through points A and B. Immutable.
 
 [LineSegment](LineSegment.md)  
 Line segment from point A to point B. Immutable.
-
-[Point](Point.md)  
-An (X, Y) coordinate. Immutable.
 
 [Range](Range.md)  
 A linear range of values. Immutable.

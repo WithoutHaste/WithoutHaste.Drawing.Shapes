@@ -75,7 +75,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Calculates point along line AB, starting at A and moving towards B
 		/// </summary>
-		public static Point PointOnLine(Point a, Point b, double distance)
+		public static Dot PointOnLine(Dot a, Dot b, double distance)
 		{
 			double lineLength = a.Distance(b);
 			if(lineLength == 0)
@@ -83,13 +83,13 @@ namespace WithoutHaste.Drawing.Shapes
 			double lengthRatio = distance / lineLength;
 			double x = ((1 - lengthRatio) * a.X) + (lengthRatio * b.X);
 			double y = ((1 - lengthRatio) * a.Y) + (lengthRatio * b.Y);
-			return new Point(x, y);
+			return new Dot(x, y);
 		}
 
 		/// <summary>
 		/// Calculates point along line AB, starting at B and moving away from A
 		/// </summary>
-		public static Point PointPastLine(Point a, Point b, double distance)
+		public static Dot PointPastLine(Dot a, Dot b, double distance)
 		{
 			double lineLength = a.Distance(b);
 			return PointOnLine(a, b, lineLength + distance);
@@ -99,7 +99,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <para>Given directed line A to B, what direction is it pointing?</para>
 		/// <para>North, South, East, and West are precise. The inbetween directions are vague.</para>
 		/// </summary>
-		public static Direction LineDirection(Point a, Point b)
+		public static Direction LineDirection(Dot a, Dot b)
 		{
 			if(a == b) 
 				return Direction.None;
@@ -111,7 +111,7 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
-		private static Direction LineDirection_Screen(Point a, Point b)
+		private static Direction LineDirection_Screen(Dot a, Dot b)
 		{
 			if(a.X == b.X)
 			{
@@ -131,7 +131,7 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
-		private static Direction LineDirection_Paper(Point a, Point b)
+		private static Direction LineDirection_Paper(Dot a, Dot b)
 		{
 			if(a.X == b.X)
 			{

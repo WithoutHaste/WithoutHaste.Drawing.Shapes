@@ -20,5 +20,5 @@ Maximum y coordinate required to draw the figure.
 
 Draw the figure on the Graphics with the Pen.
 
-Parameter unitsToPixels: Conversion ratio from figure units to pixels.
+Parameter unitsToPixels: Conversion ratio from figure units to pixels.  
 

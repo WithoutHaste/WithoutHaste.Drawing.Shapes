@@ -34,7 +34,7 @@ Center y coordinate.
 
 ## Properties
 
-### Point Center
+### Dot Center
 
 ### Double Diameter
 
@@ -58,7 +58,7 @@ Based on coordinate plane, which degree points towards the MaxY coordinate?
 
 ### Circle(System.Double x, System.Double y, System.Double radius)
 
-### Circle(Point center, System.Double radius)
+### Circle(Dot center, System.Double radius)
 
 ## Static Methods
 
@@ -80,7 +80,7 @@ This circle entirely contains circle B, or they exactly overlap.
 
 This circle entirely contains wedge B.
 
-### Boolean Contains(Point b)
+### Boolean Contains(Dot b)
 
 Point B lies within or on this circle.
 
@@ -88,7 +88,7 @@ Point B lies within or on this circle.
 
 This circle entirely contains circle B, or B entirely contains this circle, or they exactly overlap.
 
-### Double DegreesAtPoint(Point lineEnd)
+### Double DegreesAtPoint(Dot lineEnd)
 
 Given a line from the center of a circle to a point, what degrees is the line angle at? 0 degrees is East from center, and increases clockwise.
 
@@ -96,19 +96,19 @@ Given a line from the center of a circle to a point, what degrees is the line an
 
 ### Int32 GetHashCode()
 
-### Point[] GetIntersectionPoints(Circle b)
+### Dot[] GetIntersectionPoints(Circle b)
 
 Returns: Null (no intersection), an array of length 1, or an array of length 2.
 
-### Point[] GetIntersectionPoints(Line line)
+### Dot[] GetIntersectionPoints(Line line)
 
 Returns: Null (no intercepts), or array of length 1 or 2.
 
-### Point[] GetIntersectionPoints(LineSegment lineSegment)
+### Dot[] GetIntersectionPoints(LineSegment lineSegment)
 
 Returns: Null (no intercepts), or array of length 1 or 2.
 
-### Point[] GetTangentPoints(Point b)
+### Dot[] GetTangentPoints(Dot b)
 
 Find the two tangent points on the circle that form lines to point B.
 
@@ -128,11 +128,11 @@ If line B lies within the circle, that counts as overlapping.
 
 See [IDraw](IDraw.md).
 
-### Point PointAtDegrees(System.Double degrees)
+### Dot PointAtDegrees(System.Double degrees)
 
 Return the point on the circle at this degree. 0 degrees is East of center, increases clockwise.
 
-### Point PointAtRadians(System.Double radians)
+### Dot PointAtRadians(System.Double radians)
 
 Return the point on the circle at this radians. 0 radians is East of center, increases clockwise.
 

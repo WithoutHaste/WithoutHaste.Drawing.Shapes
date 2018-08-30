@@ -8,7 +8,7 @@ Base Type: [Shape](Shape.md)
 
 ### Normal Fields
 
-#### Point Center
+#### Dot Center
 
 Center of the circle that defines this wedge.
 
@@ -32,7 +32,7 @@ Starting degree.
 
 ## Constructors
 
-### WedgeUnbound(Point center, RangeCircular degreesRange)
+### WedgeUnbound(Dot center, RangeCircular degreesRange)
 
-### WedgeUnbound(Point center, System.Double degreesRangeStart, System.Double degreesRangeEnd)
+### WedgeUnbound(Dot center, System.Double degreesRangeStart, System.Double degreesRangeEnd)
 

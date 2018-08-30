@@ -57,13 +57,13 @@
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.#ctor(System.Double,System.Double,System.Double)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Circle.#ctor(WithoutHaste.Drawing.Shapes.Point,System.Double)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.#ctor(WithoutHaste.Drawing.Shapes.Dot,System.Double)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Circle)">
             <returns>Null (no intersection), an array of length 1, or an array of length 2.</returns>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetTangentPoints(WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetTangentPoints(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             Find the two tangent points on the circle that form lines to point B.
             </summary>
@@ -95,7 +95,7 @@
             This circle entirely contains wedge B.
             </summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Contains(WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.Contains(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             Point B lies within or on this circle.
             </summary>
@@ -110,7 +110,7 @@
             Return the point on the circle at this degree. 0 degrees is East of center, increases clockwise.
             </summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Circle.DegreesAtPoint(WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Circle.DegreesAtPoint(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             Given a line from the center of a circle to a point, what degrees is the line angle at? 0 degrees is East from center, and increases clockwise.
             </summary>
@@ -222,17 +222,17 @@
         <member name="M:WithoutHaste.Drawing.Shapes.Geometry.WithinMarginOfError(System.Double,System.Double)">
             <summary>Check if values are equal, within the MarginOfError.</summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.PointOnLine(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Double)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.PointOnLine(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot,System.Double)">
             <summary>
             Calculates point along line AB, starting at A and moving towards B
             </summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.PointPastLine(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Double)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.PointPastLine(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot,System.Double)">
             <summary>
             Calculates point along line AB, starting at B and moving away from A
             </summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.LineDirection(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Geometry.LineDirection(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             <para>Given directed line A to B, what direction is it pointing?</para>
             <para>North, South, East, and West are precise. The inbetween directions are vague.</para>
@@ -286,16 +286,16 @@
         <member name="P:WithoutHaste.Drawing.Shapes.Line.IsHorizontal">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Line.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Line.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Boolean)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot,System.Boolean)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Line.ToLineSegment">
             <summary>Convert to <see cref="T:WithoutHaste.Drawing.Shapes.LineSegment"/>.</summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Line.GetPerpendicularIntersect(WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Line.GetPerpendicularIntersect(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             Get the point where a perpendicular line passing through point C intersects this line.
             </summary>
@@ -319,10 +319,10 @@
         <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.MaxY">
             <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point,System.Boolean)">
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot,System.Boolean)">
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.Length">
@@ -331,7 +331,7 @@
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.ToLine">
             <summary>Convert to <see cref="T:WithoutHaste.Drawing.Shapes.Line"/>.</summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Overlaps(WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Overlaps(WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
@@ -343,81 +343,82 @@
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
             <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
         </member>
-        <member name="T:WithoutHaste.Drawing.Shapes.Point">
+        <member name="T:WithoutHaste.Drawing.Shapes.Dot">
             <summary>
             An (X, Y) coordinate. Immutable.
             </summary>
+            <remarks>It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.</remarks>
         </member>
-        <member name="F:WithoutHaste.Drawing.Shapes.Point.X">
+        <member name="F:WithoutHaste.Drawing.Shapes.Dot.X">
             <summary></summary>
         </member>
-        <member name="F:WithoutHaste.Drawing.Shapes.Point.Y">
+        <member name="F:WithoutHaste.Drawing.Shapes.Dot.Y">
             <summary></summary>
         </member>
-        <member name="P:WithoutHaste.Drawing.Shapes.Point.MaxX">
+        <member name="P:WithoutHaste.Drawing.Shapes.Dot.MaxX">
             <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
         </member>
-        <member name="P:WithoutHaste.Drawing.Shapes.Point.MaxY">
+        <member name="P:WithoutHaste.Drawing.Shapes.Dot.MaxY">
             <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.#ctor(System.Double,System.Double)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.#ctor(System.Double,System.Double)">
             <summary></summary>
             <param name="x">Cannot be NaN or Infinity.</param>
             <param name="y">Cannot be NaN or Infinity.</param>
             <exception cref="T:System.ArgumentException">X or Y was NaN or Infinity.</exception>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.Distance(WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.Distance(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             Distance between this point and point B.
             </summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Addition(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Addition(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Subtraction(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Subtraction(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Multiply(System.Double,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Multiply(System.Double,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Multiply(WithoutHaste.Drawing.Shapes.Point,System.Double)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Multiply(WithoutHaste.Drawing.Shapes.Dot,System.Double)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Division(System.Double,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Division(System.Double,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Division(WithoutHaste.Drawing.Shapes.Point,System.Double)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Division(WithoutHaste.Drawing.Shapes.Dot,System.Double)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_LessThan(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_LessThan(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             Greater than/less than is judged along the x-axis first, then the y-axis
             </summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_GreaterThan(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_GreaterThan(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             Greater than/less than is judged along the x-axis first, then the y-axis
             </summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Equality(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Equality(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.op_Inequality(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Inequality(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.Equals(System.Object)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.Equals(System.Object)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.GetHashCode">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.GetHashCode">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.ToString">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.ToString">
             <summary>Format "(X,Y)"</summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Point.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Dot.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
             <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Range">
@@ -614,7 +615,7 @@
             Circle B lies entirely within this wedge.
             </summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Contains(WithoutHaste.Drawing.Shapes.Point)">
+        <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Contains(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
             This wedge contains point B, including point B being on an edge of the wedge.
             </summary>
@@ -650,10 +651,10 @@
         <member name="P:WithoutHaste.Drawing.Shapes.WedgeUnbound.End">
             <summary>Ending degree.</summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.WedgeUnbound.#ctor(WithoutHaste.Drawing.Shapes.Point,WithoutHaste.Drawing.Shapes.RangeCircular)">
+        <member name="M:WithoutHaste.Drawing.Shapes.WedgeUnbound.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.RangeCircular)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.Drawing.Shapes.WedgeUnbound.#ctor(WithoutHaste.Drawing.Shapes.Point,System.Double,System.Double)">
+        <member name="M:WithoutHaste.Drawing.Shapes.WedgeUnbound.#ctor(WithoutHaste.Drawing.Shapes.Dot,System.Double,System.Double)">
             <summary></summary>
         </member>
     </members>

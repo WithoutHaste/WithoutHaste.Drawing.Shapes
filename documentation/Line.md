@@ -8,9 +8,9 @@ Base Type: [Shape](Shape.md)
 
 ### Normal Fields
 
-#### Point A
+#### Dot A
 
-#### Point B
+#### Dot B
 
 #### Boolean IsDirected
 
@@ -34,13 +34,13 @@ Slope assumes direction from A to B.
 
 ## Constructors
 
-### Line(Point a, Point b)
+### Line(Dot a, Dot b)
 
-### Line(Point a, Point b, System.Boolean isDirected)
+### Line(Dot a, Dot b, System.Boolean isDirected)
 
 ## Methods
 
-### Point GetPerpendicularIntersect(Point c)
+### Dot GetPerpendicularIntersect(Dot c)
 
 Get the point where a perpendicular line passing through point C intersects this line.
 

@@ -12,9 +12,9 @@ namespace WithoutHaste.Drawing.Shapes
 	public class Line : Shape
 	{
 		/// <summary></summary>
-		public readonly Point A;
+		public readonly Dot A;
 		/// <summary></summary>
-		public readonly Point B;
+		public readonly Dot B;
 		/// <summary>
 		/// When directed, the direction is A to B.
 		/// </summary>
@@ -32,7 +32,7 @@ namespace WithoutHaste.Drawing.Shapes
 		public bool IsHorizontal { get { return (A.Y == B.Y); } }
 
 		/// <summary></summary>
-		public Line(Point a, Point b)
+		public Line(Dot a, Dot b)
 		{
 			if(a == b)
 				throw new ArgumentException("Points A and B cannot be the same.");
@@ -42,7 +42,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary></summary>
-		public Line(Point a, Point b, bool isDirected)
+		public Line(Dot a, Dot b, bool isDirected)
 		{
 			if(a == b)
 				throw new ArgumentException("Points A and B cannot be the same.");
@@ -62,21 +62,21 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Get the point where a perpendicular line passing through point C intersects this line.
 		/// </summary>
-		public Point GetPerpendicularIntersect(Point c)
+		public Dot GetPerpendicularIntersect(Dot c)
 		{
 			if(IsVertical)
 			{
-				return new Point(this.A.X, c.Y);
+				return new Dot(this.A.X, c.Y);
 			}
 			if(IsHorizontal)
 			{
-				return new Point(c.X, this.A.Y);
+				return new Dot(c.X, this.A.Y);
 			}
 			double cSlope = PerpendicularSlope;
 			double cYIntercept = c.Y - (cSlope * c.X);
 			double x = (cYIntercept - this.YIntercept) / (this.Slope - cSlope);
 			double y = (this.Slope * x) + this.YIntercept;
-			return new Point(x, y);
+			return new Dot(x, y);
 		}
 
 		/// <summary>

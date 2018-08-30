@@ -5,7 +5,7 @@ using WithoutHaste.Drawing.Shapes;
 namespace GeometryTests
 {
 	[TestClass]
-	public class TestPoint
+	public class TestDot
 	{
 		[TestMethod]
 		[ExpectedException(typeof(ArgumentException))]
@@ -15,7 +15,7 @@ namespace GeometryTests
 			double x = double.NaN;
 			double y = 1;
 			//act
-			Point point = new Point(x, y);
+			Dot Dot = new Dot(x, y);
 			//expected exception
 		}
 
@@ -27,7 +27,7 @@ namespace GeometryTests
 			double x = 1;
 			double y = double.NaN;
 			//act
-			Point point = new Point(x, y);
+			Dot Dot = new Dot(x, y);
 			//expected exception
 		}
 
@@ -39,7 +39,7 @@ namespace GeometryTests
 			double x = double.PositiveInfinity;
 			double y = 1;
 			//act
-			Point point = new Point(x, y);
+			Dot Dot = new Dot(x, y);
 			//expected exception
 		}
 
@@ -51,7 +51,7 @@ namespace GeometryTests
 			double x = 1;
 			double y = double.PositiveInfinity;
 			//act
-			Point point = new Point(x, y);
+			Dot Dot = new Dot(x, y);
 			//expected exception
 		}
 
@@ -63,7 +63,7 @@ namespace GeometryTests
 			double x = double.NegativeInfinity;
 			double y = 1;
 			//act
-			Point point = new Point(x, y);
+			Dot Dot = new Dot(x, y);
 			//expected exception
 		}
 
@@ -75,7 +75,7 @@ namespace GeometryTests
 			double x = 1;
 			double y = double.NegativeInfinity;
 			//act
-			Point point = new Point(x, y);
+			Dot Dot = new Dot(x, y);
 			//expected exception
 		}
 
@@ -84,8 +84,8 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.001;
-			Point a = new Point(1, 2);
-			Point b = new Point(a.X + (2 * Geometry.MarginOfError), a.Y);
+			Dot a = new Dot(1, 2);
+			Dot b = new Dot(a.X + (2 * Geometry.MarginOfError), a.Y);
 			//act
 			bool result = (a == b);
 			//assert
@@ -97,8 +97,8 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.001;
-			Point a = new Point(1, 2);
-			Point b = new Point(a.X + Geometry.MarginOfError, a.Y);
+			Dot a = new Dot(1, 2);
+			Dot b = new Dot(a.X + Geometry.MarginOfError, a.Y);
 			//act
 			bool result = (a == b);
 			//assert
@@ -110,8 +110,8 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.001;
-			Point a = new Point(1, 2);
-			Point b = new Point(a.X, a.Y + (2 * Geometry.MarginOfError));
+			Dot a = new Dot(1, 2);
+			Dot b = new Dot(a.X, a.Y + (2 * Geometry.MarginOfError));
 			//act
 			bool result = (a == b);
 			//assert
@@ -123,8 +123,8 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.001;
-			Point a = new Point(1, 2);
-			Point b = new Point(a.X, a.Y + Geometry.MarginOfError);
+			Dot a = new Dot(1, 2);
+			Dot b = new Dot(a.X, a.Y + Geometry.MarginOfError);
 			//act
 			bool result = (a == b);
 			//assert

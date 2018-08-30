@@ -33,7 +33,7 @@ namespace WithoutHaste.Drawing.Shapes
 		public readonly double Radius;
 
 		/// <summary></summary>
-		public Point Center { get { return new Point(X, Y); } }
+		public Dot Center { get { return new Dot(X, Y); } }
 		/// <summary></summary>
 		public double Diameter { get { return 2 * Radius; } }
 		/// <summary>See <see cref="IDraw"/>.</summary>
@@ -73,7 +73,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary></summary>
-		public Circle(Point center, double radius)
+		public Circle(Dot center, double radius)
 		{
 			X = center.X;
 			Y = center.Y;
@@ -81,7 +81,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <returns>Null (no intersection), an array of length 1, or an array of length 2.</returns>
-		public Point[] GetIntersectionPoints(Circle b)
+		public Dot[] GetIntersectionPoints(Circle b)
 		{
 			//following the method in math/intersectionCircleCircle.png
 
@@ -101,16 +101,16 @@ namespace WithoutHaste.Drawing.Shapes
 			double dA = (Math.Pow(a.Radius, 2) - Math.Pow(b.Radius, 2) + Math.Pow(d, 2)) / (2 * d); //distance from centerA to pointC
 			if(dA == a.Radius)
 			{
-				return new Point[] { Geometry.PointOnLine(a.Center, b.Center, a.Radius) }; //circles intersect at single point
+				return new Dot[] { Geometry.PointOnLine(a.Center, b.Center, a.Radius) }; //circles intersect at single point
 			}
-			Point c = a.Center + dA * (b.Center - a.Center) / d;
+			Dot c = a.Center + dA * (b.Center - a.Center) / d;
 
 			//h is the distance from pointC to either intersection point (the hypotenus of triangle centerA-C-intersection)
 			double h = Math.Sqrt(Math.Pow(a.Radius, 2) - Math.Pow(dA, 2));
 
-			return new Point[] {
-				new Point(c.X + (h * (b.Y - a.Y) / d), c.Y - h * (b.X - a.X) / d),
-				new Point(c.X - (h * (b.Y - a.Y) / d), c.Y + h * (b.X - a.X) / d)
+			return new Dot[] {
+				new Dot(c.X + (h * (b.Y - a.Y) / d), c.Y - h * (b.X - a.X) / d),
+				new Dot(c.X - (h * (b.Y - a.Y) / d), c.Y + h * (b.X - a.X) / d)
 			};
 		}
 
@@ -118,16 +118,16 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Find the two tangent points on the circle that form lines to point B.
 		/// </summary>
 		/// <returns>Array of 2 Points.</returns>
-		public Point[] GetTangentPoints(Point b)
+		public Dot[] GetTangentPoints(Dot b)
 		{
 			//point C and D are the tangents
 			Circle a = this;
 			double distanceAB = a.Center.Distance(b);
 			double degreesAB = DegreesAtPoint(b);
 			double degreesAB_AC = Math.Cos(Radius / distanceAB);
-			Point c = PointAtDegrees(degreesAB + degreesAB_AC);
-			Point d = PointAtDegrees(degreesAB - degreesAB_AC);
-			return new Point[] { c, d };
+			Dot c = PointAtDegrees(degreesAB + degreesAB_AC);
+			Dot d = PointAtDegrees(degreesAB - degreesAB_AC);
+			return new Dot[] { c, d };
 		}
 
 		/// <summary>
@@ -135,7 +135,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// </summary>
 		public bool Overlaps(Circle b)
 		{
-			Point[] intersections = this.GetIntersectionPoints(b);
+			Dot[] intersections = this.GetIntersectionPoints(b);
 			if(intersections != null)
 				return true;
 			return this.ContainsOrIsContained(b);
@@ -147,10 +147,10 @@ namespace WithoutHaste.Drawing.Shapes
 		/// </summary>
 		public bool Overlaps(LineSegment b)
 		{
-			Point[] lineIntersectionPoints = GetIntersectionPoints(b.ToLine());
+			Dot[] lineIntersectionPoints = GetIntersectionPoints(b.ToLine());
 			if(lineIntersectionPoints == null)
 				return false;
-			foreach(Point point in lineIntersectionPoints)
+			foreach(Dot point in lineIntersectionPoints)
 			{
 				if(b.Overlaps(point))
 					return true;
@@ -193,7 +193,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// </summary>
 		public bool Contains(Wedge b)
 		{
-			foreach(Point point in b.FourPoints)
+			foreach(Dot point in b.FourPoints)
 			{
 				if(!Contains(point))
 					return false;
@@ -204,7 +204,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Point B lies within or on this circle.
 		/// </summary>
-		public bool Contains(Point b)
+		public bool Contains(Dot b)
 		{
 			return (Center.Distance(b) <= Radius);
 		}
@@ -212,7 +212,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Return the point on the circle at this radians. 0 radians is East of center, increases clockwise.
 		/// </summary>
-		public Point PointAtRadians(double radians)
+		public Dot PointAtRadians(double radians)
 		{
 			radians = radians % RADIANS_360DEGREES;
 			double deltaX = 0;
@@ -256,8 +256,8 @@ namespace WithoutHaste.Drawing.Shapes
 
 			switch(Geometry.CoordinatePlane)
 			{
-				case Geometry.CoordinatePlanes.Screen: return new Point(Center.X + deltaX, Center.Y + deltaY);
-				case Geometry.CoordinatePlanes.Paper: return new Point(Center.X + deltaX, Center.Y - deltaY);
+				case Geometry.CoordinatePlanes.Screen: return new Dot(Center.X + deltaX, Center.Y + deltaY);
+				case Geometry.CoordinatePlanes.Paper: return new Dot(Center.X + deltaX, Center.Y - deltaY);
 				default: throw new NotImplementedException("Coordinate plane not supported.");
 			}
 		}
@@ -265,7 +265,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Return the point on the circle at this degree. 0 degrees is East of center, increases clockwise.
 		/// </summary>
-		public Point PointAtDegrees(double degrees)
+		public Dot PointAtDegrees(double degrees)
 		{
 			return PointAtRadians(DegreesToRadians(degrees));
 		}
@@ -273,7 +273,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Given a line from the center of a circle to a point, what degrees is the line angle at? 0 degrees is East from center, and increases clockwise.
 		/// </summary>
-		public double DegreesAtPoint(Point lineEnd)
+		public double DegreesAtPoint(Dot lineEnd)
 		{
 			if(Geometry.CoordinatePlane == Geometry.CoordinatePlanes.None)
 				throw new ArgumentException("Coordinate plane required.");
@@ -302,10 +302,10 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <returns>Null (no intercepts), or array of length 1 or 2.</returns>
-		public Point[] GetIntersectionPoints(Line line)
+		public Dot[] GetIntersectionPoints(Line line)
 		{
 			//line does not intersect if perpendicular line from circle-center to line is longer than circle-radius
-			Point perpendicularToCenter = line.GetPerpendicularIntersect(Center);
+			Dot perpendicularToCenter = line.GetPerpendicularIntersect(Center);
 			if(perpendicularToCenter.Distance(Center) > Radius)
 				return null;
 
@@ -339,9 +339,9 @@ namespace WithoutHaste.Drawing.Shapes
 				y1 = line.A.Y;
 				y2 = line.A.Y;
 			}
-			Point point1 = new Point(x1, y1);
-			Point point2 = new Point(x2, y2);
-			List<Point> result = new List<Point>() { point1 };
+			Dot point1 = new Dot(x1, y1);
+			Dot point2 = new Dot(x2, y2);
+			List<Dot> result = new List<Dot>() { point1 };
 			if(point1 != point2)
 				result.Add(point2);
 			return result.ToArray();
@@ -350,13 +350,13 @@ namespace WithoutHaste.Drawing.Shapes
 		//todo: is it worth making a Degree and a Radian struct? for being precise in what data is expected/returned?
 
 		/// <returns>Null (no intercepts), or array of length 1 or 2.</returns>
-		public Point[] GetIntersectionPoints(LineSegment lineSegment)
+		public Dot[] GetIntersectionPoints(LineSegment lineSegment)
 		{
-			Point[] lineIntersectionPoints = GetIntersectionPoints(lineSegment.ToLine());
+			Dot[] lineIntersectionPoints = GetIntersectionPoints(lineSegment.ToLine());
 			if(lineIntersectionPoints == null)
 				return null;
-			List<Point> segmentIntersectionPoints = new List<Point>();
-			foreach(Point point in lineIntersectionPoints)
+			List<Dot> segmentIntersectionPoints = new List<Dot>();
+			foreach(Dot point in lineIntersectionPoints)
 			{
 				if(lineSegment.Overlaps(point))
 					segmentIntersectionPoints.Add(point);

@@ -18,13 +18,13 @@ See [IDraw](IDraw.md).
 
 ## Constructors
 
-### LineSegment(Point a, Point b)
+### LineSegment(Dot a, Dot b)
 
-### LineSegment(Point a, Point b, System.Boolean isDirected)
+### LineSegment(Dot a, Dot b, System.Boolean isDirected)
 
 ## Methods
 
-### Boolean Overlaps(Point c)
+### Boolean Overlaps(Dot c)
 
 ### Boolean Overlaps(LineSegment b)
 

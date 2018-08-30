@@ -18,11 +18,11 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>Full circle that this Wedge is a part of.</summary>
 		public Circle Circle { get { return new Circle(Center, Radius); } }
 		/// <summary>Point on circumference of Circle where Wedge begins.</summary>
-		public Point StartPoint { get { return Circle.PointAtDegrees(Degrees.Start); } }
+		public Dot StartPoint { get { return Circle.PointAtDegrees(Degrees.Start); } }
 		/// <summary>Point on circumference of Circle where Wedge ends.</summary>
-		public Point EndPoint { get { return Circle.PointAtDegrees(Degrees.End); } }
+		public Dot EndPoint { get { return Circle.PointAtDegrees(Degrees.End); } }
 		/// <summary>The point at the middle of the arc.</summary>
-		public Point ArcPoint { get { return Circle.PointAtDegrees(Degrees.Middle); } }
+		public Dot ArcPoint { get { return Circle.PointAtDegrees(Degrees.Middle); } }
 		/// <summary>
 		///  <list type="bullet">
 		///   <listheader>
@@ -34,7 +34,7 @@ namespace WithoutHaste.Drawing.Shapes
 		///   <item>ArcPoint</item>
 		///  </list>
 		/// </summary>
-		public Point[] FourPoints { get { return new Point[] { Circle.Center, StartPoint, EndPoint, ArcPoint }; } }
+		public Dot[] FourPoints { get { return new Dot[] { Circle.Center, StartPoint, EndPoint, ArcPoint }; } }
 		/// <summary>
 		///  <list type="bullet">
 		///   <listheader>
@@ -87,7 +87,7 @@ namespace WithoutHaste.Drawing.Shapes
 		public bool Overlaps(Circle b)
 		{
 			Wedge a = this;
-			Point[] intersections = a.Circle.GetIntersectionPoints(b);
+			Dot[] intersections = a.Circle.GetIntersectionPoints(b);
 			if(intersections == null)
 			{
 				if(!a.Circle.ContainsOrIsContained(b))
@@ -120,7 +120,7 @@ namespace WithoutHaste.Drawing.Shapes
 		public bool Overlaps(Wedge b)
 		{
 			Wedge a = this;
-			Point[] intersections = a.Circle.GetIntersectionPoints(b.Circle);
+			Dot[] intersections = a.Circle.GetIntersectionPoints(b.Circle);
 			if(intersections == null)
 			{
 				if(!a.Circle.ContainsOrIsContained(b.Circle))
@@ -172,12 +172,12 @@ namespace WithoutHaste.Drawing.Shapes
 		public bool ArcOverlaps(LineSegment line)
 		{
 			//find intersection points between full circle and line segment
-			Point[] fullCircleIntersections = Circle.GetIntersectionPoints(line);
+			Dot[] fullCircleIntersections = Circle.GetIntersectionPoints(line);
 			if(fullCircleIntersections == null)
 				return false;
 			//find degrees from circle center to intersection points
 			//are any of those degrees within the wedge degree range?
-			foreach(Point point in fullCircleIntersections)
+			foreach(Dot point in fullCircleIntersections)
 			{
 				double degrees = Circle.DegreesAtPoint(point);
 				if(Degrees.Overlaps(degrees))
@@ -194,10 +194,10 @@ namespace WithoutHaste.Drawing.Shapes
 		public bool ArcOverlapsArc(Wedge b)
 		{
 			Wedge a = this;
-			Point[] fullCircleIntersections = a.Circle.GetIntersectionPoints(b.Circle);
+			Dot[] fullCircleIntersections = a.Circle.GetIntersectionPoints(b.Circle);
 			if(fullCircleIntersections == null)
 				return false;
-			foreach(Point point in fullCircleIntersections)
+			foreach(Dot point in fullCircleIntersections)
 			{
 				if(a.Circle.Center == point || a.Degrees.Overlaps(a.Circle.DegreesAtPoint(point)))
 				{
@@ -215,8 +215,8 @@ namespace WithoutHaste.Drawing.Shapes
 		/// </summary>
 		public bool Contains(Circle b)
 		{
-			Point[] tangentPoints = b.GetTangentPoints(this.Circle.Center);
-			foreach(Point point in tangentPoints)
+			Dot[] tangentPoints = b.GetTangentPoints(this.Circle.Center);
+			foreach(Dot point in tangentPoints)
 			{
 				if(!Contains(point))
 					return false;
@@ -227,7 +227,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// This wedge contains point B, including point B being on an edge of the wedge.
 		/// </summary>
-		public bool Contains(Point b)
+		public bool Contains(Dot b)
 		{
 			double distance = Circle.Center.Distance(b);
 			if(distance > Circle.Radius)

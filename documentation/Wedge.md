@@ -12,7 +12,7 @@ Base Type: [WedgeUnbound](WedgeUnbound.md)
 
 ## Properties
 
-### Point ArcPoint
+### Dot ArcPoint
 
 The point at the middle of the arc.
 
@@ -20,11 +20,11 @@ The point at the middle of the arc.
 
 Full circle that this Wedge is a part of.
 
-### Point EndPoint
+### Dot EndPoint
 
 Point on circumference of Circle where Wedge ends.
 
-### Point[] FourPoints
+### Dot[] FourPoints
 
 The boundary points of the Wedge:  
 * the center of the circle  
@@ -46,7 +46,7 @@ See [IDraw](IDraw.md).
 
 See [IDraw](IDraw.md).
 
-### Point StartPoint
+### Dot StartPoint
 
 Point on circumference of Circle where Wedge begins.
 
@@ -70,7 +70,7 @@ The arc is the curved circle segment part of the wedge.
 
 Circle B lies entirely within this wedge.
 
-### Boolean Contains(Point b)
+### Boolean Contains(Dot b)
 
 This wedge contains point B, including point B being on an edge of the wedge.
 
