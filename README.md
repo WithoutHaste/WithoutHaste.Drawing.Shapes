@@ -24,6 +24,14 @@ Other C# libraries:
 - icon manager
 - history data structure
 
+## License
+
+[MIT License](https://github.com/WithoutHaste/WithoutHaste.Drawing.Shapes/blob/master/LICENSE)
+
+## Support
+
+[Become a patron](https://www.patreon.com/withouthaste) of this and other Without Haste open source projects.
+
 ## Version
 
 Uses [Semantic Versioning 2.0.0](https://semver.org/).
