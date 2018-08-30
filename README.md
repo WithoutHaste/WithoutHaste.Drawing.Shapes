@@ -4,10 +4,6 @@ C# library of shape/geometry calculations and operations.
 
 This library is under active development. Report bugs and request features on Github, or to wohaste@gmail.com.
 
-## Download
-
-Library file located at Shapes/bin/Release/WithoutHaste.Drawing.Shapes.dll
-
 ## Documentation
 
 [Table of Contents](documentation/TableOfContents.md)
@@ -30,6 +26,7 @@ Other C# libraries:
 
 ## Version
 
-Version 1 in development.
+Uses [Semantic Versioning 2.0.0](https://semver.org/).
 
+[Initial Release - v1.0.0](https://github.com/WithoutHaste/WithoutHaste.Drawing.Shapes/releases/tag/v1.0.0)
 
