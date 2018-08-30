@@ -1,5 +1,10 @@
 # Contents
 
+## Abstract Types
+
+[Shape](Shape.md)  
+Main base class for library.
+
 ## Types
 
 [Circle](Circle.md)  
@@ -19,9 +24,6 @@ A linear range of values. Immutable.
 
 [RangeCircular](RangeCircular.md)  
 A range on a circular scale within range [0, CircularModulus). Immutable.
-
-[Shape](Shape.md)  
-Main base class for library.
 
 [Wedge](Wedge.md)  
 A wedge is a slice of a circle. It is also known as a circular sector. Immutable.
