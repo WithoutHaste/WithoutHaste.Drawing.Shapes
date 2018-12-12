@@ -49,13 +49,21 @@ When determining equality, all values have a +/- margin of error. This setting i
 
 Given directed line A to B, what direction is it pointing?  
 
-North, South, East, and West are precise. The inbetween directions are vague.  
+**Remarks:**  
+North, South, East, and West answers are exact. So "North" means exactly North.  
+The inbetween directions cover all remaining values. So "NorthWest" covers all values between North and West.  
+
+**Exceptions:**  
+* **[NotImplementedException](https://docs.microsoft.com/en-us/dotnet/api/system.notimplementedexception)**: Coordinate plane not supported.  
 
 ## PointOnLine([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b, double distance)
 
 **static [Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
 
 Calculates point along line AB, starting at A and moving towards B  
+
+**Exceptions:**  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Point A and B cannot be the same.  
 
 ## PointPastLine([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b, double distance)
 

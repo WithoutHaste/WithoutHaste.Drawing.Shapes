@@ -3,7 +3,7 @@
 **Abstract**  
 **Inheritance:** object  
 
-Main base class for library.  
+Represents a shape, a geometrical figure, a form.  
 
 # Derived By
 
@@ -20,5 +20,5 @@ Line of infinite length passing through points A and B. Immutable.
 A linear range of values. Immutable.  
 
 [WithoutHaste.Drawing.Shapes.WedgeUnbound](WithoutHaste.Drawing.Shapes.WedgeUnbound.md)  
-A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward with no limit. Immutable.  
+A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward from the center with no limit. Immutable.  
 

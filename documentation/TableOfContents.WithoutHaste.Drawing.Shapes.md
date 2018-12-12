@@ -31,7 +31,7 @@ A wedge is a slice of a circle. It is also known as a circular sector. Immutable
 
   
 [**WedgeUnbound**](WithoutHaste.Drawing.Shapes.WedgeUnbound.md)  
-A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward with no limit. Immutable.  
+A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward from the center with no limit. Immutable.  
 
   
 
@@ -45,7 +45,7 @@ Global settings and miscellaneous operations.
 ## Abstract Types
 
 [**Shape**](WithoutHaste.Drawing.Shapes.Shape.md)  
-Main base class for library.  
+Represents a shape, a geometrical figure, a form.  
 
   
 

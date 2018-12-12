@@ -10,43 +10,47 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// A wedge is a slice of a circle. It is also known as a circular sector. Immutable.
 	/// </summary>
+	/// <remarks>
+	/// "Arc" refers to the segment of circle's circumference that makes up the curved edge of the wedge. And arc is 1-dimensional; an arc is a curved line.
+	/// </remarks>
 	public class Wedge : WedgeUnbound, IDraw
 	{
-		/// <summary></summary>
+		/// <summary>The radius of the full circle this wedge is a slice of. Also the length of either straight side of the wegde.</summary>
 		public readonly double Radius;
 
-		/// <summary>Full circle that this Wedge is a part of.</summary>
+		/// <summary>The full circle that this wedge is a part of.</summary>
 		public Circle Circle { get { return new Circle(Center, Radius); } }
-		/// <summary>Point on circumference of Circle where Wedge begins.</summary>
+
+		/// <summary>The point on circumference of Circle where the wedge begins.</summary>
 		public Dot StartPoint { get { return Circle.PointAtDegrees(Degrees.Start); } }
-		/// <summary>Point on circumference of Circle where Wedge ends.</summary>
+
+		/// <summary>The point on circumference of Circle where the wedge ends.</summary>
 		public Dot EndPoint { get { return Circle.PointAtDegrees(Degrees.End); } }
-		/// <summary>The point at the middle of the arc.</summary>
+
+		/// <summary>The point at the middle of the arc edge of the wedge.</summary>
 		public Dot ArcPoint { get { return Circle.PointAtDegrees(Degrees.Middle); } }
+
 		/// <summary>
+		/// The boundary points of the wedge:
 		///  <list type="bullet">
-		///   <listheader>
-		///    The boundary points of the Wedge:
-		///   </listheader>
-		///   <item>the center of the circle</item>
+		///   <item>Center</item>
 		///   <item>StartPoint</item>
 		///   <item>EndPoint</item>
 		///   <item>ArcPoint</item>
 		///  </list>
 		/// </summary>
 		public Dot[] FourPoints { get { return new Dot[] { Circle.Center, StartPoint, EndPoint, ArcPoint }; } }
+
 		/// <summary>
+		/// The straight edges of the wedge:
 		///  <list type="bullet">
-		///   <listheader>
-		///    The straight edges of the Wedge:
-		///   </listheader>
 		///   <item>Center to StartPoint</item>
 		///   <item>Center to EndPoint</item>
 		///  </list>
 		/// </summary>
 		public LineSegment[] LineEdges { get { return new LineSegment[] { new LineSegment(Circle.Center, StartPoint), new LineSegment(Circle.Center, EndPoint) }; } }
 
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public double MaxX {
 			get {
 				double maxX = Math.Max(StartPoint.X, EndPoint.X);
@@ -57,7 +61,8 @@ namespace WithoutHaste.Drawing.Shapes
 				return maxX;
 			}
 		}
-		/// <summary>See <see cref="IDraw"/>.</summary>
+
+		/// <inheritdoc/>
 		public double MaxY {
 			get {
 				double maxY = Math.Max(StartPoint.Y, EndPoint.Y);
@@ -69,20 +74,23 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
-		/// <summary></summary>
-		public Wedge(Circle circle, RangeCircular radius) : base(circle.Center, radius)
+		/// <param name="circle">The full circle this wedge is a part of.</param>
+		/// <param name="degreeRange">The range of degrees this wedge covers.</param>
+		public Wedge(Circle circle, RangeCircular degreeRange) : base(circle.Center, degreeRange)
 		{
 			Radius = circle.Radius;
 		}
 
-		/// <summary></summary>
-		public Wedge(Circle circle, double rangeStart, double rangeEnd) : base(circle.Center, rangeStart, rangeEnd)
+		/// <param name="circle">The full circle this wedge is a part of.</param>
+		/// <param name="degreeStart">The starting degree the wedge covers.</param>
+		/// <param name="degreeEnd">The ending degree the wedge covers.</param>
+		public Wedge(Circle circle, double degreeStart, double degreeEnd) : base(circle.Center, degreeStart, degreeEnd)
 		{
 			Radius = circle.Radius;
 		}
 
 		/// <summary>
-		/// Any part of this wedge overlaps any part of circle B.
+		/// Returns true if any part of this wedge overlaps any part of circle <paramref name='b'/>.
 		/// </summary>
 		public bool Overlaps(Circle b)
 		{
@@ -115,7 +123,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Any part of this wedge overlaps any part of wedge B.
+		/// Returns true if any part of this wedge overlaps any part of wedge <paramref name='b'/>.
 		/// </summary>
 		public bool Overlaps(Wedge b)
 		{
@@ -167,12 +175,12 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// The arc is the curved circle segment part of the wedge.
+		/// Returns true if the arc overlaps any part of the <paramref name='lineSegment'/>.
 		/// </summary>
-		public bool ArcOverlaps(LineSegment line)
+		public bool ArcOverlaps(LineSegment lineSegment)
 		{
 			//find intersection points between full circle and line segment
-			Dot[] fullCircleIntersections = Circle.GetIntersectionPoints(line);
+			Dot[] fullCircleIntersections = Circle.GetIntersectionPoints(lineSegment);
 			if(fullCircleIntersections == null)
 				return false;
 			//find degrees from circle center to intersection points
@@ -189,7 +197,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// The arc is the curved circle segment part of the wedge.
+		/// Returns true if this arc overlaps any part of <paramref name='b'/>'s arc.
 		/// </summary>
 		public bool ArcOverlapsArc(Wedge b)
 		{
@@ -211,7 +219,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Circle B lies entirely within this wedge.
+		/// Returns true if this wedge fully contains circle <paramref name='b'/>.
 		/// </summary>
 		public bool Contains(Circle b)
 		{
@@ -225,7 +233,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// This wedge contains point B, including point B being on an edge of the wedge.
+		/// Returns true if this wedge contains point <paramref name='b'/>, including if <paramref name='b'/> lies on one of this wedge's edges.
 		/// </summary>
 		public bool Contains(Dot b)
 		{
@@ -237,14 +245,14 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Scale wedge down by B amount. Affects length and location measures, but not degrees.
+		/// Scale wedge down by <paramref name='b'/> amount. Affects length and location measures, but not degrees.
 		/// </summary>
 		public static Wedge operator /(Wedge a, double b)
 		{
 			return new Wedge(a.Circle / b, a.Degrees);
 		}
 
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public void Paint(Graphics graphics, Pen pen, double unitsToPixels)
 		{
 			graphics.DrawArc(pen, 
@@ -268,7 +276,7 @@ namespace WithoutHaste.Drawing.Shapes
 			);
 		}
 
-		/// <summary></summary>
+		/// <summary>Format "C:(X,Y) R:Radius Degrees:Start-End".</summary>
 		public override string ToString()
 		{
 			return String.Format("{0} Degrees:{1}", Circle, Degrees);

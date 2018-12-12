@@ -2,7 +2,7 @@
 
 **Inheritance:** object → [Shape](WithoutHaste.Drawing.Shapes.Shape.md)  
 
-A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward with no limit. Immutable.  
+A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward from the center with no limit. Immutable.  
 
 # Fields
 
@@ -16,7 +16,7 @@ Center of the circle that defines this wedge.
 
 **readonly [RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md)**  
 
-The degrees of the defining circle that this Wedge extends through.  
+The degrees of the defining circle that this wedge extends through.  
 
 # Properties
 
@@ -40,7 +40,7 @@ Starting degree.
 
 # Constructors
 
-## WedgeUnbound([Dot](WithoutHaste.Drawing.Shapes.Dot.md) center, [RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md) degreesRange)
+## WedgeUnbound([Dot](WithoutHaste.Drawing.Shapes.Dot.md) center, [RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md) degreeRange)
 
 ## WedgeUnbound([Dot](WithoutHaste.Drawing.Shapes.Dot.md) center, double degreesRangeStart, double degreesRangeEnd)
 

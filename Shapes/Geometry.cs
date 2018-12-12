@@ -24,6 +24,8 @@ namespace WithoutHaste.Drawing.Shapes
 		/// </summary>
 		public static CoordinatePlanes CoordinatePlane = CoordinatePlanes.Screen;
 
+		//todo: why is enum CoordinatePlanes plural and Direction singular?
+
 		/// <summary>
 		/// Determines how cardinal directions apply to coordinates.
 		/// </summary>
@@ -75,6 +77,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Calculates point along line AB, starting at A and moving towards B
 		/// </summary>
+		/// <exception cref='ArgumentException'>Point A and B cannot be the same.</exception>
 		public static Dot PointOnLine(Dot a, Dot b, double distance)
 		{
 			double lineLength = a.Distance(b);
@@ -95,10 +98,16 @@ namespace WithoutHaste.Drawing.Shapes
 			return PointOnLine(a, b, lineLength + distance);
 		}
 
+		//todo: couldn't LineDirection be moved to Line object? probably PointOnLine and PointPastLine could to.
+
 		/// <summary>
-		/// <para>Given directed line A to B, what direction is it pointing?</para>
-		/// <para>North, South, East, and West are precise. The inbetween directions are vague.</para>
+		/// Given directed line A to B, what direction is it pointing?
 		/// </summary>
+		/// <remarks>
+		/// North, South, East, and West answers are exact. So "North" means exactly North.
+		/// The inbetween directions cover all remaining values. So "NorthWest" covers all values between North and West.
+		/// </remarks>
+		/// <exception cref='NotImplementedException'>Coordinate plane not supported.</exception>
 		public static Direction LineDirection(Dot a, Dot b)
 		{
 			if(a == b) 

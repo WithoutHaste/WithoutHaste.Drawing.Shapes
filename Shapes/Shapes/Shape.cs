@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
-	/// <summary>Main base class for library.</summary>
+	/// <summary>Represents a shape, a geometrical figure, a form.</summary>
 	public abstract class Shape
 	{
 	}

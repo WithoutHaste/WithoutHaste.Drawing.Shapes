@@ -63,6 +63,8 @@ Distance from Start to End.
 
 **virtual bool**  
 
+Circular ranges are equal if they have the same scale and same range, meaning the Start, End, and CircularModulus values are all the same.  
+
 ## GetHashCode()
 
 **virtual int**  
@@ -71,7 +73,7 @@ Distance from Start to End.
 
 **double**  
 
-Convert a number into this range.  
+Convert a number into this scale. Ensures a positive result.  
 
 ## Overlaps([RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md) b)
 
@@ -105,7 +107,7 @@ Value 13 therefore does overlap range [0, 3] on scale [0, 12), but does not over
 
 **static double**  
 
-Returns number modulus m. Ensures a positive result.  
+Returns _number_ modulus _m_. Ensures a positive result.  
 
 # Operators
 
@@ -125,5 +127,9 @@ B + A = range [90, 45] on scale [0, 360) which has a Span of 315.
 
 ## bool = RangeCircular a == RangeCircular b
 
+Circular ranges are equal if they have the same scale and same range, meaning the Start, End, and CircularModulus values are all the same.  
+
 ## bool = RangeCircular a != RangeCircular b
+
+Circular ranges are equal if they have the same scale and same range, meaning the Start, End, and CircularModulus values are all the same.  
 
