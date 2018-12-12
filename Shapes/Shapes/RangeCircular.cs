@@ -77,11 +77,10 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>Returns true if this range includes value <paramref name='b'/>.</summary>
 		/// <remarks>
 		/// <paramref name='b'/> is first put in context of this scale [0, CircularModulus).
-		///   <example>
-		///   Value 13 on scale [0, 24) is converted to value 1 when compared to scale [0, 12) because <c>13 modulus 12 = 1</c>.
-		///   
-		///   Value 13 therefore does overlap range [0, 3] on scale [0, 12), but does not overlap range [2, 3] on scale [0, 12).
-		///   </example>
+		/// 
+		/// For example:
+		/// Value 13 on scale [0, 24) is converted to value 1 when compared to scale [0, 12) because <c>13 modulus 12 = 1</c>.
+		/// Value 13 therefore does overlap range [0, 3] on scale [0, 12), but does not overlap range [2, 3] on scale [0, 12).
 		/// </remarks>
 		public override bool Overlaps(double b)
 		{

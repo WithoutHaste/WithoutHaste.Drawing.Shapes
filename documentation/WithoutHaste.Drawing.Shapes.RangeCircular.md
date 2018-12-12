@@ -86,9 +86,10 @@ Returns true if this range overlaps range _b_.
 Returns true if this range includes value _b_.  
 
 **Remarks:**  
-_b_is first put in context of this scale [0, CircularModulus).  
- Value 13 on scale [0, 24) is converted to value 1 when compared to scale [0, 12) because `13 modulus 12 = 1`.  
+_b_ is first put in context of this scale [0, CircularModulus).  
   
+For example:  
+Value 13 on scale [0, 24) is converted to value 1 when compared to scale [0, 12) because `13 modulus 12 = 1`.  
 Value 13 therefore does overlap range [0, 3] on scale [0, 12), but does not overlap range [2, 3] on scale [0, 12).  
 
 # Static Methods
