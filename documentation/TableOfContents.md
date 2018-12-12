@@ -1,43 +1,16 @@
-# Contents
+# Table of Contents
 
-## Abstract Types
+## [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md)
 
-[Shape](Shape.md)  
-Main base class for library.
-
-## Types
-
-[Circle](Circle.md)  
-A circle shape. Immutable.
-
-[Dot](Dot.md)  
-An (X, Y) coordinate. Immutable.
-
-[Line](Line.md)  
-Line of infinite length passing through points A and B. Immutable.
-
-[LineSegment](LineSegment.md)  
-Line segment from point A to point B. Immutable.
-
-[Range](Range.md)  
-A linear range of values. Immutable.
-
-[RangeCircular](RangeCircular.md)  
-A range on a circular scale within range [0, CircularModulus). Immutable.
-
-[Wedge](Wedge.md)  
-A wedge is a slice of a circle. It is also known as a circular sector. Immutable.
-
-[WedgeUnbound](WedgeUnbound.md)  
-A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward with no limit. Immutable.
-
-## Static Types
-
-[Geometry](Geometry.md)  
-Global settings and miscellaneous operations.
-
-## Interfaces
-
-[IDraw](IDraw.md)  
-Anything that can be drawn on a Graphics object.
+[WithoutHaste.Drawing.Shapes.Circle](WithoutHaste.Drawing.Shapes.Circle.md)  
+[WithoutHaste.Drawing.Shapes.Dot](WithoutHaste.Drawing.Shapes.Dot.md)  
+[WithoutHaste.Drawing.Shapes.Geometry](WithoutHaste.Drawing.Shapes.Geometry.md)  
+[WithoutHaste.Drawing.Shapes.IDraw](WithoutHaste.Drawing.Shapes.IDraw.md)  
+[WithoutHaste.Drawing.Shapes.Line](WithoutHaste.Drawing.Shapes.Line.md)  
+[WithoutHaste.Drawing.Shapes.LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md)  
+[WithoutHaste.Drawing.Shapes.Range](WithoutHaste.Drawing.Shapes.Range.md)  
+[WithoutHaste.Drawing.Shapes.RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md)  
+[WithoutHaste.Drawing.Shapes.Shape](WithoutHaste.Drawing.Shapes.Shape.md)  
+[WithoutHaste.Drawing.Shapes.Wedge](WithoutHaste.Drawing.Shapes.Wedge.md)  
+[WithoutHaste.Drawing.Shapes.WedgeUnbound](WithoutHaste.Drawing.Shapes.WedgeUnbound.md)  
 
