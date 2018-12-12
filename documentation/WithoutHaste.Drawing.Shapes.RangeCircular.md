@@ -8,6 +8,9 @@ A range on a circular scale. Immutable.
 A circular scale can be written shorthand as [0, CircularModulus), meaning 0 is included in the scale and CircularModulus is excluded from the scale.  
   
 The range may cover the entire scale, or only a portion of the scale.  
+To cover the entire scale, set Start and End to the same value.  
+  
+Throughout the documentation, "scale" refers to the full circular scale [0, CircularModulus) while "range" refers to a subset of values [Start, End].  
 
 # Examples
 
@@ -28,10 +31,10 @@ Since RangeCircular always starts at 0, the normal clock would need to be repres
 
 **readonly int**  
 
-The distance from Start when the range loops back to Start.  
+The value at which the range loops back to 0.  
 
 **Remarks:**  
-If your Start is 0, CircularModulus will be the same as End.  
+In the context of this range, 0 and CircularModulus are the same value.  
 
 # Properties
 
@@ -39,17 +42,20 @@ If your Start is 0, CircularModulus will be the same as End.
 
 **double { public get; }**  
 
-Middle value in range.  
+Middle value between Start and End.  
 
 ## Span
 
 **double { public get; }**  
 
-Length from Start to End. Always positive.  
+Distance from Start to End.  
 
 # Constructors
 
-## RangeCircular(double s, double e, int mod)
+## RangeCircular(double start, double end, int circularModulus)
+
+**Exceptions:**  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: CircularModulus must be greater than 0.  
 
 # Methods
 
@@ -71,17 +77,28 @@ Convert a number into this range.
 
 **bool**  
 
+Returns true if this range overlaps range _b_.  
+
 ## Overlaps(double b)
 
 **virtual bool**  
 
+Returns true if this range includes value _b_.  
+
+**Remarks:**  
+_b_is first put in context of this scale [0, CircularModulus).  
+ Value 13 on scale [0, 24) is converted to value 1 when compared to scale [0, 12) because `13 modulus 12 = 1`.  
+  
+Value 13 therefore does overlap range [0, 3] on scale [0, 12), but does not overlap range [2, 3] on scale [0, 12).  
+
 # Static Methods
 
-## Centered(double center, double span, int mod)
+## Centered(double middle, double span, int circularModulus)
 
 **static RangeCircular**  
 
-Create a range with this span, middle value, and modulus.  
+**Exceptions:**  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: CircularModulus must be greater than 0.  
 
 ## Mod(double number, int m)
 
@@ -93,11 +110,17 @@ Returns number modulus m. Ensures a positive result.
 
 ## RangeCircular = RangeCircular a + RangeCircular b
 
-Returns a range that covers all the area both A and B cover, including any gap in between.  
-
+Returns a range that covers all the area both _a_ and _b_ cover, including any gap in between.  
 If the ranges overlap, there is no gap filled in.  
 
-Gaps are covered from direction A to B, therefore this operation is not commutative.  
+**Remarks:**  
+Gaps are covered from direction _a_ to _b_, therefore this operation is not commutative.  
+  Consider range A is [0, 45] on scale [0, 360), and range B is range [90, 180] on scale [0, 360).  
+A + B = range [0, 180] on scale [0, 360) which has a Span of 180.  
+B + A = range [90, 45] on scale [0, 360) which has a Span of 315.  
+
+**Exceptions:**  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: RangeCirculars with different CircularModulus values cannot be combined.  
 
 ## bool = RangeCircular a == RangeCircular b
 

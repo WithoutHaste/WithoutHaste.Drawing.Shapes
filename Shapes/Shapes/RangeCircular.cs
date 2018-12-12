@@ -13,6 +13,9 @@ namespace WithoutHaste.Drawing.Shapes
 	/// A circular scale can be written shorthand as [0, CircularModulus), meaning 0 is included in the scale and CircularModulus is excluded from the scale.
 	/// 
 	/// The range may cover the entire scale, or only a portion of the scale.
+	/// To cover the entire scale, set Start and End to the same value.
+	/// 
+	/// Throughout the documentation, "scale" refers to the full circular scale [0, CircularModulus) while "range" refers to a subset of values [Start, End].
 	/// </remarks>
 	/// <example>
 	/// The degrees of a circle make up a circular scale [0, 360).
@@ -25,11 +28,11 @@ namespace WithoutHaste.Drawing.Shapes
 	/// </example>
 	public class RangeCircular : Range
 	{
-		/// <summary>The distance from Start when the range loops back to Start.</summary>
-		/// <remarks>If your Start is 0, CircularModulus will be the same as End.</remarks>
+		/// <summary>The value at which the range loops back to 0.</summary>
+		/// <remarks>In the context of this range, 0 and CircularModulus are the same value.</remarks>
 		public readonly int CircularModulus;
 
-		/// <summary>Length from Start to End. Always positive.</summary>
+		/// <summary>Distance from Start to End.</summary>
 		public override double Span {
 			get {
 				if(Start == End)
@@ -40,7 +43,7 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
-		/// <summary>Middle value in range.</summary>
+		/// <summary>Middle value between Start and End.</summary>
 		public override double Middle {
 			get {
 				if(Start == End)
@@ -51,27 +54,35 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
-		/// <summary></summary>
-		public RangeCircular(double s, double e, int mod) : base(Mod(s, mod), Mod(e, mod))
+		/// <exception cref='ArgumentException'>CircularModulus must be greater than 0.</exception>
+		public RangeCircular(double start, double end, int circularModulus) : base(Mod(start, circularModulus), Mod(end, circularModulus))
 		{
-			if(mod <= 0)
-				throw new ArgumentException("RangeCircular.Modulus must be greater than 0.");
-			CircularModulus = mod;
+			if(circularModulus <= 0)
+				throw new ArgumentException("CircularModulus must be greater than 0.");
+			CircularModulus = circularModulus;
 		}
 
-		/// <summary>Create a range with this span, middle value, and modulus.</summary>
-		public static RangeCircular Centered(double center, double span, int mod)
+		/// <exception cref='ArgumentException'>CircularModulus must be greater than 0.</exception>
+		public static RangeCircular Centered(double middle, double span, int circularModulus)
 		{
-			return new RangeCircular(center - (span / 2), center + (span / 2), mod);
+			return new RangeCircular(middle - (span / 2), middle + (span / 2), circularModulus);
 		}
 
-		/// <summary></summary>
+		/// <summary>Returns true if this range overlaps range <paramref name='b'/>.</summary>
 		public bool Overlaps(RangeCircular b)
 		{
 			return (this.Overlaps(b.Start) || this.Overlaps(b.End) || b.Overlaps(this.Start) || b.Overlaps(this.End));
 		}
 
-		/// <summary></summary>
+		/// <summary>Returns true if this range includes value <paramref name='b'/>.</summary>
+		/// <remarks>
+		/// <paramref name='b'/> is first put in context of this scale [0, CircularModulus).
+		///   <example>
+		///   Value 13 on scale [0, 24) is converted to value 1 when compared to scale [0, 12) because <c>13 modulus 12 = 1</c>.
+		///   
+		///   Value 13 therefore does overlap range [0, 3] on scale [0, 12), but does not overlap range [2, 3] on scale [0, 12).
+		///   </example>
+		/// </remarks>
 		public override bool Overlaps(double b)
 		{
 			b = Mod(b);
@@ -87,14 +98,22 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// <para>Returns a range that covers all the area both A and B cover, including any gap in between.</para>
-		/// <para>If the ranges overlap, there is no gap filled in.</para>
-		/// <para>Gaps are covered from direction A to B, therefore this operation is not commutative.</para>
+		/// Returns a range that covers all the area both <paramref name='a'/> and <paramref name='b'/> cover, including any gap in between.
+		/// If the ranges overlap, there is no gap filled in.
 		/// </summary>
+		/// <remarks>
+		/// Gaps are covered from direction <paramref name='a'/> to <paramref name='b'/>, therefore this operation is not commutative.
+		///   <example>
+		///   Consider range A is [0, 45] on scale [0, 360), and range B is range [90, 180] on scale [0, 360).
+		///   A + B = range [0, 180] on scale [0, 360) which has a Span of 180.
+		///   B + A = range [90, 45] on scale [0, 360) which has a Span of 315.
+		///   </example>
+		/// </remarks>
+		/// <exception cref='ArgumentException'>RangeCirculars with different CircularModulus values cannot be combined.</exception>
 		public static RangeCircular operator +(RangeCircular a, RangeCircular b)
 		{
 			if(a.CircularModulus != b.CircularModulus)
-				throw new ArgumentException("RangeCirculars with different Modulus values cannot be combined.");
+				throw new ArgumentException("RangeCirculars with different CircularModulus values cannot be combined.");
 			if(a.Overlaps(b))
 				return new RangeCircular(Math.Min(a.Start, b.Start), Math.Max(a.End, b.End), a.CircularModulus);
 			return new RangeCircular(a.Start, b.End, a.CircularModulus);
