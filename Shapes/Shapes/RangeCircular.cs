@@ -118,14 +118,14 @@ namespace WithoutHaste.Drawing.Shapes
 			return new RangeCircular(a.Start, b.End, a.CircularModulus);
 		}
 
-		/// <summary>Convert a number into this range.</summary>
+		/// <summary>Convert a number into this scale. Ensures a positive result.</summary>
 		public double Mod(double number)
 		{
 			return Mod(number, CircularModulus);
 		}
 
 		/// <summary>
-		/// Returns number modulus m. Ensures a positive result.
+		/// Returns <paramref name='number'/> modulus <paramref name='m'/>. Ensures a positive result.
 		/// </summary>
 		public static double Mod(double number, int m)
 		{
@@ -136,19 +136,19 @@ namespace WithoutHaste.Drawing.Shapes
 			return number % m;
 		}
 
-		/// <summary></summary>
+		/// <summary>Circular ranges are equal if they have the same scale and same range, meaning the Start, End, and CircularModulus values are all the same.</summary>
 		public static bool operator ==(RangeCircular a, RangeCircular b)
 		{
-			return (Geometry.WithinMarginOfError(a.Start, b.Start) && Geometry.WithinMarginOfError(a.End, b.End));
+			return (Geometry.WithinMarginOfError(a.CircularModulus, b.CircularModulus) && Geometry.WithinMarginOfError(a.Start, b.Start) && Geometry.WithinMarginOfError(a.End, b.End));
 		}
 
-		/// <summary></summary>
+		/// <duplicate cref='operator ==(RangeCircular,RangeCircular)'/>
 		public static bool operator !=(RangeCircular a, RangeCircular b)
 		{
-			return (!Geometry.WithinMarginOfError(a.Start, b.Start) || !Geometry.WithinMarginOfError(a.End, b.End));
+			return (!Geometry.WithinMarginOfError(a.CircularModulus, b.CircularModulus) || !Geometry.WithinMarginOfError(a.Start, b.Start) || !Geometry.WithinMarginOfError(a.End, b.End));
 		}
 
-		/// <summary></summary>
+		/// <duplicate cref='operator ==(RangeCircular,RangeCircular)'/>
 		public override bool Equals(Object b)
 		{
 			if(b != null && b is RangeCircular)
