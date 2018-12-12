@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	//todo: why is Range a Shape?
+
 	/// <summary>
 	/// A linear range of values. Immutable.
 	/// </summary>

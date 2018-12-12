@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.Drawing.Shapes
 {
+	//todo: why is RangeCircular a Shape?
+
 	/// <summary>
 	/// A range on a circular scale. Immutable.
 	/// </summary>
