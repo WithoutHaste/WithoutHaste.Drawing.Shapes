@@ -10,7 +10,12 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// An (X, Y) coordinate. Immutable.
 	/// </summary>
-	/// <remarks>It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.</remarks>
+	/// <remarks>
+	/// It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.
+	/// 
+	/// I'm considering changing all the names to use a common suffix character for differentiation, instead of synonyms.
+	/// Such as "WPoint, WCircle, WLineSegment" instead of "Dot, Circle, LineSegment".
+	/// </remarks>
 	public class Dot : Shape, IDraw
 	{
 		/// <summary></summary>
@@ -18,12 +23,11 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary></summary>
 		public readonly double Y;
 
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public double MaxX { get { return X; } }
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public double MaxY { get { return Y; } }
 
-		/// <summary></summary>
 		/// <param name="x">Cannot be NaN or Infinity.</param>
 		/// <param name="y">Cannot be NaN or Infinity.</param>
 		/// <exception cref="ArgumentException">X or Y was NaN or Infinity.</exception>
@@ -42,17 +46,17 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Distance between this point and point B.
+		/// Returns the distance between this point and point <paramref name='b'/>. Always positive.
 		/// </summary>
 		public double Distance(Dot b)
 		{
 			return Math.Sqrt(Math.Pow(b.X - this.X, 2) + Math.Pow(b.Y - this.Y, 2));
 		}
 
-		/// <summary></summary>
-		public bool Overlaps(LineSegment line)
+		/// <summary>Returns true if this point overlaps any part of the <pararef name='lineSegment'/>.</summary>
+		public bool Overlaps(LineSegment lineSegment)
 		{
-			return line.Overlaps(this);
+			return lineSegment.Overlaps(this);
 		}
 
 		/// <summary></summary>
@@ -99,9 +103,7 @@ namespace WithoutHaste.Drawing.Shapes
 			return (a.X < b.X || (a.X == b.X && a.Y < b.Y));
 		}
 
-		/// <summary>
-		/// Greater than/less than is judged along the x-axis first, then the y-axis
-		/// </summary>
+		/// <duplicate cref='op_LessThan(Dot,Dot)'/>
 		public static bool operator >(Dot a, Dot b)
 		{
 			return (a.X > b.X || (a.X == b.X && a.Y > b.Y));
@@ -141,7 +143,7 @@ namespace WithoutHaste.Drawing.Shapes
 			return String.Format("({0},{1})", X, Y);
 		}
 
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public void Paint(Graphics graphics, Pen pen, double unitsToPixels)
 		{
 			graphics.DrawArc(pen, 

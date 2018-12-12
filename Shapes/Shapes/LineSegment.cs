@@ -12,10 +12,13 @@ namespace WithoutHaste.Drawing.Shapes
 	/// </summary>
 	public class LineSegment : Line, IDraw
 	{
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public double MaxX { get { return Math.Max(A.X, B.X); } }
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public double MaxY { get { return Math.Max(A.Y, B.Y); } }
+
+		/// <summary>Distance between points A and B. Always positive.</summary>
+		public double Length { get { return A.Distance(B); } }
 
 		/// <summary></summary>
 		public LineSegment(Dot a, Dot b) : base(a, b)
@@ -27,16 +30,13 @@ namespace WithoutHaste.Drawing.Shapes
 		{
 		}
 
-		/// <summary></summary>
-		public double Length { get { return A.Distance(B); } }
-
 		/// <summary>Convert to <see cref="Line"/>.</summary>
 		public Line ToLine()
 		{
 			return new Line(A, B, IsDirected);
 		}
 
-		/// <summary></summary>
+		/// <summary>Returns true if point <paramref name='c'/> lies on this line segment.</summary>
 		public bool Overlaps(Dot c)
 		{
 			if(IsVertical)
@@ -53,7 +53,7 @@ namespace WithoutHaste.Drawing.Shapes
 				&& c.Y >= Math.Min(A.Y, B.Y) && c.Y <= Math.Max(A.Y, B.Y)); 
 		}
 
-		/// <summary></summary>
+		/// <summary>Returns true if this line segments overlaps line segment <paramref name='b'/> at any point.</summary>
 		public bool Overlaps(LineSegment b)
 		{
 			//line equation: y = mx + b, where m is slope and b is y-intercept
@@ -89,13 +89,13 @@ namespace WithoutHaste.Drawing.Shapes
 			return (a.Overlaps(interceptPoint) && b.Overlaps(interceptPoint));
 		}
 
-		/// <summary>Format "(x,y) to (x,y)"</summary>
+		/// <summary>Format "(A.x,A.y) to (B.x,B.y)"</summary>
 		public override string ToString()
 		{
 			return String.Format("{0} to {1}", A, B);
 		}
 
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public void Paint(Graphics graphics, Pen pen, double unitsToPixels)
 		{
 			graphics.DrawLine(pen, 

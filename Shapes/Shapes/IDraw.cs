@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace WithoutHaste.Drawing.Shapes
 {
 	/// <summary>
-	/// Anything that can be drawn on a Graphics object.
+	/// Represents anything that can be drawn on a Graphics object.
 	/// </summary>
 	public interface IDraw
 	{
@@ -18,9 +18,11 @@ namespace WithoutHaste.Drawing.Shapes
 		double MaxY { get; }
 
 		/// <summary>
-		/// Draw the figure on the Graphics with the Pen.
+		/// Draw the figure on the <paramref name='graphics'/> with the <paramref name='pen'/>.
 		/// </summary>
-		/// <param name="unitsToPixels">Conversion ratio from figure units to pixels.</param>
+		/// <param name="unitsToPixels">
+		/// Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.
+		/// </param>
 		void Paint(Graphics graphics, Pen pen, double unitsToPixels);
 	}
 }

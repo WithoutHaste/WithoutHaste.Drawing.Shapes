@@ -52,7 +52,7 @@ Main base class for library.
 ## Interfaces
 
 [**IDraw**](WithoutHaste.Drawing.Shapes.IDraw.md)  
-Anything that can be drawn on a Graphics object.  
+Represents anything that can be drawn on a Graphics object.  
 
   
 

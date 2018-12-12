@@ -9,6 +9,9 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// A linear range of values. Immutable.
 	/// </summary>
+	/// <remarks>
+	/// Ranges are inclusive: both the Start and the End values are included in the range.
+	/// </remarks>
 	public class Range : Shape
 	{
 		/// <summary>
@@ -36,21 +39,25 @@ namespace WithoutHaste.Drawing.Shapes
 			return new Range(middle - (span / 2), middle + (span / 2));
 		}
 
-		/// <summary></summary>
+		/// <summary>Returns true if this range overlaps range <paramref name='b'/>.</summary>
 		public virtual bool Overlaps(Range b)
 		{
 			return (this.Overlaps(b.Start) || this.Overlaps(b.End) || b.Overlaps(this.Start) || b.Overlaps(this.End));
 		}
 
-		/// <summary></summary>
+		/// <summary>Returns true if this range includes value <paramref name='b'/>.</summary>
 		public virtual bool Overlaps(double b)
 		{
 			return (Start <= b && End >= b);
 		}
 
 		/// <summary>
-		/// Convert a value in originalRange to one in newRange, assuming that the original range is re-scaled to the new range.
+		/// Convert the <paramref name='value'/> in <paramref name='originalRange'/> to one in <paramref name='newRange'/>.
 		/// </summary>
+		/// <remarks>
+		/// Essentially, <paramref name='originalRange'/> is scaled up or down to match <paramref name='newRange'/>.
+		/// So the returned value is the same percentage along <paramref name='newRange'/> as the provided <paramref name='value'/> was along <paramref name='originalRange'/>.
+		/// </remarks>
 		public static double ConvertValue(Range originalRange, Range newRange, double value)
 		{
 			if(originalRange.Start != newRange.Start)
@@ -60,15 +67,15 @@ namespace WithoutHaste.Drawing.Shapes
 			return ((value - originalRange.Start) * scale) + newRange.Start;
 		}
 
-		/// <summary>Format "start-end"</summary>
+		/// <summary>Format "Start-End".</summary>
 		public override string ToString()
 		{
 			return String.Format("{0}-{1}", Start, End);
 		}
 
 		/// <summary>
-		/// <para>Returns a range that covers all the area both A and B cover, including any gap in between.</para>
-		/// <para>This operation is commutative.</para>.
+		/// Returns a range that covers all the area both <paramref name='a'/> and <paramref name='b'/> cover, including any gap in between.
+		/// This operation is commutative.
 		/// </summary>
 		public static Range operator +(Range a, Range b)
 		{

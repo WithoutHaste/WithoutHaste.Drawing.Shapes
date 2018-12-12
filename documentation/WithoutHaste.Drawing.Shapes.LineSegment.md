@@ -11,17 +11,19 @@ Line segment from point A to point B. Immutable.
 
 **double { public get; }**  
 
+Distance between points A and B. Always positive.  
+
 ## MaxX
 
 **double { public get; }**  
 
-See [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md).  
+Maximum x coordinate required to draw the figure.  
 
 ## MaxY
 
 **double { public get; }**  
 
-See [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md).  
+Maximum y coordinate required to draw the figure.  
 
 # Constructors
 
@@ -35,15 +37,22 @@ See [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md).
 
 **bool**  
 
+Returns true if point _c_ lies on this line segment.  
+
 ## Overlaps([LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md) b)
 
 **bool**  
+
+Returns true if this line segments overlaps line segment _b_ at any point.  
 
 ## Paint([System.Drawing.Graphics](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics) graphics, [System.Drawing.Pen](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pen) pen, double unitsToPixels)
 
 **void**  
 
-See [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md).  
+Draw the figure on the _graphics_ with the _pen_.  
+
+**Parameters:**  
+* **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
 ## ToLine()
 
@@ -55,5 +64,5 @@ Convert to [Line](WithoutHaste.Drawing.Shapes.Line.md).
 
 **virtual string**  
 
-Format "(x,y) to (x,y)"  
+Format "(A.x,A.y) to (B.x,B.y)"  
 

@@ -36,9 +36,9 @@ namespace WithoutHaste.Drawing.Shapes
 		public Dot Center { get { return new Dot(X, Y); } }
 		/// <summary></summary>
 		public double Diameter { get { return 2 * Radius; } }
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public double MaxX { get { return X + Radius; } }
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public double MaxY { get { return Y + Radius; } }
 
 		/// <summary>Based on coordinate plane, which degree points towards the MaxX coordinate?</summary>
@@ -80,6 +80,7 @@ namespace WithoutHaste.Drawing.Shapes
 			Radius = radius;
 		}
 
+		/// <summary>Finds the intersection points between the edge of this circle and circle <paramref name='b'/>.</summary>
 		/// <returns>Null (no intersection), an array of length 1, or an array of length 2.</returns>
 		public Dot[] GetIntersectionPoints(Circle b)
 		{
@@ -115,9 +116,9 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Find the two tangent points on the circle that form lines to point B.
+		/// Find the two tangent points on the circle that form lines to point <paramref name='b'/>.
 		/// </summary>
-		/// <returns>Array of 2 Points.</returns>
+		/// <returns>Array of length 2.</returns>
 		public Dot[] GetTangentPoints(Dot b)
 		{
 			//point C and D are the tangents
@@ -131,7 +132,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Any part of this circle overlaps any part of circle B.
+		/// Returns true if any part of this circle overlaps any part of circle <paramref name='b'/>.
 		/// </summary>
 		public bool Overlaps(Circle b)
 		{
@@ -142,9 +143,11 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// <para>Any part of this circle overlaps any part of line segment B.</para>
-		/// <para>If line B lies within the circle, that counts as overlapping.</para>
+		/// Returns true if any part of this circle overlaps any part of line segment <paramref name='b'/>.
 		/// </summary>
+		/// <remarks>
+		/// If line <paramref name='b'/> lies within the circle, that counts as overlapping.
+		/// </remarks>
 		public bool Overlaps(LineSegment b)
 		{
 			Dot[] lineIntersectionPoints = GetIntersectionPoints(b.ToLine());
@@ -166,7 +169,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// This circle entirely contains circle B, or B entirely contains this circle, or they exactly overlap.
+		/// Returns true if this circle entirely contains circle <paramref name='b'/>, or <paramref name='b'/> entirely contains this circle, or they exactly overlap.
 		/// </summary>
 		public bool ContainsOrIsContained(Circle b)
 		{
@@ -176,7 +179,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// This circle entirely contains circle B, or they exactly overlap.
+		/// Returns true if this circle entirely contains circle <paramref name='b'/>, or they exactly overlap.
 		/// </summary>
 		public bool Contains(Circle b)
 		{
@@ -189,7 +192,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// This circle entirely contains wedge B.
+		/// Returns true if this circle entirely contains wedge <paramref name='b'/>.
 		/// </summary>
 		public bool Contains(Wedge b)
 		{
@@ -202,7 +205,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Point B lies within or on this circle.
+		/// Returns true if point <paramref name='b'/> lies within or on this circle.
 		/// </summary>
 		public bool Contains(Dot b)
 		{
@@ -210,7 +213,8 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Return the point on the circle at this radians. 0 radians is East of center, increases clockwise.
+		/// Returns the point on this circle at the <paramref name='radians'/> measurement. 
+		/// 0 radians is East of center, increases clockwise.
 		/// </summary>
 		public Dot PointAtRadians(double radians)
 		{
@@ -263,7 +267,8 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Return the point on the circle at this degree. 0 degrees is East of center, increases clockwise.
+		/// Returns the point on this circle at the <paramref name='degrees'/> measurement. 
+		/// 0 degrees is East of center, increases clockwise.
 		/// </summary>
 		public Dot PointAtDegrees(double degrees)
 		{
@@ -271,7 +276,8 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Given a line from the center of a circle to a point, what degrees is the line angle at? 0 degrees is East from center, and increases clockwise.
+		/// Given a line from the center of this circle to a point (<paramref name='lineEnd'/>), what degrees is the line angle at? 
+		/// 0 degrees is East of center, increases clockwise.
 		/// </summary>
 		public double DegreesAtPoint(Dot lineEnd)
 		{
@@ -349,7 +355,8 @@ namespace WithoutHaste.Drawing.Shapes
 
 		//todo: is it worth making a Degree and a Radian struct? for being precise in what data is expected/returned?
 
-		/// <returns>Null (no intercepts), or array of length 1 or 2.</returns>
+		/// <summary>Find the intersection points between the edge of this circle and the <paramref name='lineSegment'/>.</summary>
+		/// <returns>Null (no intercepts), or array of length 1, or array of length 2.</returns>
 		public Dot[] GetIntersectionPoints(LineSegment lineSegment)
 		{
 			Dot[] lineIntersectionPoints = GetIntersectionPoints(lineSegment.ToLine());
@@ -383,26 +390,27 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Scale circle down by B amount. Affects length and location measures.
+		/// Scale circle down by <paramref name='b'/> amount. Affects length and location measures.
 		/// </summary>
+		/// <example><c>circle / 2</c> returns a new Circle with half the radius and half the distance from point (0,0).</example>
 		public static Circle operator /(Circle a, double b)
 		{
 			return new Circle(a.Center / b, a.Radius / b);
 		}
 
-		/// <summary></summary>
+		/// <summary>Circle centers and radiuses are the same.</summary>
 		public static bool operator ==(Circle a, Circle b)
 		{
 			return (a.Center == b.Center && a.Radius == b.Radius);
 		}
 
-		/// <summary></summary>
+		/// <summary>Circle centers or radiuses are different.</summary>
 		public static bool operator !=(Circle a, Circle b)
 		{
 			return (a.Center != b.Center || a.Radius != b.Radius);
 		}
 
-		/// <summary></summary>
+		/// <duplicate cref='operator ==(Circle,Circle)'/>
 		public override bool Equals(Object b)
 		{
 			if(b != null && b is Circle)
@@ -424,7 +432,7 @@ namespace WithoutHaste.Drawing.Shapes
 			return String.Format("C:({0},{1}) R:{2}", X, Y, Radius);
 		}
 
-		/// <summary>See <see cref="IDraw"/>.</summary>
+		/// <inheritdoc/>
 		public void Paint(Graphics graphics, Pen pen, double unitsToPixels)
 		{
 			graphics.DrawArc(pen, 

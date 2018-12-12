@@ -2,7 +2,7 @@
 
 **Interface**  
 
-Anything that can be drawn on a Graphics object.  
+Represents anything that can be drawn on a Graphics object.  
 
 # Properties
 
@@ -24,10 +24,10 @@ Maximum y coordinate required to draw the figure.
 
 **abstract void**  
 
-Draw the figure on the Graphics with the Pen.  
+Draw the figure on the _graphics_ with the _pen_.  
 
 **Parameters:**  
-* **double unitsToPixels**: Conversion ratio from figure units to pixels.  
+* **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
 # Implemented By
 

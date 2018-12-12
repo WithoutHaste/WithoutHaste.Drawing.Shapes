@@ -31,7 +31,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary></summary>
 		public bool IsHorizontal { get { return (A.Y == B.Y); } }
 
-		/// <summary></summary>
+		/// <exception cref='ArgumentException'>Points A and B cannot be the same.</exception>
 		public Line(Dot a, Dot b)
 		{
 			if(a == b)
@@ -41,7 +41,7 @@ namespace WithoutHaste.Drawing.Shapes
 			IsDirected = false;
 		}
 
-		/// <summary></summary>
+		/// <exception cref='ArgumentException'>Points A and B cannot be the same.</exception>
 		public Line(Dot a, Dot b, bool isDirected)
 		{
 			if(a == b)
@@ -60,7 +60,7 @@ namespace WithoutHaste.Drawing.Shapes
 		//todo: verify that all line operations take vertical and horizontal lines into account
 
 		/// <summary>
-		/// Get the point where a perpendicular line passing through point C intersects this line.
+		/// Returns the point where a perpendicular line passing through point <paramref name='c'/> intersects this line.
 		/// </summary>
 		public Dot GetPerpendicularIntersect(Dot c)
 		{
@@ -80,14 +80,15 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>
-		/// Scale line down by B amount. Affects length and location measures.
+		/// Scale line down by <paramref name='b'/> amount. Affects length and location measures.
 		/// </summary>
+		/// <example><c>line / 2</c> returns a new Line that lies halfway between point (0,0) and this line.</example>
 		public static Line operator /(Line a, double b)
 		{
 			return new Line(a.A / b, a.B / b);
 		}
 
-		/// <summary>Format "(x,y) to (x,y)"</summary>
+		/// <summary>Format "(A.x,A.y) to (B.x,B.y)"</summary>
 		public override string ToString()
 		{
 			return String.Format("{0} to {1}", A, B);

@@ -7,6 +7,9 @@ An (X, Y) coordinate. Immutable.
 
 **Remarks:**  
 It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.  
+  
+I'm considering changing all the names to use a common suffix character for differentiation, instead of synonyms.  
+Such as "WPoint, WCircle, WLineSegment" instead of "Dot, Circle, LineSegment".  
 
 # Fields
 
@@ -24,20 +27,17 @@ It's called "Dot" so as not to conflict with System.Drawing.Point. Points use in
 
 **double { public get; }**  
 
-See [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md).  
+Maximum x coordinate required to draw the figure.  
 
 ## MaxY
 
 **double { public get; }**  
 
-See [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md).  
+Maximum y coordinate required to draw the figure.  
 
 # Constructors
 
 ## Dot(double x, double y)
-
-**Misc:**  
-  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: X or Y was NaN or Infinity.  
@@ -52,7 +52,7 @@ See [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md).
 
 **double**  
 
-Distance between this point and point B.  
+Returns the distance between this point and point _b_. Always positive.  
 
 ## Equals(object b)
 
@@ -62,15 +62,20 @@ Distance between this point and point B.
 
 **virtual int**  
 
-## Overlaps([LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md) line)
+## Overlaps([LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md) lineSegment)
 
 **bool**  
+
+Returns true if this point overlaps any part of the .  
 
 ## Paint([System.Drawing.Graphics](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics) graphics, [System.Drawing.Pen](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pen) pen, double unitsToPixels)
 
 **void**  
 
-See [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md).  
+Draw the figure on the _graphics_ with the _pen_.  
+
+**Parameters:**  
+* **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
 ## ToString()
 

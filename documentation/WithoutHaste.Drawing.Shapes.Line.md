@@ -50,7 +50,13 @@ Slope assumes direction from A to B.
 
 ## Line([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b)
 
+**Exceptions:**  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Points A and B cannot be the same.  
+
 ## Line([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b, bool isDirected)
+
+**Exceptions:**  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Points A and B cannot be the same.  
 
 # Methods
 
@@ -58,7 +64,7 @@ Slope assumes direction from A to B.
 
 **[Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
 
-Get the point where a perpendicular line passing through point C intersects this line.  
+Returns the point where a perpendicular line passing through point _c_ intersects this line.  
 
 ## ToLineSegment()
 
@@ -70,13 +76,16 @@ Convert to [LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md).
 
 **virtual string**  
 
-Format "(x,y) to (x,y)"  
+Format "(A.x,A.y) to (B.x,B.y)"  
 
 # Operators
 
 ## Line = Line a / double b
 
-Scale line down by B amount. Affects length and location measures.  
+Scale line down by _b_ amount. Affects length and location measures.  
+
+**Example A:**  
+`line / 2` returns a new Line that lies halfway between point (0,0) and this line.  
 
 # Derived By
 

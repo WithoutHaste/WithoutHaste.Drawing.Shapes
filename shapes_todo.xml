@@ -42,11 +42,11 @@
         </Cell>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">Test Earlydocs documentation:
-- Circle
-- IDraw
-- Line
-- LineSegment
-- Point
+- Circle - DONE
+- IDraw - DONE
+- Line - DONE
+- LineSegment - DONE
+- Point/Dot - DONE
 - Range
 - RangeCircular
 - Shape
