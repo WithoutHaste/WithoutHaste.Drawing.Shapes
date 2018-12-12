@@ -97,5 +97,5 @@ This operation is commutative.
 # Derived By
 
 [WithoutHaste.Drawing.Shapes.RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md)  
-A range on a circular scale within range [0, CircularModulus). Immutable.  
+A range on a circular scale. Immutable.  
 

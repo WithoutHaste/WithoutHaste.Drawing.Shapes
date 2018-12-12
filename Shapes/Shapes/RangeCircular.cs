@@ -7,14 +7,29 @@ using System.Threading.Tasks;
 namespace WithoutHaste.Drawing.Shapes
 {
 	/// <summary>
-	/// A range on a circular scale within range [0, CircularModulus). Immutable.
+	/// A range on a circular scale. Immutable.
 	/// </summary>
+	/// <remarks>
+	/// A circular scale can be written shorthand as [0, CircularModulus), meaning 0 is included in the scale and CircularModulus is excluded from the scale.
+	/// 
+	/// The range may cover the entire scale, or only a portion of the scale.
+	/// </remarks>
+	/// <example>
+	/// The degrees of a circle make up a circular scale [0, 360).
+	/// The range may only cover [25, 45] of the scale [0, 360).
+	/// In this case, Start=25, End=45, and CircularModulus=360.
+	/// </example>
+	/// <example>
+	/// The hours of a clock make up a circular range [1, 13) for a normal clock, or [0, 24) for a military clock.
+	/// Since RangeCircular always starts at 0, the normal clock would need to be represented as [0, 12). You'd need to handle the +1 offset when setting or displaying values.
+	/// </example>
 	public class RangeCircular : Range
 	{
-		/// <summary>The value where the range loops back to 0.</summary>
+		/// <summary>The distance from Start when the range loops back to Start.</summary>
+		/// <remarks>If your Start is 0, CircularModulus will be the same as End.</remarks>
 		public readonly int CircularModulus;
 
-		/// <summary>Length from Start to End.</summary>
+		/// <summary>Length from Start to End. Always positive.</summary>
 		public override double Span {
 			get {
 				if(Start == End)
