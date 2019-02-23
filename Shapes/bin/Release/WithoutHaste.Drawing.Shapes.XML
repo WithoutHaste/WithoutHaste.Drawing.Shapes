@@ -43,10 +43,10 @@
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxX">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxY">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Circle.MaxXDegrees">
             <summary>Based on coordinate plane, which degree points towards the MaxX coordinate?</summary>
@@ -61,65 +61,72 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Circle)">
+            <summary>Finds the intersection points between the edge of this circle and circle <paramref name='b'/>.</summary>
             <returns>Null (no intersection), an array of length 1, or an array of length 2.</returns>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetTangentPoints(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
-            Find the two tangent points on the circle that form lines to point B.
+            Find the two tangent points on the circle that form lines to point <paramref name='b'/>.
             </summary>
-            <returns>Array of 2 Points.</returns>
+            <returns>Array of length 2.</returns>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Overlaps(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
-            Any part of this circle overlaps any part of circle B.
+            Returns true if any part of this circle overlaps any part of circle <paramref name='b'/>.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
             <summary>
-            <para>Any part of this circle overlaps any part of line segment B.</para>
-            <para>If line B lies within the circle, that counts as overlapping.</para>
+            Returns true if any part of this circle overlaps any part of line segment <paramref name='b'/>.
             </summary>
+            <remarks>
+            If line <paramref name='b'/> lies within the circle, that counts as overlapping.
+            </remarks>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.ContainsOrIsContained(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
-            This circle entirely contains circle B, or B entirely contains this circle, or they exactly overlap.
+            Returns true if this circle entirely contains circle <paramref name='b'/>, or <paramref name='b'/> entirely contains this circle, or they exactly overlap.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Contains(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
-            This circle entirely contains circle B, or they exactly overlap.
+            Returns true if this circle entirely contains circle <paramref name='b'/>, or they exactly overlap.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Contains(WithoutHaste.Drawing.Shapes.Wedge)">
             <summary>
-            This circle entirely contains wedge B.
+            Returns true if this circle entirely contains wedge <paramref name='b'/>.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Contains(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
-            Point B lies within or on this circle.
+            Returns true if point <paramref name='b'/> lies within or on this circle.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.PointAtRadians(System.Double)">
             <summary>
-            Return the point on the circle at this radians. 0 radians is East of center, increases clockwise.
+            Returns the point on this circle at the <paramref name='radians'/> measurement. 
+            0 radians is East of center, increases clockwise.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.PointAtDegrees(System.Double)">
             <summary>
-            Return the point on the circle at this degree. 0 degrees is East of center, increases clockwise.
+            Returns the point on this circle at the <paramref name='degrees'/> measurement. 
+            0 degrees is East of center, increases clockwise.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.DegreesAtPoint(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
-            Given a line from the center of a circle to a point, what degrees is the line angle at? 0 degrees is East from center, and increases clockwise.
+            Given a line from the center of this circle to a point (<paramref name='lineEnd'/>), what degrees is the line angle at? 
+            0 degrees is East of center, increases clockwise.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.Line)">
             <returns>Null (no intercepts), or array of length 1 or 2.</returns>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetIntersectionPoints(WithoutHaste.Drawing.Shapes.LineSegment)">
-            <returns>Null (no intercepts), or array of length 1 or 2.</returns>
+            <summary>Find the intersection points between the edge of this circle and the <paramref name='lineSegment'/>.</summary>
+            <returns>Null (no intercepts), or array of length 1, or array of length 2.</returns>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.DegreesToRadians(System.Double)">
             <summary>
@@ -133,17 +140,18 @@
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.op_Division(WithoutHaste.Drawing.Shapes.Circle,System.Double)">
             <summary>
-            Scale circle down by B amount. Affects length and location measures.
+            Scale circle down by <paramref name='b'/> amount. Affects length and location measures.
             </summary>
+            <example><c>circle / 2</c> returns a new Circle with half the radius and half the distance from point (0,0).</example>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.op_Equality(WithoutHaste.Drawing.Shapes.Circle,WithoutHaste.Drawing.Shapes.Circle)">
-            <summary></summary>
+            <summary>Circle centers and radiuses are the same.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.op_Inequality(WithoutHaste.Drawing.Shapes.Circle,WithoutHaste.Drawing.Shapes.Circle)">
-            <summary></summary>
+            <summary>Circle centers or radiuses are different.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Equals(System.Object)">
-            <summary></summary>
+            <duplicate cref='M:WithoutHaste.Drawing.Shapes.Circle.op_Equality(WithoutHaste.Drawing.Shapes.Circle,WithoutHaste.Drawing.Shapes.Circle)'/>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.GetHashCode">
             <summary></summary>
@@ -152,7 +160,7 @@
             <summary>Format "C:(x,y) R:radius"</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Circle.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Geometry">
             <summary>
@@ -226,6 +234,7 @@
             <summary>
             Calculates point along line AB, starting at A and moving towards B
             </summary>
+            <exception cref='T:System.ArgumentException'>Point A and B cannot be the same.</exception>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Geometry.PointPastLine(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot,System.Double)">
             <summary>
@@ -234,13 +243,17 @@
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Geometry.LineDirection(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
-            <para>Given directed line A to B, what direction is it pointing?</para>
-            <para>North, South, East, and West are precise. The inbetween directions are vague.</para>
+            Given directed line A to B, what direction is it pointing?
             </summary>
+            <remarks>
+            North, South, East, and West answers are exact. So "North" means exactly North.
+            The inbetween directions cover all remaining values. So "NorthWest" covers all values between North and West.
+            </remarks>
+            <exception cref='T:System.NotImplementedException'>Coordinate plane not supported.</exception>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.IDraw">
             <summary>
-            Anything that can be drawn on a Graphics object.
+            Represents anything that can be drawn on a Graphics object.
             </summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.IDraw.MaxX">
@@ -251,9 +264,11 @@
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.IDraw.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
             <summary>
-            Draw the figure on the Graphics with the Pen.
+            Draw the figure on the <paramref name='graphics'/> with the <paramref name='pen'/>.
             </summary>
-            <param name="unitsToPixels">Conversion ratio from figure units to pixels.</param>
+            <param name="unitsToPixels">
+            Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.
+            </param>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Line">
             <summary>
@@ -287,26 +302,27 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Line.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
-            <summary></summary>
+            <exception cref='T:System.ArgumentException'>Points A and B cannot be the same.</exception>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Line.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot,System.Boolean)">
-            <summary></summary>
+            <exception cref='T:System.ArgumentException'>Points A and B cannot be the same.</exception>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Line.ToLineSegment">
             <summary>Convert to <see cref="T:WithoutHaste.Drawing.Shapes.LineSegment"/>.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Line.GetPerpendicularIntersect(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
-            Get the point where a perpendicular line passing through point C intersects this line.
+            Returns the point where a perpendicular line passing through point <paramref name='c'/> intersects this line.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Line.op_Division(WithoutHaste.Drawing.Shapes.Line,System.Double)">
             <summary>
-            Scale line down by B amount. Affects length and location measures.
+            Scale line down by <paramref name='b'/> amount. Affects length and location measures.
             </summary>
+            <example><c>line / 2</c> returns a new Line that lies halfway between point (0,0) and this line.</example>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Line.ToString">
-            <summary>Format "(x,y) to (x,y)"</summary>
+            <summary>Format "(A.x,A.y) to (B.x,B.y)"</summary>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.LineSegment">
             <summary>
@@ -314,10 +330,13 @@
             </summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.MaxX">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.MaxY">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
+        </member>
+        <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.Length">
+            <summary>Distance between points A and B. Always positive.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
@@ -325,29 +344,31 @@
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.#ctor(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot,System.Boolean)">
             <summary></summary>
         </member>
-        <member name="P:WithoutHaste.Drawing.Shapes.LineSegment.Length">
-            <summary></summary>
-        </member>
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.ToLine">
             <summary>Convert to <see cref="T:WithoutHaste.Drawing.Shapes.Line"/>.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Overlaps(WithoutHaste.Drawing.Shapes.Dot)">
-            <summary></summary>
+            <summary>Returns true if point <paramref name='c'/> lies on this line segment.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
-            <summary></summary>
+            <summary>Returns true if this line segments overlaps line segment <paramref name='b'/> at any point.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.ToString">
-            <summary>Format "(x,y) to (x,y)"</summary>
+            <summary>Format "(A.x,A.y) to (B.x,B.y)"</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.LineSegment.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Dot">
             <summary>
             An (X, Y) coordinate. Immutable.
             </summary>
-            <remarks>It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.</remarks>
+            <remarks>
+            It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.
+            
+            I'm considering changing all the names to use a common suffix character for differentiation, instead of synonyms.
+            Such as "WPoint, WCircle, WLineSegment" instead of "Dot, Circle, LineSegment".
+            </remarks>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Dot.X">
             <summary></summary>
@@ -356,24 +377,23 @@
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Dot.MaxX">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Dot.MaxY">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Dot.#ctor(System.Double,System.Double)">
-            <summary></summary>
             <param name="x">Cannot be NaN or Infinity.</param>
             <param name="y">Cannot be NaN or Infinity.</param>
             <exception cref="T:System.ArgumentException">X or Y was NaN or Infinity.</exception>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Dot.Distance(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
-            Distance between this point and point B.
+            Returns the distance between this point and point <paramref name='b'/>. Always positive.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Dot.Overlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
-            <summary></summary>
+            <summary>Returns true if this point overlaps any part of the <pararef name='lineSegment'/>.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Addition(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
@@ -399,9 +419,7 @@
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_GreaterThan(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
-            <summary>
-            Greater than/less than is judged along the x-axis first, then the y-axis
-            </summary>
+            <duplicate cref='M:WithoutHaste.Drawing.Shapes.Dot.op_LessThan(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)'/>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Dot.op_Equality(WithoutHaste.Drawing.Shapes.Dot,WithoutHaste.Drawing.Shapes.Dot)">
             <summary></summary>
@@ -419,12 +437,15 @@
             <summary>Format "(X,Y)"</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Dot.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Range">
             <summary>
             A linear range of values. Immutable.
             </summary>
+            <remarks>
+            Ranges are inclusive: both the Start and the End values are included in the range.
+            </remarks>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Range.Start">
             <summary>
@@ -447,23 +468,27 @@
             <summary>Create a range with this span and middle value.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Range.Overlaps(WithoutHaste.Drawing.Shapes.Range)">
-            <summary></summary>
+            <summary>Returns true if this range overlaps range <paramref name='b'/>.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Range.Overlaps(System.Double)">
-            <summary></summary>
+            <summary>Returns true if this range includes value <paramref name='b'/>.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Range.ConvertValue(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range,System.Double)">
             <summary>
-            Convert a value in originalRange to one in newRange, assuming that the original range is re-scaled to the new range.
+            Convert the <paramref name='value'/> in <paramref name='originalRange'/> to one in <paramref name='newRange'/>.
             </summary>
+            <remarks>
+            Essentially, <paramref name='originalRange'/> is scaled up or down to match <paramref name='newRange'/>.
+            So the returned value is the same percentage along <paramref name='newRange'/> as the provided <paramref name='value'/> was along <paramref name='originalRange'/>.
+            </remarks>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Range.ToString">
-            <summary>Format "start-end"</summary>
+            <summary>Format "Start-End".</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Range.op_Addition(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range)">
             <summary>
-            <para>Returns a range that covers all the area both A and B cover, including any gap in between.</para>
-            <para>This operation is commutative.</para>.
+            Returns a range that covers all the area both <paramref name='a'/> and <paramref name='b'/> cover, including any gap in between.
+            This operation is commutative.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Range.op_Equality(WithoutHaste.Drawing.Shapes.Range,WithoutHaste.Drawing.Shapes.Range)">
@@ -480,87 +505,121 @@
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.RangeCircular">
             <summary>
-            A range on a circular scale within range [0, CircularModulus). Immutable.
+            A range on a circular scale. Immutable.
             </summary>
+            <remarks>
+            A circular scale can be written shorthand as [0, CircularModulus), meaning 0 is included in the scale and CircularModulus is excluded from the scale.
+            
+            The range may cover the entire scale, or only a portion of the scale.
+            To cover the entire scale, set Start and End to the same value.
+            
+            Throughout the documentation, "scale" refers to the full circular scale [0, CircularModulus) while "range" refers to a subset of values [Start, End].
+            </remarks>
+            <example>
+            The degrees of a circle make up a circular scale [0, 360).
+            The range may only cover [25, 45] of the scale [0, 360).
+            In this case, Start=25, End=45, and CircularModulus=360.
+            </example>
+            <example>
+            The hours of a clock make up a circular range [1, 13) for a normal clock, or [0, 24) for a military clock.
+            Since RangeCircular always starts at 0, the normal clock would need to be represented as [0, 12). You'd need to handle the +1 offset when setting or displaying values.
+            </example>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.RangeCircular.CircularModulus">
-            <summary>The value where the range loops back to 0.</summary>
+            <summary>The value at which the range loops back to 0.</summary>
+            <remarks>In the context of this range, 0 and CircularModulus are the same value.</remarks>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.RangeCircular.Span">
-            <summary>Length from Start to End.</summary>
+            <summary>Distance from Start to End.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.RangeCircular.Middle">
-            <summary>Middle value in range.</summary>
+            <summary>Middle value between Start and End.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.#ctor(System.Double,System.Double,System.Int32)">
-            <summary></summary>
+            <exception cref='T:System.ArgumentException'>CircularModulus must be greater than 0.</exception>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Centered(System.Double,System.Double,System.Int32)">
-            <summary>Create a range with this span, middle value, and modulus.</summary>
+            <exception cref='T:System.ArgumentException'>CircularModulus must be greater than 0.</exception>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Overlaps(WithoutHaste.Drawing.Shapes.RangeCircular)">
-            <summary></summary>
+            <summary>Returns true if this range overlaps range <paramref name='b'/>.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Overlaps(System.Double)">
-            <summary></summary>
+            <summary>Returns true if this range includes value <paramref name='b'/>.</summary>
+            <remarks>
+            <paramref name='b'/> is first put in context of this scale [0, CircularModulus).
+            
+            For example:
+            Value 13 on scale [0, 24) is converted to value 1 when compared to scale [0, 12) because <c>13 modulus 12 = 1</c>.
+            Value 13 therefore does overlap range [0, 3] on scale [0, 12), but does not overlap range [2, 3] on scale [0, 12).
+            </remarks>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Addition(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)">
             <summary>
-            <para>Returns a range that covers all the area both A and B cover, including any gap in between.</para>
-            <para>If the ranges overlap, there is no gap filled in.</para>
-            <para>Gaps are covered from direction A to B, therefore this operation is not commutative.</para>
+            Returns a range that covers all the area both <paramref name='a'/> and <paramref name='b'/> cover, including any gap in between.
+            If the ranges overlap, there is no gap filled in.
             </summary>
+            <remarks>
+            Gaps are covered from direction <paramref name='a'/> to <paramref name='b'/>, therefore this operation is not commutative.
+              <example>
+              Consider range A is [0, 45] on scale [0, 360), and range B is range [90, 180] on scale [0, 360).
+              A + B = range [0, 180] on scale [0, 360) which has a Span of 180.
+              B + A = range [90, 45] on scale [0, 360) which has a Span of 315.
+              </example>
+            </remarks>
+            <exception cref='T:System.ArgumentException'>RangeCirculars with different CircularModulus values cannot be combined.</exception>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Mod(System.Double)">
-            <summary>Convert a number into this range.</summary>
+            <summary>Convert a number into this scale. Ensures a positive result.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Mod(System.Double,System.Int32)">
             <summary>
-            Returns number modulus m. Ensures a positive result.
+            Returns <paramref name='number'/> modulus <paramref name='m'/>. Ensures a positive result.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Equality(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)">
-            <summary></summary>
+            <summary>Circular ranges are equal if they have the same scale and same range, meaning the Start, End, and CircularModulus values are all the same.</summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Inequality(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)">
-            <summary></summary>
+            <duplicate cref='M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Equality(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)'/>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.Equals(System.Object)">
-            <summary></summary>
+            <duplicate cref='M:WithoutHaste.Drawing.Shapes.RangeCircular.op_Equality(WithoutHaste.Drawing.Shapes.RangeCircular,WithoutHaste.Drawing.Shapes.RangeCircular)'/>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.RangeCircular.GetHashCode">
             <summary></summary>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Shape">
-            <summary>Main base class for library.</summary>
+            <summary>Represents a shape, a geometrical figure, a form.</summary>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.Wedge">
             <summary>
             A wedge is a slice of a circle. It is also known as a circular sector. Immutable.
             </summary>
+            <remarks>
+            "Arc" refers to the segment of circle's circumference that makes up the curved edge of the wedge. And arc is 1-dimensional; an arc is a curved line.
+            </remarks>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.Wedge.Radius">
-            <summary></summary>
+            <summary>The radius of the full circle this wedge is a slice of. Also the length of either straight side of the wegde.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.Circle">
-            <summary>Full circle that this Wedge is a part of.</summary>
+            <summary>The full circle that this wedge is a part of.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.StartPoint">
-            <summary>Point on circumference of Circle where Wedge begins.</summary>
+            <summary>The point on circumference of Circle where the wedge begins.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.EndPoint">
-            <summary>Point on circumference of Circle where Wedge ends.</summary>
+            <summary>The point on circumference of Circle where the wedge ends.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.ArcPoint">
-            <summary>The point at the middle of the arc.</summary>
+            <summary>The point at the middle of the arc edge of the wedge.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.FourPoints">
             <summary>
+            The boundary points of the wedge:
              <list type="bullet">
-              <listheader>
-               The boundary points of the Wedge:
-              </listheader>
-              <item>the center of the circle</item>
+              <item>Center</item>
               <item>StartPoint</item>
               <item>EndPoint</item>
               <item>ArcPoint</item>
@@ -569,78 +628,79 @@
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.LineEdges">
             <summary>
+            The straight edges of the wedge:
              <list type="bullet">
-              <listheader>
-               The straight edges of the Wedge:
-              </listheader>
               <item>Center to StartPoint</item>
               <item>Center to EndPoint</item>
              </list>
             </summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.MaxX">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.Wedge.MaxY">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.#ctor(WithoutHaste.Drawing.Shapes.Circle,WithoutHaste.Drawing.Shapes.RangeCircular)">
-            <summary></summary>
+            <param name="circle">The full circle this wedge is a part of.</param>
+            <param name="degreeRange">The range of degrees this wedge covers.</param>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.#ctor(WithoutHaste.Drawing.Shapes.Circle,System.Double,System.Double)">
-            <summary></summary>
+            <param name="circle">The full circle this wedge is a part of.</param>
+            <param name="degreeStart">The starting degree the wedge covers.</param>
+            <param name="degreeEnd">The ending degree the wedge covers.</param>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Overlaps(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
-            Any part of this wedge overlaps any part of circle B.
+            Returns true if any part of this wedge overlaps any part of circle <paramref name='b'/>.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Overlaps(WithoutHaste.Drawing.Shapes.Wedge)">
             <summary>
-            Any part of this wedge overlaps any part of wedge B.
+            Returns true if any part of this wedge overlaps any part of wedge <paramref name='b'/>.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.ArcOverlaps(WithoutHaste.Drawing.Shapes.LineSegment)">
             <summary>
-            The arc is the curved circle segment part of the wedge.
+            Returns true if the arc overlaps any part of the <paramref name='lineSegment'/>.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.ArcOverlapsArc(WithoutHaste.Drawing.Shapes.Wedge)">
             <summary>
-            The arc is the curved circle segment part of the wedge.
+            Returns true if this arc overlaps any part of <paramref name='b'/>'s arc.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Contains(WithoutHaste.Drawing.Shapes.Circle)">
             <summary>
-            Circle B lies entirely within this wedge.
+            Returns true if this wedge fully contains circle <paramref name='b'/>.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Contains(WithoutHaste.Drawing.Shapes.Dot)">
             <summary>
-            This wedge contains point B, including point B being on an edge of the wedge.
+            Returns true if this wedge contains point <paramref name='b'/>, including if <paramref name='b'/> lies on one of this wedge's edges.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.op_Division(WithoutHaste.Drawing.Shapes.Wedge,System.Double)">
             <summary>
-            Scale wedge down by B amount. Affects length and location measures, but not degrees.
+            Scale wedge down by <paramref name='b'/> amount. Affects length and location measures, but not degrees.
             </summary>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.Paint(System.Drawing.Graphics,System.Drawing.Pen,System.Double)">
-            <summary>See <see cref="T:WithoutHaste.Drawing.Shapes.IDraw"/>.</summary>
+            <inheritdoc/>
         </member>
         <member name="M:WithoutHaste.Drawing.Shapes.Wedge.ToString">
-            <summary></summary>
+            <summary>Format "C:(X,Y) R:Radius Degrees:Start-End".</summary>
         </member>
         <member name="T:WithoutHaste.Drawing.Shapes.WedgeUnbound">
             <summary>
-            A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward with no limit. Immutable.
+            A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward from the center with no limit. Immutable.
             </summary>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.WedgeUnbound.Center">
             <summary>Center of the circle that defines this wedge.</summary>
         </member>
         <member name="F:WithoutHaste.Drawing.Shapes.WedgeUnbound.Degrees">
-            <summary>The degrees of the defining circle that this Wedge extends through.</summary>
+            <summary>The degrees of the defining circle that this wedge extends through.</summary>
         </member>
         <member name="P:WithoutHaste.Drawing.Shapes.WedgeUnbound.Span">
             <summary>The total degrees this wedge covers.</summary>
