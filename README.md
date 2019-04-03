@@ -2,8 +2,6 @@
 
 C# library of shape/geometry calculations and operations.
 
-This library is under active development. Report bugs and request features on Github, or to wohaste@gmail.com.
-
 ## Documentation
 
 [Table of Contents](documentation/TableOfContents.WithoutHaste.Drawing.Shapes.md)
