@@ -1,6 +1,6 @@
-# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).RangeCircular
+# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).WRangeCircular
 
-**Inheritance:** object → [Shape](WithoutHaste.Drawing.Shapes.Shape.md) → [Range](WithoutHaste.Drawing.Shapes.Range.md)  
+**Inheritance:** object → [WShape](WithoutHaste.Drawing.Shapes.WShape.md) → [WRange](WithoutHaste.Drawing.Shapes.WRange.md)  
 
 A range on a circular scale. Immutable.  
 
@@ -52,7 +52,7 @@ Distance from Start to End.
 
 # Constructors
 
-## RangeCircular(double start, double end, int circularModulus)
+## WRangeCircular(double start, double end, int circularModulus)
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: CircularModulus must be greater than 0.  
@@ -75,7 +75,7 @@ Circular ranges are equal if they have the same scale and same range, meaning th
 
 Convert a number into this scale. Ensures a positive result.  
 
-## Overlaps([RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md) b)
+## Overlaps([WRangeCircular](WithoutHaste.Drawing.Shapes.WRangeCircular.md) b)
 
 **bool**  
 
@@ -98,7 +98,7 @@ Value 13 therefore does overlap range [0, 3] on scale [0, 12), but does not over
 
 ## Centered(double middle, double span, int circularModulus)
 
-**static RangeCircular**  
+**static WRangeCircular**  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: CircularModulus must be greater than 0.  
@@ -111,7 +111,7 @@ Returns _number_ modulus _m_. Ensures a positive result.
 
 # Operators
 
-## RangeCircular = RangeCircular a + RangeCircular b
+## WRangeCircular = WRangeCircular a + WRangeCircular b
 
 Returns a range that covers all the area both _a_ and _b_ cover, including any gap in between.  
 If the ranges overlap, there is no gap filled in.  
@@ -125,11 +125,11 @@ B + A = range [90, 45] on scale [0, 360) which has a Span of 315.
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: RangeCirculars with different CircularModulus values cannot be combined.  
 
-## bool = RangeCircular a == RangeCircular b
+## bool = WRangeCircular a == WRangeCircular b
 
 Circular ranges are equal if they have the same scale and same range, meaning the Start, End, and CircularModulus values are all the same.  
 
-## bool = RangeCircular a != RangeCircular b
+## bool = WRangeCircular a != WRangeCircular b
 
 Circular ranges are equal if they have the same scale and same range, meaning the Start, End, and CircularModulus values are all the same.  
 

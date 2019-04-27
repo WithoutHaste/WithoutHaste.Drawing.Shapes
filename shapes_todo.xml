@@ -38,10 +38,14 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">1</Data>
+          <Data ss:Type="Number">2</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">remove any dependency on WithoutHaste.Libraries</Data>
+          <Data ss:Type="String">update naming convention
+- instead of synonyms (Point -&gt; Dot) (because not all shapes have a synonym, Rectangle does not)
+name it like "WPoint, WCircle, WRectangle" in the same model as PdfSharp "XRect, XSize"
+"W" because "WithoutHaste"
+rename all shapes this way for consistency</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -77,27 +81,6 @@
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">keep some sort of Versions document
 - is there a suggested format?</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-06T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">2</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">update naming convention
-- instead of synonyms (Point -&gt; Dot) (because not all shapes have a synonym, Rectangle does not)
-name it like "WPoint, WCircle, WRectangle" in the same model as PdfSharp "XRect, XSize"
-"W" because "WithoutHaste"
-rename all shapes this way for consistency</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -174,6 +157,26 @@ don't let it fall into an infinite loop, or have unpredictable behavior - no mat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">1</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">remove any dependency on WithoutHaste.Libraries</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-06T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-27T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -309,8 +312,7 @@ was not checking that CircularModulus was equal
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -334,8 +336,7 @@ was not checking that CircularModulus was equal
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -359,8 +360,7 @@ was not checking that CircularModulus was equal
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -384,8 +384,7 @@ was not checking that CircularModulus was equal
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -409,8 +408,7 @@ was not checking that CircularModulus was equal
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">

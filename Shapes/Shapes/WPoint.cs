@@ -10,13 +10,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// An (X, Y) coordinate. Immutable.
 	/// </summary>
-	/// <remarks>
-	/// It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.
-	/// 
-	/// I'm considering changing all the names to use a common suffix character for differentiation, instead of synonyms.
-	/// Such as "WPoint, WCircle, WLineSegment" instead of "Dot, Circle, LineSegment".
-	/// </remarks>
-	public class Dot : Shape, IDraw
+	public class WPoint : WShape, IDraw
 	{
 		/// <summary></summary>
 		public readonly double X;
@@ -31,7 +25,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <param name="x">Cannot be NaN or Infinity.</param>
 		/// <param name="y">Cannot be NaN or Infinity.</param>
 		/// <exception cref="ArgumentException">X or Y was NaN or Infinity.</exception>
-		public Dot(double x, double y)
+		public WPoint(double x, double y)
 		{
 			if(double.IsNaN(x))
 				throw new ArgumentException("Point.X cannot be NaN."); //todo: specific exceptions
@@ -48,75 +42,75 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Returns the distance between this point and point <paramref name='b'/>. Always positive.
 		/// </summary>
-		public double Distance(Dot b)
+		public double Distance(WPoint b)
 		{
 			return Math.Sqrt(Math.Pow(b.X - this.X, 2) + Math.Pow(b.Y - this.Y, 2));
 		}
 
 		/// <summary>Returns true if this point overlaps any part of the <pararef name='lineSegment'/>.</summary>
-		public bool Overlaps(LineSegment lineSegment)
+		public bool Overlaps(WLineSegment lineSegment)
 		{
 			return lineSegment.Overlaps(this);
 		}
 
 		/// <summary></summary>
-		public static Dot operator +(Dot a, Dot b)
+		public static WPoint operator +(WPoint a, WPoint b)
 		{
-			return new Dot(a.X + b.X, a.Y + b.Y);
+			return new WPoint(a.X + b.X, a.Y + b.Y);
 		}
 
 		/// <summary></summary>
-		public static Dot operator -(Dot a, Dot b)
+		public static WPoint operator -(WPoint a, WPoint b)
 		{
-			return new Dot(a.X - b.X, a.Y - b.Y);
+			return new WPoint(a.X - b.X, a.Y - b.Y);
 		}
 
 		/// <summary></summary>
-		public static Dot operator *(double a, Dot b)
+		public static WPoint operator *(double a, WPoint b)
 		{
-			return new Dot(a * b.X, a * b.Y);
+			return new WPoint(a * b.X, a * b.Y);
 		}
 
 		/// <summary></summary>
-		public static Dot operator *(Dot a, double b)
+		public static WPoint operator *(WPoint a, double b)
 		{
-			return new Dot(a.X * b, a.Y * b);
+			return new WPoint(a.X * b, a.Y * b);
 		}
 
 		/// <summary></summary>
-		public static Dot operator /(double a, Dot b)
+		public static WPoint operator /(double a, WPoint b)
 		{
-			return new Dot(a / b.X, a / b.Y);
+			return new WPoint(a / b.X, a / b.Y);
 		}
 
 		/// <summary></summary>
-		public static Dot operator /(Dot a, double b)
+		public static WPoint operator /(WPoint a, double b)
 		{
-			return new Dot(a.X / b, a.Y / b);
+			return new WPoint(a.X / b, a.Y / b);
 		}
 
 		/// <summary>
 		/// Greater than/less than is judged along the x-axis first, then the y-axis
 		/// </summary>
-		public static bool operator <(Dot a, Dot b)
+		public static bool operator <(WPoint a, WPoint b)
 		{
 			return (a.X < b.X || (a.X == b.X && a.Y < b.Y));
 		}
 
-		/// <duplicate cref='op_LessThan(Dot,Dot)'/>
-		public static bool operator >(Dot a, Dot b)
+		/// <duplicate cref='op_LessThan(WPoint,WPoint)'/>
+		public static bool operator >(WPoint a, WPoint b)
 		{
 			return (a.X > b.X || (a.X == b.X && a.Y > b.Y));
 		}
 
 		/// <summary></summary>
-		public static bool operator ==(Dot a, Dot b)
+		public static bool operator ==(WPoint a, WPoint b)
 		{
 			return (Geometry.WithinMarginOfError(a.X, b.X) && Geometry.WithinMarginOfError(a.Y, b.Y));
 		}
 
 		/// <summary></summary>
-		public static bool operator !=(Dot a, Dot b)
+		public static bool operator !=(WPoint a, WPoint b)
 		{
 			return (!Geometry.WithinMarginOfError(a.X, b.X) || !Geometry.WithinMarginOfError(a.Y, b.Y));
 		}
@@ -124,9 +118,9 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary></summary>
 		public override bool Equals(Object b)
 		{
-			if(b != null && b is Dot)
+			if(b != null && b is WPoint)
 			{
-				return (this == (Dot)b);
+				return (this == (WPoint)b);
 			}
 			return false;
 		}
@@ -152,7 +146,7 @@ namespace WithoutHaste.Drawing.Shapes
 				(float)(2 * unitsToPixels), 
 				(float)(2 * unitsToPixels), 
 				0, 
-				Circle.DEGREES_IN_CIRCLE); 
+				WCircle.DEGREES_IN_CIRCLE); 
 		}
 	}
 }

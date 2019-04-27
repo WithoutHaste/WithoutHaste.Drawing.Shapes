@@ -31,15 +31,15 @@ Draw the figure on the _graphics_ with the _pen_.
 
 # Implemented By
 
-[WithoutHaste.Drawing.Shapes.Circle](WithoutHaste.Drawing.Shapes.Circle.md)  
+[WithoutHaste.Drawing.Shapes.WCircle](WithoutHaste.Drawing.Shapes.WCircle.md)  
 A circle shape. Immutable.  
 
-[WithoutHaste.Drawing.Shapes.Dot](WithoutHaste.Drawing.Shapes.Dot.md)  
-An (X, Y) coordinate. Immutable.  
-
-[WithoutHaste.Drawing.Shapes.LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md)  
+[WithoutHaste.Drawing.Shapes.WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md)  
 Line segment from point A to point B. Immutable.  
 
-[WithoutHaste.Drawing.Shapes.Wedge](WithoutHaste.Drawing.Shapes.Wedge.md)  
+[WithoutHaste.Drawing.Shapes.WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)  
+An (X, Y) coordinate. Immutable.  
+
+[WithoutHaste.Drawing.Shapes.WWedge](WithoutHaste.Drawing.Shapes.WWedge.md)  
 A wedge is a slice of a circle. It is also known as a circular sector. Immutable.  
 

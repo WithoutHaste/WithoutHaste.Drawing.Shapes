@@ -12,7 +12,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.001;
-			Line a = new Line(new Dot(0, -4.0/9.0), new Dot(-4.0/6.0, 0));
+			WLine a = new WLine(new WPoint(0, -4.0/9.0), new WPoint(-4.0/6.0, 0));
 			//act
 			double result = a.Slope;
 			//assert
@@ -24,7 +24,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.001;
-			Line a = new Line(new Dot(0, -4.0/9.0), new Dot(-4.0/6.0, 0));
+			WLine a = new WLine(new WPoint(0, -4.0/9.0), new WPoint(-4.0/6.0, 0));
 			//act
 			double result = a.PerpendicularSlope;
 			//assert
@@ -36,10 +36,10 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.001;
-			Line a = new Line(new Dot(0, 15.0/6.0), new Dot(15.0/8.0, 0));
-			Dot c = new Dot(3, -4);
+			WLine a = new WLine(new WPoint(0, 15.0/6.0), new WPoint(15.0/8.0, 0));
+			WPoint c = new WPoint(3, -4);
 			//act
-			Dot result = a.GetPerpendicularIntersect(c);
+			WPoint result = a.GetPerpendicularIntersect(c);
 			//assert
 			Assert.IsTrue(Geometry.WithinMarginOfError(21.0/5.0, result.X));
 			Assert.IsTrue(Geometry.WithinMarginOfError(-31.0/10.0, result.Y));

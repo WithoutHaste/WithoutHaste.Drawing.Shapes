@@ -9,13 +9,13 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward from the center with no limit. Immutable.
 	/// </summary>
-	public class WedgeUnbound : Shape
+	public class WWedgeUnbound : WShape
 	{
 		/// <summary>Center of the circle that defines this wedge.</summary>
-		public readonly Dot Center;
+		public readonly WPoint Center;
 
 		/// <summary>The degrees of the defining circle that this wedge extends through.</summary>
-		public readonly RangeCircular Degrees;
+		public readonly WRangeCircular Degrees;
 
 		/// <summary>The total degrees this wedge covers.</summary>
 		public double Span { get { return Degrees.Span; } }
@@ -27,17 +27,17 @@ namespace WithoutHaste.Drawing.Shapes
 		public double End { get { return Degrees.End; } }
 
 		/// <summary></summary>
-		public WedgeUnbound(Dot center, RangeCircular degreeRange)
+		public WWedgeUnbound(WPoint center, WRangeCircular degreeRange)
 		{
 			Center = center;
 			Degrees = degreeRange;
 		}
 
 		/// <summary></summary>
-		public WedgeUnbound(Dot center, double degreesRangeStart, double degreesRangeEnd)
+		public WWedgeUnbound(WPoint center, double degreesRangeStart, double degreesRangeEnd)
 		{
 			Center = center;
-			Degrees = new RangeCircular(degreesRangeStart, degreesRangeEnd, Circle.DEGREES_IN_CIRCLE);
+			Degrees = new WRangeCircular(degreesRangeStart, degreesRangeEnd, WCircle.DEGREES_IN_CIRCLE);
 		}
 	}
 }

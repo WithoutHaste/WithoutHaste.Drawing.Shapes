@@ -10,7 +10,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// Line segment from point A to point B. Immutable.
 	/// </summary>
-	public class LineSegment : Line, IDraw
+	public class WLineSegment : WLine, IDraw
 	{
 		/// <inheritdoc/>
 		public double MaxX { get { return Math.Max(A.X, B.X); } }
@@ -21,23 +21,23 @@ namespace WithoutHaste.Drawing.Shapes
 		public double Length { get { return A.Distance(B); } }
 
 		/// <summary></summary>
-		public LineSegment(Dot a, Dot b) : base(a, b)
+		public WLineSegment(WPoint a, WPoint b) : base(a, b)
 		{
 		}
 
 		/// <summary></summary>
-		public LineSegment(Dot a, Dot b, bool isDirected) : base(a, b, isDirected)
+		public WLineSegment(WPoint a, WPoint b, bool isDirected) : base(a, b, isDirected)
 		{
 		}
 
-		/// <summary>Convert to <see cref="Line"/>.</summary>
-		public Line ToLine()
+		/// <summary>Convert to <see cref="WLine"/>.</summary>
+		public WLine ToLine()
 		{
-			return new Line(A, B, IsDirected);
+			return new WLine(A, B, IsDirected);
 		}
 
 		/// <summary>Returns true if point <paramref name='c'/> lies on this line segment.</summary>
-		public bool Overlaps(Dot c)
+		public bool Overlaps(WPoint c)
 		{
 			if(IsVertical)
 			{
@@ -54,10 +54,10 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>Returns true if this line segments overlaps line segment <paramref name='b'/> at any point.</summary>
-		public bool Overlaps(LineSegment b)
+		public bool Overlaps(WLineSegment b)
 		{
 			//line equation: y = mx + b, where m is slope and b is y-intercept
-			LineSegment a = this;
+			WLineSegment a = this;
 			double slopeA = a.Slope; 
 			double slopeB = b.Slope;
 			if(Geometry.WithinMarginOfError(slopeA, slopeB))
@@ -85,7 +85,7 @@ namespace WithoutHaste.Drawing.Shapes
 			{
 				y = b.A.Y;
 			}
-			Dot interceptPoint = new Dot(x, y);
+			WPoint interceptPoint = new WPoint(x, y);
 			return (a.Overlaps(interceptPoint) && b.Overlaps(interceptPoint));
 		}
 

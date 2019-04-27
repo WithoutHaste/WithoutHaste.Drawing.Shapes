@@ -10,7 +10,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// A circle shape. Immutable.
 	/// </summary>
-	public class Circle : Shape, IDraw
+	public class WCircle : WShape, IDraw
 	{
 		/// <summary></summary>
 		public static readonly int DEGREES_IN_CIRCLE = 360;
@@ -33,7 +33,7 @@ namespace WithoutHaste.Drawing.Shapes
 		public readonly double Radius;
 
 		/// <summary></summary>
-		public Dot Center { get { return new Dot(X, Y); } }
+		public WPoint Center { get { return new WPoint(X, Y); } }
 		/// <summary></summary>
 		public double Diameter { get { return 2 * Radius; } }
 		/// <inheritdoc/>
@@ -65,7 +65,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary></summary>
-		public Circle(double x, double y, double radius)
+		public WCircle(double x, double y, double radius)
 		{
 			X = x;
 			Y = y;
@@ -73,7 +73,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary></summary>
-		public Circle(Dot center, double radius)
+		public WCircle(WPoint center, double radius)
 		{
 			X = center.X;
 			Y = center.Y;
@@ -82,11 +82,11 @@ namespace WithoutHaste.Drawing.Shapes
 
 		/// <summary>Finds the intersection points between the edge of this circle and circle <paramref name='b'/>.</summary>
 		/// <returns>Null (no intersection), an array of length 1, or an array of length 2.</returns>
-		public Dot[] GetIntersectionPoints(Circle b)
+		public WPoint[] GetIntersectionPoints(WCircle b)
 		{
 			//following the method in math/intersectionCircleCircle.png
 
-			Circle a = this;
+			WCircle a = this;
 			double d = a.Center.Distance(b.Center); //distance between centers
 			if(d > a.Radius + b.Radius)
 			{
@@ -102,16 +102,16 @@ namespace WithoutHaste.Drawing.Shapes
 			double dA = (Math.Pow(a.Radius, 2) - Math.Pow(b.Radius, 2) + Math.Pow(d, 2)) / (2 * d); //distance from centerA to pointC
 			if(dA == a.Radius)
 			{
-				return new Dot[] { Geometry.PointOnLine(a.Center, b.Center, a.Radius) }; //circles intersect at single point
+				return new WPoint[] { Geometry.PointOnLine(a.Center, b.Center, a.Radius) }; //circles intersect at single point
 			}
-			Dot c = a.Center + dA * (b.Center - a.Center) / d;
+			WPoint c = a.Center + dA * (b.Center - a.Center) / d;
 
 			//h is the distance from pointC to either intersection point (the hypotenus of triangle centerA-C-intersection)
 			double h = Math.Sqrt(Math.Pow(a.Radius, 2) - Math.Pow(dA, 2));
 
-			return new Dot[] {
-				new Dot(c.X + (h * (b.Y - a.Y) / d), c.Y - h * (b.X - a.X) / d),
-				new Dot(c.X - (h * (b.Y - a.Y) / d), c.Y + h * (b.X - a.X) / d)
+			return new WPoint[] {
+				new WPoint(c.X + (h * (b.Y - a.Y) / d), c.Y - h * (b.X - a.X) / d),
+				new WPoint(c.X - (h * (b.Y - a.Y) / d), c.Y + h * (b.X - a.X) / d)
 			};
 		}
 
@@ -119,24 +119,24 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Find the two tangent points on the circle that form lines to point <paramref name='b'/>.
 		/// </summary>
 		/// <returns>Array of length 2.</returns>
-		public Dot[] GetTangentPoints(Dot b)
+		public WPoint[] GetTangentPoints(WPoint b)
 		{
 			//point C and D are the tangents
-			Circle a = this;
+			WCircle a = this;
 			double distanceAB = a.Center.Distance(b);
 			double degreesAB = DegreesAtPoint(b);
 			double degreesAB_AC = Math.Cos(Radius / distanceAB);
-			Dot c = PointAtDegrees(degreesAB + degreesAB_AC);
-			Dot d = PointAtDegrees(degreesAB - degreesAB_AC);
-			return new Dot[] { c, d };
+			WPoint c = PointAtDegrees(degreesAB + degreesAB_AC);
+			WPoint d = PointAtDegrees(degreesAB - degreesAB_AC);
+			return new WPoint[] { c, d };
 		}
 
 		/// <summary>
 		/// Returns true if any part of this circle overlaps any part of circle <paramref name='b'/>.
 		/// </summary>
-		public bool Overlaps(Circle b)
+		public bool Overlaps(WCircle b)
 		{
-			Dot[] intersections = this.GetIntersectionPoints(b);
+			WPoint[] intersections = this.GetIntersectionPoints(b);
 			if(intersections != null)
 				return true;
 			return this.ContainsOrIsContained(b);
@@ -148,12 +148,12 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <remarks>
 		/// If line <paramref name='b'/> lies within the circle, that counts as overlapping.
 		/// </remarks>
-		public bool Overlaps(LineSegment b)
+		public bool Overlaps(WLineSegment b)
 		{
-			Dot[] lineIntersectionPoints = GetIntersectionPoints(b.ToLine());
+			WPoint[] lineIntersectionPoints = GetIntersectionPoints(b.ToLine());
 			if(lineIntersectionPoints == null)
 				return false;
-			foreach(Dot point in lineIntersectionPoints)
+			foreach(WPoint point in lineIntersectionPoints)
 			{
 				if(b.Overlaps(point))
 					return true;
@@ -161,7 +161,7 @@ namespace WithoutHaste.Drawing.Shapes
 			if(lineIntersectionPoints.Length == 2)
 			{
 				//if b lies entirely within the circle
-				LineSegment intersectionLine = new LineSegment(lineIntersectionPoints[0], lineIntersectionPoints[1]);
+				WLineSegment intersectionLine = new WLineSegment(lineIntersectionPoints[0], lineIntersectionPoints[1]);
 				if(intersectionLine.Length > b.Length && intersectionLine.Overlaps(b))
 					return true;
 			}
@@ -171,7 +171,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Returns true if this circle entirely contains circle <paramref name='b'/>, or <paramref name='b'/> entirely contains this circle, or they exactly overlap.
 		/// </summary>
-		public bool ContainsOrIsContained(Circle b)
+		public bool ContainsOrIsContained(WCircle b)
 		{
 			if(this.Radius > b.Radius)
 				return this.Contains(b);
@@ -181,7 +181,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Returns true if this circle entirely contains circle <paramref name='b'/>, or they exactly overlap.
 		/// </summary>
-		public bool Contains(Circle b)
+		public bool Contains(WCircle b)
 		{
 			if(b.Radius > this.Radius)
 				return false;
@@ -194,9 +194,9 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Returns true if this circle entirely contains wedge <paramref name='b'/>.
 		/// </summary>
-		public bool Contains(Wedge b)
+		public bool Contains(WWedge b)
 		{
-			foreach(Dot point in b.FourPoints)
+			foreach(WPoint point in b.FourPoints)
 			{
 				if(!Contains(point))
 					return false;
@@ -207,7 +207,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Returns true if point <paramref name='b'/> lies within or on this circle.
 		/// </summary>
-		public bool Contains(Dot b)
+		public bool Contains(WPoint b)
 		{
 			return (Center.Distance(b) <= Radius);
 		}
@@ -216,7 +216,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Returns the point on this circle at the <paramref name='radians'/> measurement. 
 		/// 0 radians is East of center, increases clockwise.
 		/// </summary>
-		public Dot PointAtRadians(double radians)
+		public WPoint PointAtRadians(double radians)
 		{
 			radians = radians % RADIANS_360DEGREES;
 			double deltaX = 0;
@@ -260,8 +260,8 @@ namespace WithoutHaste.Drawing.Shapes
 
 			switch(Geometry.CoordinatePlane)
 			{
-				case Geometry.CoordinatePlanes.Screen: return new Dot(Center.X + deltaX, Center.Y + deltaY);
-				case Geometry.CoordinatePlanes.Paper: return new Dot(Center.X + deltaX, Center.Y - deltaY);
+				case Geometry.CoordinatePlanes.Screen: return new WPoint(Center.X + deltaX, Center.Y + deltaY);
+				case Geometry.CoordinatePlanes.Paper: return new WPoint(Center.X + deltaX, Center.Y - deltaY);
 				default: throw new NotImplementedException("Coordinate plane not supported.");
 			}
 		}
@@ -270,7 +270,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Returns the point on this circle at the <paramref name='degrees'/> measurement. 
 		/// 0 degrees is East of center, increases clockwise.
 		/// </summary>
-		public Dot PointAtDegrees(double degrees)
+		public WPoint PointAtDegrees(double degrees)
 		{
 			return PointAtRadians(DegreesToRadians(degrees));
 		}
@@ -279,7 +279,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Given a line from the center of this circle to a point (<paramref name='lineEnd'/>), what degrees is the line angle at? 
 		/// 0 degrees is East of center, increases clockwise.
 		/// </summary>
-		public double DegreesAtPoint(Dot lineEnd)
+		public double DegreesAtPoint(WPoint lineEnd)
 		{
 			if(Geometry.CoordinatePlane == Geometry.CoordinatePlanes.None)
 				throw new ArgumentException("Coordinate plane required.");
@@ -295,7 +295,7 @@ namespace WithoutHaste.Drawing.Shapes
 
 			double lineLength = Center.Distance(lineEnd);
 			double radians = Math.Abs(Math.Asin((lineEnd.Y - Center.Y) / lineLength));
-			double degrees = Shapes.Circle.RadiansToDegrees(radians) % DEGREES_IN_CIRCLE;
+			double degrees = Shapes.WCircle.RadiansToDegrees(radians) % DEGREES_IN_CIRCLE;
 			switch(direction)
 			{
 				case Geometry.Direction.SouthEast: return degrees;
@@ -308,10 +308,10 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <returns>Null (no intercepts), or array of length 1 or 2.</returns>
-		public Dot[] GetIntersectionPoints(Line line)
+		public WPoint[] GetIntersectionPoints(WLine line)
 		{
 			//line does not intersect if perpendicular line from circle-center to line is longer than circle-radius
-			Dot perpendicularToCenter = line.GetPerpendicularIntersect(Center);
+			WPoint perpendicularToCenter = line.GetPerpendicularIntersect(Center);
 			if(perpendicularToCenter.Distance(Center) > Radius)
 				return null;
 
@@ -345,9 +345,9 @@ namespace WithoutHaste.Drawing.Shapes
 				y1 = line.A.Y;
 				y2 = line.A.Y;
 			}
-			Dot point1 = new Dot(x1, y1);
-			Dot point2 = new Dot(x2, y2);
-			List<Dot> result = new List<Dot>() { point1 };
+			WPoint point1 = new WPoint(x1, y1);
+			WPoint point2 = new WPoint(x2, y2);
+			List<WPoint> result = new List<WPoint>() { point1 };
 			if(point1 != point2)
 				result.Add(point2);
 			return result.ToArray();
@@ -357,13 +357,13 @@ namespace WithoutHaste.Drawing.Shapes
 
 		/// <summary>Find the intersection points between the edge of this circle and the <paramref name='lineSegment'/>.</summary>
 		/// <returns>Null (no intercepts), or array of length 1, or array of length 2.</returns>
-		public Dot[] GetIntersectionPoints(LineSegment lineSegment)
+		public WPoint[] GetIntersectionPoints(WLineSegment lineSegment)
 		{
-			Dot[] lineIntersectionPoints = GetIntersectionPoints(lineSegment.ToLine());
+			WPoint[] lineIntersectionPoints = GetIntersectionPoints(lineSegment.ToLine());
 			if(lineIntersectionPoints == null)
 				return null;
-			List<Dot> segmentIntersectionPoints = new List<Dot>();
-			foreach(Dot point in lineIntersectionPoints)
+			List<WPoint> segmentIntersectionPoints = new List<WPoint>();
+			foreach(WPoint point in lineIntersectionPoints)
 			{
 				if(lineSegment.Overlaps(point))
 					segmentIntersectionPoints.Add(point);
@@ -393,29 +393,29 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Scale circle down by <paramref name='b'/> amount. Affects length and location measures.
 		/// </summary>
 		/// <example><c>circle / 2</c> returns a new Circle with half the radius and half the distance from point (0,0).</example>
-		public static Circle operator /(Circle a, double b)
+		public static WCircle operator /(WCircle a, double b)
 		{
-			return new Circle(a.Center / b, a.Radius / b);
+			return new WCircle(a.Center / b, a.Radius / b);
 		}
 
 		/// <summary>Circle centers and radiuses are the same.</summary>
-		public static bool operator ==(Circle a, Circle b)
+		public static bool operator ==(WCircle a, WCircle b)
 		{
 			return (a.Center == b.Center && a.Radius == b.Radius);
 		}
 
 		/// <summary>Circle centers or radiuses are different.</summary>
-		public static bool operator !=(Circle a, Circle b)
+		public static bool operator !=(WCircle a, WCircle b)
 		{
 			return (a.Center != b.Center || a.Radius != b.Radius);
 		}
 
-		/// <duplicate cref='operator ==(Circle,Circle)'/>
+		/// <duplicate cref='operator ==(WCircle,WCircle)'/>
 		public override bool Equals(Object b)
 		{
-			if(b != null && b is Circle)
+			if(b != null && b is WCircle)
 			{
-				return (this == (Circle)b);
+				return (this == (WCircle)b);
 			}
 			return false;
 		}

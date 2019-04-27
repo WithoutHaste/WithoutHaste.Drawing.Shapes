@@ -1,15 +1,9 @@
-# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).Dot
+# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).WPoint
 
-**Inheritance:** object → [Shape](WithoutHaste.Drawing.Shapes.Shape.md)  
+**Inheritance:** object → [WShape](WithoutHaste.Drawing.Shapes.WShape.md)  
 **Implements:** [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md)  
 
 An (X, Y) coordinate. Immutable.  
-
-**Remarks:**  
-It's called "Dot" so as not to conflict with System.Drawing.Point. Points use integer coordinates, these Dots use doubles.  
-  
-I'm considering changing all the names to use a common suffix character for differentiation, instead of synonyms.  
-Such as "WPoint, WCircle, WLineSegment" instead of "Dot, Circle, LineSegment".  
 
 # Fields
 
@@ -37,7 +31,7 @@ Maximum y coordinate required to draw the figure.
 
 # Constructors
 
-## Dot(double x, double y)
+## WPoint(double x, double y)
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: X or Y was NaN or Infinity.  
@@ -48,7 +42,7 @@ Maximum y coordinate required to draw the figure.
 
 # Methods
 
-## Distance([Dot](WithoutHaste.Drawing.Shapes.Dot.md) b)
+## Distance([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b)
 
 **double**  
 
@@ -62,7 +56,7 @@ Returns the distance between this point and point _b_. Always positive.
 
 **virtual int**  
 
-## Overlaps([LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md) lineSegment)
+## Overlaps([WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md) lineSegment)
 
 **bool**  
 
@@ -85,27 +79,27 @@ Format "(X,Y)"
 
 # Operators
 
-## Dot = Dot a + Dot b
+## WPoint = WPoint a + WPoint b
 
-## Dot = Dot a - Dot b
+## WPoint = WPoint a - WPoint b
 
-## Dot = double a * Dot b
+## WPoint = double a * WPoint b
 
-## Dot = Dot a * double b
+## WPoint = WPoint a * double b
 
-## Dot = double a / Dot b
+## WPoint = double a / WPoint b
 
-## Dot = Dot a / double b
+## WPoint = WPoint a / double b
 
-## bool = Dot a == Dot b
+## bool = WPoint a == WPoint b
 
-## bool = Dot a != Dot b
+## bool = WPoint a != WPoint b
 
-## bool = Dot a > Dot b
+## bool = WPoint a > WPoint b
 
 Greater than/less than is judged along the x-axis first, then the y-axis  
 
-## bool = Dot a < Dot b
+## bool = WPoint a < WPoint b
 
 Greater than/less than is judged along the x-axis first, then the y-axis  
 

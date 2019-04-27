@@ -11,7 +11,7 @@ namespace GeometryTests
 		public void Span_StartLessThanEnd()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(5, 120, 360);
+			WRangeCircular a = new WRangeCircular(5, 120, 360);
 			//act
 			double result = a.Span;
 			//assert
@@ -22,7 +22,7 @@ namespace GeometryTests
 		public void Span_StartLessThanEnd_Mod()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(360 + 5, 360 + 120, 360);
+			WRangeCircular a = new WRangeCircular(360 + 5, 360 + 120, 360);
 			//act
 			double result = a.Span;
 			//assert
@@ -33,7 +33,7 @@ namespace GeometryTests
 		public void Span_StartGreaterThanEnd()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(120, 5, 360);
+			WRangeCircular a = new WRangeCircular(120, 5, 360);
 			//act
 			double result = a.Span;
 			//assert
@@ -44,7 +44,7 @@ namespace GeometryTests
 		public void Span_StartGreaterThanEnd_Mod()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(-1 * (360 - 120), -1 * (360 - 5), 360);
+			WRangeCircular a = new WRangeCircular(-1 * (360 - 120), -1 * (360 - 5), 360);
 			//act
 			double result = a.Span;
 			//assert
@@ -55,7 +55,7 @@ namespace GeometryTests
 		public void Span_StartEqualToEnd()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(120, 120, 360);
+			WRangeCircular a = new WRangeCircular(120, 120, 360);
 			//act
 			double result = a.Span;
 			//assert
@@ -66,7 +66,7 @@ namespace GeometryTests
 		public void Span_StartEqualToEnd_Mod()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(0, 360, 360);
+			WRangeCircular a = new WRangeCircular(0, 360, 360);
 			//act
 			double result = a.Span;
 			//assert
@@ -77,7 +77,7 @@ namespace GeometryTests
 		public void Middle_StartEqualToEnd()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(0, 0, 360);
+			WRangeCircular a = new WRangeCircular(0, 0, 360);
 			//act
 			double result = a.Middle;
 			//assert
@@ -88,7 +88,7 @@ namespace GeometryTests
 		public void Middle_StartEqualToEnd_Mod()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(0, 360, 360);
+			WRangeCircular a = new WRangeCircular(0, 360, 360);
 			//act
 			double result = a.Middle;
 			//assert
@@ -99,7 +99,7 @@ namespace GeometryTests
 		public void Middle_StartLessThanEnd()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(45, 55, 360);
+			WRangeCircular a = new WRangeCircular(45, 55, 360);
 			//act
 			double result = a.Middle;
 			//assert
@@ -110,7 +110,7 @@ namespace GeometryTests
 		public void Middle_StartGreaterThanEnd()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(350, 10, 360);
+			WRangeCircular a = new WRangeCircular(350, 10, 360);
 			//act
 			double result = a.Middle;
 			//assert
@@ -121,7 +121,7 @@ namespace GeometryTests
 		public void Middle_StartGreaterThanEnd_Mod()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(-10, 10, 360);
+			WRangeCircular a = new WRangeCircular(-10, 10, 360);
 			//act
 			double result = a.Middle;
 			//assert
@@ -135,7 +135,7 @@ namespace GeometryTests
 			//assign
 			int modulus = 0;
 			//act
-			RangeCircular range = new RangeCircular(0, 0, modulus);
+			WRangeCircular range = new WRangeCircular(0, 0, modulus);
 			//expected exception
 		}
 
@@ -146,7 +146,7 @@ namespace GeometryTests
 			//assign
 			int modulus = -1;
 			//act
-			RangeCircular range = new RangeCircular(0, 0, modulus);
+			WRangeCircular range = new WRangeCircular(0, 0, modulus);
 			//expected exception
 		}
 
@@ -154,8 +154,8 @@ namespace GeometryTests
 		public void Overlaps_False()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(270, 300, 360);
-			RangeCircular b = new RangeCircular(10, 30, 360);
+			WRangeCircular a = new WRangeCircular(270, 300, 360);
+			WRangeCircular b = new WRangeCircular(10, 30, 360);
 			//act
 			bool resultA = a.Overlaps(b);
 			bool resultB = b.Overlaps(a);
@@ -168,8 +168,8 @@ namespace GeometryTests
 		public void Overlaps_Barely_Mod()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(270, 360, 360);
-			RangeCircular b = new RangeCircular(0, 30, 360);
+			WRangeCircular a = new WRangeCircular(270, 360, 360);
+			WRangeCircular b = new WRangeCircular(0, 30, 360);
 			//act
 			bool resultA = a.Overlaps(b);
 			bool resultB = b.Overlaps(a);
@@ -182,8 +182,8 @@ namespace GeometryTests
 		public void Overlaps_Some_Mod()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(270, 370, 360);
-			RangeCircular b = new RangeCircular(-5, 30, 360);
+			WRangeCircular a = new WRangeCircular(270, 370, 360);
+			WRangeCircular b = new WRangeCircular(-5, 30, 360);
 			//act
 			bool resultA = a.Overlaps(b);
 			bool resultB = b.Overlaps(a);
@@ -196,8 +196,8 @@ namespace GeometryTests
 		public void Overlaps_Completely_Mod()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(270, 450, 360);
-			RangeCircular b = new RangeCircular(-5, 5, 360);
+			WRangeCircular a = new WRangeCircular(270, 450, 360);
+			WRangeCircular b = new WRangeCircular(-5, 5, 360);
 			//act
 			bool resultA = a.Overlaps(b);
 			bool resultB = b.Overlaps(a);
@@ -210,11 +210,11 @@ namespace GeometryTests
 		public void OperatorPlus_CompleteOverlap()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(270, 450, 360);
-			RangeCircular b = new RangeCircular(-5, 5, 360);
+			WRangeCircular a = new WRangeCircular(270, 450, 360);
+			WRangeCircular b = new WRangeCircular(-5, 5, 360);
 			//act
-			RangeCircular resultA = a + b;
-			RangeCircular resultB = b + a;
+			WRangeCircular resultA = a + b;
+			WRangeCircular resultB = b + a;
 			//assert
 			Assert.AreEqual(resultA, resultB);
 			Assert.AreEqual(a, resultA);
@@ -224,29 +224,29 @@ namespace GeometryTests
 		public void OperatorPlus_PartialOverlap()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(270, 360, 360);
-			RangeCircular b = new RangeCircular(-5, 5, 360);
+			WRangeCircular a = new WRangeCircular(270, 360, 360);
+			WRangeCircular b = new WRangeCircular(-5, 5, 360);
 			//act
-			RangeCircular resultA = a + b;
-			RangeCircular resultB = b + a;
+			WRangeCircular resultA = a + b;
+			WRangeCircular resultB = b + a;
 			//assert
 			Assert.AreEqual(resultA, resultB);
-			Assert.AreEqual(new RangeCircular(270, 5, 360), resultA);
+			Assert.AreEqual(new WRangeCircular(270, 5, 360), resultA);
 		}
 
 		[TestMethod]
 		public void OperatorPlus_NoOverlap()
 		{
 			//assign
-			RangeCircular a = new RangeCircular(270, 280, 360);
-			RangeCircular b = new RangeCircular(-5, 5, 360);
+			WRangeCircular a = new WRangeCircular(270, 280, 360);
+			WRangeCircular b = new WRangeCircular(-5, 5, 360);
 			//act
-			RangeCircular resultA = a + b;
-			RangeCircular resultB = b + a;
+			WRangeCircular resultA = a + b;
+			WRangeCircular resultB = b + a;
 			//assert
 			Assert.AreNotEqual(resultA, resultB);
-			Assert.AreEqual(new RangeCircular(270, 5, 360), resultA);
-			Assert.AreEqual(new RangeCircular(-5, 280, 360), resultB);
+			Assert.AreEqual(new WRangeCircular(270, 5, 360), resultA);
+			Assert.AreEqual(new WRangeCircular(-5, 280, 360), resultB);
 		}
 	}
 }

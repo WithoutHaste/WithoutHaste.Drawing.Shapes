@@ -1,6 +1,6 @@
-# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).Line
+# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).WLine
 
-**Inheritance:** object → [Shape](WithoutHaste.Drawing.Shapes.Shape.md)  
+**Inheritance:** object → [WShape](WithoutHaste.Drawing.Shapes.WShape.md)  
 
 Line of infinite length passing through points A and B. Immutable.  
 
@@ -8,11 +8,11 @@ Line of infinite length passing through points A and B. Immutable.
 
 ## A
 
-**readonly [Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**readonly [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 ## B
 
-**readonly [Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**readonly [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 ## IsDirected
 
@@ -48,29 +48,29 @@ Slope assumes direction from A to B.
 
 # Constructors
 
-## Line([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b)
+## WLine([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) a, [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b)
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Points A and B cannot be the same.  
 
-## Line([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b, bool isDirected)
+## WLine([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) a, [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b, bool isDirected)
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Points A and B cannot be the same.  
 
 # Methods
 
-## GetPerpendicularIntersect([Dot](WithoutHaste.Drawing.Shapes.Dot.md) c)
+## GetPerpendicularIntersect([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) c)
 
-**[Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**[WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 Returns the point where a perpendicular line passing through point _c_ intersects this line.  
 
 ## ToLineSegment()
 
-**[LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md)**  
+**[WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md)**  
 
-Convert to [LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md).  
+Convert to [WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md).  
 
 ## ToString()
 
@@ -80,7 +80,7 @@ Format "(A.x,A.y) to (B.x,B.y)"
 
 # Operators
 
-## Line = Line a / double b
+## WLine = WLine a / double b
 
 Scale line down by _b_ amount. Affects length and location measures.  
 
@@ -89,6 +89,6 @@ Scale line down by _b_ amount. Affects length and location measures.
 
 # Derived By
 
-[WithoutHaste.Drawing.Shapes.LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md)  
+[WithoutHaste.Drawing.Shapes.WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md)  
 Line segment from point A to point B. Immutable.  
 

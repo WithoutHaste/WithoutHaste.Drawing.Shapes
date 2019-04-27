@@ -14,7 +14,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <remarks>
 	/// Ranges are inclusive: both the Start and the End values are included in the range.
 	/// </remarks>
-	public class Range : Shape
+	public class WRange : WShape
 	{
 		/// <summary>
 		/// For non-circular ranges, operations assume that Start is the minimum value.
@@ -29,20 +29,20 @@ namespace WithoutHaste.Drawing.Shapes
 		public virtual double Middle { get { return Start + (Span / 2); } }
 
 		/// <summary></summary>
-		public Range(double start, double end)
+		public WRange(double start, double end)
 		{
 			Start = start;
 			End = end;
 		}
 
 		/// <summary>Create a range with this span and middle value.</summary>
-		public static Range Centered(double middle, double span)
+		public static WRange Centered(double middle, double span)
 		{
-			return new Range(middle - (span / 2), middle + (span / 2));
+			return new WRange(middle - (span / 2), middle + (span / 2));
 		}
 
 		/// <summary>Returns true if this range overlaps range <paramref name='b'/>.</summary>
-		public virtual bool Overlaps(Range b)
+		public virtual bool Overlaps(WRange b)
 		{
 			return (this.Overlaps(b.Start) || this.Overlaps(b.End) || b.Overlaps(this.Start) || b.Overlaps(this.End));
 		}
@@ -60,7 +60,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Essentially, <paramref name='originalRange'/> is scaled up or down to match <paramref name='newRange'/>.
 		/// So the returned value is the same percentage along <paramref name='newRange'/> as the provided <paramref name='value'/> was along <paramref name='originalRange'/>.
 		/// </remarks>
-		public static double ConvertValue(Range originalRange, Range newRange, double value)
+		public static double ConvertValue(WRange originalRange, WRange newRange, double value)
 		{
 			if(originalRange.Start != newRange.Start)
 				throw new NotImplementedException("Not implemented: Range.ConvertValue when ranges have different minimum values.");
@@ -79,19 +79,19 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Returns a range that covers all the area both <paramref name='a'/> and <paramref name='b'/> cover, including any gap in between.
 		/// This operation is commutative.
 		/// </summary>
-		public static Range operator +(Range a, Range b)
+		public static WRange operator +(WRange a, WRange b)
 		{
-			return new Range(Math.Min(a.Start, b.Start), Math.Max(a.End, b.End));
+			return new WRange(Math.Min(a.Start, b.Start), Math.Max(a.End, b.End));
 		}
 
 		/// <summary></summary>
-		public static bool operator ==(Range a, Range b)
+		public static bool operator ==(WRange a, WRange b)
 		{
 			return (Geometry.WithinMarginOfError(a.Start, b.Start) && Geometry.WithinMarginOfError(a.End, b.End));
 		}
 
 		/// <summary></summary>
-		public static bool operator !=(Range a, Range b)
+		public static bool operator !=(WRange a, WRange b)
 		{
 			return (!Geometry.WithinMarginOfError(a.Start, b.Start) || !Geometry.WithinMarginOfError(a.End, b.End));
 		}
@@ -99,9 +99,9 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary></summary>
 		public override bool Equals(Object b)
 		{
-			if(b != null && b is Range)
+			if(b != null && b is WRange)
 			{
-				return (this == (Range)b);
+				return (this == (WRange)b);
 			}
 			return false;
 		}

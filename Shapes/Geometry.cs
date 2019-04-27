@@ -78,7 +78,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// Calculates point along line AB, starting at A and moving towards B
 		/// </summary>
 		/// <exception cref='ArgumentException'>Point A and B cannot be the same.</exception>
-		public static Dot PointOnLine(Dot a, Dot b, double distance)
+		public static WPoint PointOnLine(WPoint a, WPoint b, double distance)
 		{
 			double lineLength = a.Distance(b);
 			if(lineLength == 0)
@@ -86,13 +86,13 @@ namespace WithoutHaste.Drawing.Shapes
 			double lengthRatio = distance / lineLength;
 			double x = ((1 - lengthRatio) * a.X) + (lengthRatio * b.X);
 			double y = ((1 - lengthRatio) * a.Y) + (lengthRatio * b.Y);
-			return new Dot(x, y);
+			return new WPoint(x, y);
 		}
 
 		/// <summary>
 		/// Calculates point along line AB, starting at B and moving away from A
 		/// </summary>
-		public static Dot PointPastLine(Dot a, Dot b, double distance)
+		public static WPoint PointPastLine(WPoint a, WPoint b, double distance)
 		{
 			double lineLength = a.Distance(b);
 			return PointOnLine(a, b, lineLength + distance);
@@ -108,7 +108,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// The inbetween directions cover all remaining values. So "NorthWest" covers all values between North and West.
 		/// </remarks>
 		/// <exception cref='NotImplementedException'>Coordinate plane not supported.</exception>
-		public static Direction LineDirection(Dot a, Dot b)
+		public static Direction LineDirection(WPoint a, WPoint b)
 		{
 			if(a == b) 
 				return Direction.None;
@@ -120,7 +120,7 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
-		private static Direction LineDirection_Screen(Dot a, Dot b)
+		private static Direction LineDirection_Screen(WPoint a, WPoint b)
 		{
 			if(a.X == b.X)
 			{
@@ -140,7 +140,7 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 		}
 
-		private static Direction LineDirection_Paper(Dot a, Dot b)
+		private static Direction LineDirection_Paper(WPoint a, WPoint b)
 		{
 			if(a.X == b.X)
 			{

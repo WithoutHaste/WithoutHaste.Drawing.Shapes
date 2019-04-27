@@ -1,6 +1,6 @@
-# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).Range
+# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).WRange
 
-**Inheritance:** object → [Shape](WithoutHaste.Drawing.Shapes.Shape.md)  
+**Inheritance:** object → [WShape](WithoutHaste.Drawing.Shapes.WShape.md)  
 
 A linear range of values. Immutable.  
 
@@ -35,7 +35,7 @@ End minus Start.
 
 # Constructors
 
-## Range(double start, double end)
+## WRange(double start, double end)
 
 # Methods
 
@@ -47,7 +47,7 @@ End minus Start.
 
 **virtual int**  
 
-## Overlaps([Range](WithoutHaste.Drawing.Shapes.Range.md) b)
+## Overlaps([WRange](WithoutHaste.Drawing.Shapes.WRange.md) b)
 
 **virtual bool**  
 
@@ -69,11 +69,11 @@ Format "Start-End".
 
 ## Centered(double middle, double span)
 
-**static Range**  
+**static WRange**  
 
 Create a range with this span and middle value.  
 
-## ConvertValue([Range](WithoutHaste.Drawing.Shapes.Range.md) originalRange, [Range](WithoutHaste.Drawing.Shapes.Range.md) newRange, double value)
+## ConvertValue([WRange](WithoutHaste.Drawing.Shapes.WRange.md) originalRange, [WRange](WithoutHaste.Drawing.Shapes.WRange.md) newRange, double value)
 
 **static double**  
 
@@ -85,17 +85,17 @@ So the returned value is the same percentage along _newRange_ as the provided _v
 
 # Operators
 
-## Range = Range a + Range b
+## WRange = WRange a + WRange b
 
 Returns a range that covers all the area both _a_ and _b_ cover, including any gap in between.  
 This operation is commutative.  
 
-## bool = Range a == Range b
+## bool = WRange a == WRange b
 
-## bool = Range a != Range b
+## bool = WRange a != WRange b
 
 # Derived By
 
-[WithoutHaste.Drawing.Shapes.RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md)  
+[WithoutHaste.Drawing.Shapes.WRangeCircular](WithoutHaste.Drawing.Shapes.WRangeCircular.md)  
 A range on a circular scale. Immutable.  
 

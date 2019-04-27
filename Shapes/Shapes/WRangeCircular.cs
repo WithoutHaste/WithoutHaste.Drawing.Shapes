@@ -28,7 +28,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// The hours of a clock make up a circular range [1, 13) for a normal clock, or [0, 24) for a military clock.
 	/// Since RangeCircular always starts at 0, the normal clock would need to be represented as [0, 12). You'd need to handle the +1 offset when setting or displaying values.
 	/// </example>
-	public class RangeCircular : Range
+	public class WRangeCircular : WRange
 	{
 		/// <summary>The value at which the range loops back to 0.</summary>
 		/// <remarks>In the context of this range, 0 and CircularModulus are the same value.</remarks>
@@ -57,7 +57,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <exception cref='ArgumentException'>CircularModulus must be greater than 0.</exception>
-		public RangeCircular(double start, double end, int circularModulus) : base(Mod(start, circularModulus), Mod(end, circularModulus))
+		public WRangeCircular(double start, double end, int circularModulus) : base(Mod(start, circularModulus), Mod(end, circularModulus))
 		{
 			if(circularModulus <= 0)
 				throw new ArgumentException("CircularModulus must be greater than 0.");
@@ -65,13 +65,13 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <exception cref='ArgumentException'>CircularModulus must be greater than 0.</exception>
-		public static RangeCircular Centered(double middle, double span, int circularModulus)
+		public static WRangeCircular Centered(double middle, double span, int circularModulus)
 		{
-			return new RangeCircular(middle - (span / 2), middle + (span / 2), circularModulus);
+			return new WRangeCircular(middle - (span / 2), middle + (span / 2), circularModulus);
 		}
 
 		/// <summary>Returns true if this range overlaps range <paramref name='b'/>.</summary>
-		public bool Overlaps(RangeCircular b)
+		public bool Overlaps(WRangeCircular b)
 		{
 			return (this.Overlaps(b.Start) || this.Overlaps(b.End) || b.Overlaps(this.Start) || b.Overlaps(this.End));
 		}
@@ -111,13 +111,13 @@ namespace WithoutHaste.Drawing.Shapes
 		///   </example>
 		/// </remarks>
 		/// <exception cref='ArgumentException'>RangeCirculars with different CircularModulus values cannot be combined.</exception>
-		public static RangeCircular operator +(RangeCircular a, RangeCircular b)
+		public static WRangeCircular operator +(WRangeCircular a, WRangeCircular b)
 		{
 			if(a.CircularModulus != b.CircularModulus)
 				throw new ArgumentException("RangeCirculars with different CircularModulus values cannot be combined.");
 			if(a.Overlaps(b))
-				return new RangeCircular(Math.Min(a.Start, b.Start), Math.Max(a.End, b.End), a.CircularModulus);
-			return new RangeCircular(a.Start, b.End, a.CircularModulus);
+				return new WRangeCircular(Math.Min(a.Start, b.Start), Math.Max(a.End, b.End), a.CircularModulus);
+			return new WRangeCircular(a.Start, b.End, a.CircularModulus);
 		}
 
 		/// <summary>Convert a number into this scale. Ensures a positive result.</summary>
@@ -139,23 +139,23 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>Circular ranges are equal if they have the same scale and same range, meaning the Start, End, and CircularModulus values are all the same.</summary>
-		public static bool operator ==(RangeCircular a, RangeCircular b)
+		public static bool operator ==(WRangeCircular a, WRangeCircular b)
 		{
 			return (Geometry.WithinMarginOfError(a.CircularModulus, b.CircularModulus) && Geometry.WithinMarginOfError(a.Start, b.Start) && Geometry.WithinMarginOfError(a.End, b.End));
 		}
 
-		/// <duplicate cref='operator ==(RangeCircular,RangeCircular)'/>
-		public static bool operator !=(RangeCircular a, RangeCircular b)
+		/// <duplicate cref='operator ==(WRangeCircular,WRangeCircular)'/>
+		public static bool operator !=(WRangeCircular a, WRangeCircular b)
 		{
 			return (!Geometry.WithinMarginOfError(a.CircularModulus, b.CircularModulus) || !Geometry.WithinMarginOfError(a.Start, b.Start) || !Geometry.WithinMarginOfError(a.End, b.End));
 		}
 
-		/// <duplicate cref='operator ==(RangeCircular,RangeCircular)'/>
+		/// <duplicate cref='operator ==(WRangeCircular,WRangeCircular)'/>
 		public override bool Equals(Object b)
 		{
-			if(b != null && b is RangeCircular)
+			if(b != null && b is WRangeCircular)
 			{
-				return (this == (RangeCircular)b);
+				return (this == (WRangeCircular)b);
 			}
 			return false;
 		}

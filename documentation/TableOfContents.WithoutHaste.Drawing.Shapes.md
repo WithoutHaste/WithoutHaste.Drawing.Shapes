@@ -2,35 +2,35 @@
 
 ## Concrete Types
 
-[**Circle**](WithoutHaste.Drawing.Shapes.Circle.md)  
+[**WCircle**](WithoutHaste.Drawing.Shapes.WCircle.md)  
 A circle shape. Immutable.  
 
   
-[**Dot**](WithoutHaste.Drawing.Shapes.Dot.md)  
-An (X, Y) coordinate. Immutable.  
-
-  
-[**Line**](WithoutHaste.Drawing.Shapes.Line.md)  
+[**WLine**](WithoutHaste.Drawing.Shapes.WLine.md)  
 Line of infinite length passing through points A and B. Immutable.  
 
   
-[**LineSegment**](WithoutHaste.Drawing.Shapes.LineSegment.md)  
+[**WLineSegment**](WithoutHaste.Drawing.Shapes.WLineSegment.md)  
 Line segment from point A to point B. Immutable.  
 
   
-[**Range**](WithoutHaste.Drawing.Shapes.Range.md)  
+[**WPoint**](WithoutHaste.Drawing.Shapes.WPoint.md)  
+An (X, Y) coordinate. Immutable.  
+
+  
+[**WRange**](WithoutHaste.Drawing.Shapes.WRange.md)  
 A linear range of values. Immutable.  
 
   
-[**RangeCircular**](WithoutHaste.Drawing.Shapes.RangeCircular.md)  
+[**WRangeCircular**](WithoutHaste.Drawing.Shapes.WRangeCircular.md)  
 A range on a circular scale. Immutable.  
 
   
-[**Wedge**](WithoutHaste.Drawing.Shapes.Wedge.md)  
+[**WWedge**](WithoutHaste.Drawing.Shapes.WWedge.md)  
 A wedge is a slice of a circle. It is also known as a circular sector. Immutable.  
 
   
-[**WedgeUnbound**](WithoutHaste.Drawing.Shapes.WedgeUnbound.md)  
+[**WWedgeUnbound**](WithoutHaste.Drawing.Shapes.WWedgeUnbound.md)  
 A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward from the center with no limit. Immutable.  
 
   
@@ -44,7 +44,7 @@ Global settings and miscellaneous operations.
 
 ## Abstract Types
 
-[**Shape**](WithoutHaste.Drawing.Shapes.Shape.md)  
+[**WShape**](WithoutHaste.Drawing.Shapes.WShape.md)  
 Represents a shape, a geometrical figure, a form.  
 
   

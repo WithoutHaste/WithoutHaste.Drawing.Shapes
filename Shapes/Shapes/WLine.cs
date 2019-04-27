@@ -9,12 +9,12 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// Line of infinite length passing through points A and B. Immutable.
 	/// </summary>
-	public class Line : Shape
+	public class WLine : WShape
 	{
 		/// <summary></summary>
-		public readonly Dot A;
+		public readonly WPoint A;
 		/// <summary></summary>
-		public readonly Dot B;
+		public readonly WPoint B;
 		/// <summary>
 		/// When directed, the direction is A to B.
 		/// </summary>
@@ -32,7 +32,7 @@ namespace WithoutHaste.Drawing.Shapes
 		public bool IsHorizontal { get { return (A.Y == B.Y); } }
 
 		/// <exception cref='ArgumentException'>Points A and B cannot be the same.</exception>
-		public Line(Dot a, Dot b)
+		public WLine(WPoint a, WPoint b)
 		{
 			if(a == b)
 				throw new ArgumentException("Points A and B cannot be the same.");
@@ -42,7 +42,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <exception cref='ArgumentException'>Points A and B cannot be the same.</exception>
-		public Line(Dot a, Dot b, bool isDirected)
+		public WLine(WPoint a, WPoint b, bool isDirected)
 		{
 			if(a == b)
 				throw new ArgumentException("Points A and B cannot be the same.");
@@ -51,10 +51,10 @@ namespace WithoutHaste.Drawing.Shapes
 			IsDirected = isDirected;
 		}
 
-		/// <summary>Convert to <see cref="LineSegment"/>.</summary>
-		public LineSegment ToLineSegment()
+		/// <summary>Convert to <see cref="WLineSegment"/>.</summary>
+		public WLineSegment ToLineSegment()
 		{
-			return new LineSegment(A, B, IsDirected);
+			return new WLineSegment(A, B, IsDirected);
 		}
 		
 		//todo: verify that all line operations take vertical and horizontal lines into account
@@ -62,30 +62,30 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Returns the point where a perpendicular line passing through point <paramref name='c'/> intersects this line.
 		/// </summary>
-		public Dot GetPerpendicularIntersect(Dot c)
+		public WPoint GetPerpendicularIntersect(WPoint c)
 		{
 			if(IsVertical)
 			{
-				return new Dot(this.A.X, c.Y);
+				return new WPoint(this.A.X, c.Y);
 			}
 			if(IsHorizontal)
 			{
-				return new Dot(c.X, this.A.Y);
+				return new WPoint(c.X, this.A.Y);
 			}
 			double cSlope = PerpendicularSlope;
 			double cYIntercept = c.Y - (cSlope * c.X);
 			double x = (cYIntercept - this.YIntercept) / (this.Slope - cSlope);
 			double y = (this.Slope * x) + this.YIntercept;
-			return new Dot(x, y);
+			return new WPoint(x, y);
 		}
 
 		/// <summary>
 		/// Scale line down by <paramref name='b'/> amount. Affects length and location measures.
 		/// </summary>
 		/// <example><c>line / 2</c> returns a new Line that lies halfway between point (0,0) and this line.</example>
-		public static Line operator /(Line a, double b)
+		public static WLine operator /(WLine a, double b)
 		{
-			return new Line(a.A / b, a.B / b);
+			return new WLine(a.A / b, a.B / b);
 		}
 
 		/// <summary>Format "(A.x,A.y) to (B.x,B.y)"</summary>

@@ -45,18 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shapes\Circle.cs" />
+    <Compile Include="Shapes\WCircle.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="Shapes\IDraw.cs" />
-    <Compile Include="Shapes\Line.cs" />
-    <Compile Include="Shapes\LineSegment.cs" />
-    <Compile Include="Shapes\Point.cs" />
+    <Compile Include="Shapes\WLine.cs" />
+    <Compile Include="Shapes\WLineSegment.cs" />
+    <Compile Include="Shapes\WPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shapes\Range.cs" />
-    <Compile Include="Shapes\RangeCircular.cs" />
-    <Compile Include="Shapes\Shape.cs" />
-    <Compile Include="Shapes\Wedge.cs" />
-    <Compile Include="Shapes\WedgeUnbound.cs" />
+    <Compile Include="Shapes\WRange.cs" />
+    <Compile Include="Shapes\WRangeCircular.cs" />
+    <Compile Include="Shapes\WShape.cs" />
+    <Compile Include="Shapes\WWedge.cs" />
+    <Compile Include="Shapes\WWedgeUnbound.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />

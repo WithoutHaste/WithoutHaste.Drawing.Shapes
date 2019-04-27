@@ -2,6 +2,8 @@
 
 C# library of shape/geometry calculations and operations.
 
+All shape names start with a "W" ("WPoint", "WRectangle", "WCircle"...) to differentiate them from System.Drawing shapes and other common namespaces. The "W" stands for "Without Haste".
+
 ## Documentation
 
 [Table of Contents](documentation/TableOfContents.WithoutHaste.Drawing.Shapes.md)
@@ -33,6 +35,9 @@ Other C# libraries:
 ## Version
 
 Uses [Semantic Versioning 2.0.0](https://semver.org/).
+
+v2.0.0 - Under Development  
+- All object names updated to start with a "W", to avoid namespace overlaps with System.Drawing/etc.
 
 [Initial Release - v1.0.0](https://github.com/WithoutHaste/WithoutHaste.Drawing.Shapes/releases/tag/v1.0.0)
 

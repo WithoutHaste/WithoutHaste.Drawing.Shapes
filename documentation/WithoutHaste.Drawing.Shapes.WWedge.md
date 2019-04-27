@@ -1,6 +1,6 @@
-# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).Wedge
+# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).WWedge
 
-**Inheritance:** object → [Shape](WithoutHaste.Drawing.Shapes.Shape.md) → [WedgeUnbound](WithoutHaste.Drawing.Shapes.WedgeUnbound.md)  
+**Inheritance:** object → [WShape](WithoutHaste.Drawing.Shapes.WShape.md) → [WWedgeUnbound](WithoutHaste.Drawing.Shapes.WWedgeUnbound.md)  
 **Implements:** [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md)  
 
 A wedge is a slice of a circle. It is also known as a circular sector. Immutable.  
@@ -20,25 +20,25 @@ The radius of the full circle this wedge is a slice of. Also the length of eithe
 
 ## ArcPoint
 
-**[Dot](WithoutHaste.Drawing.Shapes.Dot.md) { public get; }**  
+**[WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) { public get; }**  
 
 The point at the middle of the arc edge of the wedge.  
 
 ## Circle
 
-**[Circle](WithoutHaste.Drawing.Shapes.Circle.md) { public get; }**  
+**[WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) { public get; }**  
 
 The full circle that this wedge is a part of.  
 
 ## EndPoint
 
-**[Dot](WithoutHaste.Drawing.Shapes.Dot.md) { public get; }**  
+**[WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) { public get; }**  
 
 The point on circumference of Circle where the wedge ends.  
 
 ## FourPoints
 
-**[Dot[]](WithoutHaste.Drawing.Shapes.Dot.md) { public get; }**  
+**[WPoint[]](WithoutHaste.Drawing.Shapes.WPoint.md) { public get; }**  
 
 The boundary points of the wedge:  
    
@@ -49,7 +49,7 @@ The boundary points of the wedge:
 
 ## LineEdges
 
-**[LineSegment[]](WithoutHaste.Drawing.Shapes.LineSegment.md) { public get; }**  
+**[WLineSegment[]](WithoutHaste.Drawing.Shapes.WLineSegment.md) { public get; }**  
 
 The straight edges of the wedge:  
    
@@ -70,58 +70,58 @@ Maximum y coordinate required to draw the figure.
 
 ## StartPoint
 
-**[Dot](WithoutHaste.Drawing.Shapes.Dot.md) { public get; }**  
+**[WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) { public get; }**  
 
 The point on circumference of Circle where the wedge begins.  
 
 # Constructors
 
-## Wedge([Circle](WithoutHaste.Drawing.Shapes.Circle.md) circle, [RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md) degreeRange)
+## WWedge([WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) circle, [WRangeCircular](WithoutHaste.Drawing.Shapes.WRangeCircular.md) degreeRange)
 
 **Parameters:**  
-* **[Circle](WithoutHaste.Drawing.Shapes.Circle.md) circle**: The full circle this wedge is a part of.  
-* **[RangeCircular](WithoutHaste.Drawing.Shapes.RangeCircular.md) degreeRange**: The range of degrees this wedge covers.  
+* **[WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) circle**: The full circle this wedge is a part of.  
+* **[WRangeCircular](WithoutHaste.Drawing.Shapes.WRangeCircular.md) degreeRange**: The range of degrees this wedge covers.  
 
-## Wedge([Circle](WithoutHaste.Drawing.Shapes.Circle.md) circle, double degreeStart, double degreeEnd)
+## WWedge([WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) circle, double degreeStart, double degreeEnd)
 
 **Parameters:**  
-* **[Circle](WithoutHaste.Drawing.Shapes.Circle.md) circle**: The full circle this wedge is a part of.  
+* **[WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) circle**: The full circle this wedge is a part of.  
 * **double degreeStart**: The starting degree the wedge covers.  
 * **double degreeEnd**: The ending degree the wedge covers.  
 
 # Methods
 
-## ArcOverlaps([LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md) lineSegment)
+## ArcOverlaps([WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md) lineSegment)
 
 **bool**  
 
 Returns true if the arc overlaps any part of the _lineSegment_.  
 
-## ArcOverlapsArc([Wedge](WithoutHaste.Drawing.Shapes.Wedge.md) b)
+## ArcOverlapsArc([WWedge](WithoutHaste.Drawing.Shapes.WWedge.md) b)
 
 **bool**  
 
 Returns true if this arc overlaps any part of _b_'s arc.  
 
-## Contains([Circle](WithoutHaste.Drawing.Shapes.Circle.md) b)
+## Contains([WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) b)
 
 **bool**  
 
 Returns true if this wedge fully contains circle _b_.  
 
-## Contains([Dot](WithoutHaste.Drawing.Shapes.Dot.md) b)
+## Contains([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b)
 
 **bool**  
 
 Returns true if this wedge contains point _b_, including if _b_ lies on one of this wedge's edges.  
 
-## Overlaps([Circle](WithoutHaste.Drawing.Shapes.Circle.md) b)
+## Overlaps([WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) b)
 
 **bool**  
 
 Returns true if any part of this wedge overlaps any part of circle _b_.  
 
-## Overlaps([Wedge](WithoutHaste.Drawing.Shapes.Wedge.md) b)
+## Overlaps([WWedge](WithoutHaste.Drawing.Shapes.WWedge.md) b)
 
 **bool**  
 
@@ -144,7 +144,7 @@ Format "C:(X,Y) R:Radius Degrees:Start-End".
 
 # Operators
 
-## Wedge = Wedge a / double b
+## WWedge = WWedge a / double b
 
 Scale wedge down by _b_ amount. Affects length and location measures, but not degrees.  
 

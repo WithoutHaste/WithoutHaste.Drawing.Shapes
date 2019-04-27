@@ -1,6 +1,6 @@
-# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).Circle
+# [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md).WCircle
 
-**Inheritance:** object → [Shape](WithoutHaste.Drawing.Shapes.Shape.md)  
+**Inheritance:** object → [WShape](WithoutHaste.Drawing.Shapes.WShape.md)  
 **Implements:** [IDraw](WithoutHaste.Drawing.Shapes.IDraw.md)  
 
 A circle shape. Immutable.  
@@ -51,7 +51,7 @@ Center y coordinate.
 
 ## Center
 
-**[Dot](WithoutHaste.Drawing.Shapes.Dot.md) { public get; }**  
+**[WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) { public get; }**  
 
 ## Diameter
 
@@ -83,37 +83,37 @@ Based on coordinate plane, which degree points towards the MaxY coordinate?
 
 # Constructors
 
-## Circle(double x, double y, double radius)
+## WCircle(double x, double y, double radius)
 
-## Circle([Dot](WithoutHaste.Drawing.Shapes.Dot.md) center, double radius)
+## WCircle([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) center, double radius)
 
 # Methods
 
-## Contains([Circle](WithoutHaste.Drawing.Shapes.Circle.md) b)
+## Contains([WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) b)
 
 **bool**  
 
 Returns true if this circle entirely contains circle _b_, or they exactly overlap.  
 
-## Contains([Wedge](WithoutHaste.Drawing.Shapes.Wedge.md) b)
+## Contains([WWedge](WithoutHaste.Drawing.Shapes.WWedge.md) b)
 
 **bool**  
 
 Returns true if this circle entirely contains wedge _b_.  
 
-## Contains([Dot](WithoutHaste.Drawing.Shapes.Dot.md) b)
+## Contains([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b)
 
 **bool**  
 
 Returns true if point _b_ lies within or on this circle.  
 
-## ContainsOrIsContained([Circle](WithoutHaste.Drawing.Shapes.Circle.md) b)
+## ContainsOrIsContained([WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) b)
 
 **bool**  
 
 Returns true if this circle entirely contains circle _b_, or _b_ entirely contains this circle, or they exactly overlap.  
 
-## DegreesAtPoint([Dot](WithoutHaste.Drawing.Shapes.Dot.md) lineEnd)
+## DegreesAtPoint([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) lineEnd)
 
 **double**  
 
@@ -130,47 +130,47 @@ Circle centers and radiuses are the same.
 
 **virtual int**  
 
-## GetIntersectionPoints([Circle](WithoutHaste.Drawing.Shapes.Circle.md) b)
+## GetIntersectionPoints([WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) b)
 
-**[Dot[]](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**[WPoint[]](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 Finds the intersection points between the edge of this circle and circle _b_.  
 
 **Returns:**  
 Null (no intersection), an array of length 1, or an array of length 2.  
 
-## GetIntersectionPoints([Line](WithoutHaste.Drawing.Shapes.Line.md) line)
+## GetIntersectionPoints([WLine](WithoutHaste.Drawing.Shapes.WLine.md) line)
 
-**[Dot[]](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**[WPoint[]](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 **Returns:**  
 Null (no intercepts), or array of length 1 or 2.  
 
-## GetIntersectionPoints([LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md) lineSegment)
+## GetIntersectionPoints([WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md) lineSegment)
 
-**[Dot[]](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**[WPoint[]](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 Find the intersection points between the edge of this circle and the _lineSegment_.  
 
 **Returns:**  
 Null (no intercepts), or array of length 1, or array of length 2.  
 
-## GetTangentPoints([Dot](WithoutHaste.Drawing.Shapes.Dot.md) b)
+## GetTangentPoints([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b)
 
-**[Dot[]](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**[WPoint[]](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 Find the two tangent points on the circle that form lines to point _b_.  
 
 **Returns:**  
 Array of length 2.  
 
-## Overlaps([Circle](WithoutHaste.Drawing.Shapes.Circle.md) b)
+## Overlaps([WCircle](WithoutHaste.Drawing.Shapes.WCircle.md) b)
 
 **bool**  
 
 Returns true if any part of this circle overlaps any part of circle _b_.  
 
-## Overlaps([LineSegment](WithoutHaste.Drawing.Shapes.LineSegment.md) b)
+## Overlaps([WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md) b)
 
 **bool**  
 
@@ -190,14 +190,14 @@ Draw the figure on the _graphics_ with the _pen_.
 
 ## PointAtDegrees(double degrees)
 
-**[Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**[WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 Returns the point on this circle at the _degrees_ measurement.   
 0 degrees is East of center, increases clockwise.  
 
 ## PointAtRadians(double radians)
 
-**[Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**[WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 Returns the point on this circle at the _radians_ measurement.   
 0 radians is East of center, increases clockwise.  
@@ -224,18 +224,18 @@ Convert radians to degrees.
 
 # Operators
 
-## Circle = Circle a / double b
+## WCircle = WCircle a / double b
 
 Scale circle down by _b_ amount. Affects length and location measures.  
 
 **Example A:**  
 `circle / 2` returns a new Circle with half the radius and half the distance from point (0,0).  
 
-## bool = Circle a == Circle b
+## bool = WCircle a == WCircle b
 
 Circle centers and radiuses are the same.  
 
-## bool = Circle a != Circle b
+## bool = WCircle a != WCircle b
 
 Circle centers or radiuses are different.  
 

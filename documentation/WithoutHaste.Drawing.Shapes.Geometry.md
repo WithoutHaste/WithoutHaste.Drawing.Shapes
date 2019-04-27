@@ -43,7 +43,7 @@ When determining equality, all values have a +/- margin of error. This setting i
 
 # Static Methods
 
-## LineDirection([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b)
+## LineDirection([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) a, [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b)
 
 **static [Direction](WithoutHaste.Drawing.Shapes.Geometry.Direction.md)**  
 
@@ -56,18 +56,18 @@ The inbetween directions cover all remaining values. So "NorthWest" covers all v
 **Exceptions:**  
 * **[NotImplementedException](https://docs.microsoft.com/en-us/dotnet/api/system.notimplementedexception)**: Coordinate plane not supported.  
 
-## PointOnLine([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b, double distance)
+## PointOnLine([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) a, [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b, double distance)
 
-**static [Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**static [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 Calculates point along line AB, starting at A and moving towards B  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Point A and B cannot be the same.  
 
-## PointPastLine([Dot](WithoutHaste.Drawing.Shapes.Dot.md) a, [Dot](WithoutHaste.Drawing.Shapes.Dot.md) b, double distance)
+## PointPastLine([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) a, [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b, double distance)
 
-**static [Dot](WithoutHaste.Drawing.Shapes.Dot.md)**  
+**static [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)**  
 
 Calculates point along line AB, starting at B and moving away from A  
 
