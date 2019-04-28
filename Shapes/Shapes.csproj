@@ -50,6 +50,7 @@
     <Compile Include="Shapes\WCircle.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="Shapes\IDraw.cs" />
+    <Compile Include="Shapes\WClosedFigure.cs" />
     <Compile Include="Shapes\WLine.cs" />
     <Compile Include="Shapes\WLineSegment.cs" />
     <Compile Include="Shapes\WPoint.cs" />

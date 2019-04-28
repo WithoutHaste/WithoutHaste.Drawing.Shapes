@@ -60,93 +60,100 @@ namespace WithoutHaste.Drawing.Shapes
 			return (intersection != Intersection.NONE);
 		}
 
-		/// <summary>Returns intersection between a line segment and another line segment.</summary>
-		public Intersection GetIntersection(WLineSegment b)
-		{
+		///// <summary>Returns intersection between a line segment and another line segment.</summary>
+		//public override Intersection GetIntersection(WLineSegment b)
+		//{
+		//	if(this.Parallel(b))
+		//	{
+		//		if(this.A == b.A)
+		//		{
+		//			if(this.B.Overlaps(b))
+		//				return new Intersection(this);
+		//			if(b.B.Overlaps(this))
+		//				return new Intersection(b);
+		//			return new Intersection(this.A);
+		//		}
+		//		else if(this.A == b.B)
+		//		{
+		//			if(this.B.Overlaps(b))
+		//				return new Intersection(this);
+		//			if(b.A.Overlaps(this))
+		//				return new Intersection(b);
+		//			return new Intersection(this.A);
+		//		}
+		//		//TODO cont rewrite
+		//	}
 
-			//line may lie over the line segment
-			//line equation: y = mx + b, where m is slope and b is y-intercept
-			double slopeA = this.Slope;
-			double slopeB = b.Slope;
-			if(Geometry.WithinMarginOfError(slopeA, slopeB))
+		//	////line may lie over the line segment
+		//	////line equation: y = mx + b, where m is slope and b is y-intercept
+		//	//double slopeA = this.Slope;
+		//	//double slopeB = b.Slope;
+		//	//if(Geometry.WithinMarginOfError(slopeA, slopeB))
+		//	//{
+		//	//	//parallel lines don't overlap unless they are right on top of each other
+		//	//	//meaning, one of the points must be on the other line
+		//	//	if(b.Overlaps(this.A) || b.Overlaps(this.B) || this.Overlaps(b.A) || this.Overlaps(b.B))
+		//	//		return new Intersection(this);
+		//	//	//parallel lines didn't touch
+		//	//	return Intersection.NONE;
+		//	//}
+
+		//	////line may intersect at 1 point
+		//	//double x = (b.YIntercept - this.YIntercept) / (this.Slope - b.Slope);
+		//	//if(this.IsVertical)
+		//	//{
+		//	//	x = this.A.X;
+		//	//}
+		//	//else if(b.IsVertical)
+		//	//{
+		//	//	x = b.A.X;
+		//	//}
+		//	//double y = (this.Slope * x) + this.YIntercept;
+		//	//if(this.IsHorizontal)
+		//	//{
+		//	//	y = this.A.Y;
+		//	//}
+		//	//else if(b.IsHorizontal)
+		//	//{
+		//	//	y = b.A.Y;
+		//	//}
+		//	//WPoint interceptPoint = new WPoint(x, y);
+		//	//if(this.Overlaps(interceptPoint) && b.Overlaps(interceptPoint))
+		//	//	return new Intersection(interceptPoint);
+
+		//	////no intersection
+		//	//return Intersection.NONE;
+		//}
+
+		/// <summary>Returns intersection between a line segment and a line.</summary>
+		public override Intersection GetIntersection(WLine b)
+		{
+			if(this.Parallel(b))
 			{
-				//parallel lines don't overlap unless they are right on top of each other
-				//meaning, one of the points must be on the other line
-				if(b.Overlaps(this.A) || b.Overlaps(this.B) || this.Overlaps(b.A) || this.Overlaps(b.B))
+				if(b.Overlaps(this.A))
 					return new Intersection(this);
-				//parallel lines didn't touch
 				return Intersection.NONE;
 			}
 
-			//line may intersect at 1 point
-			double x = (b.YIntercept - this.YIntercept) / (this.Slope - b.Slope);
-			if(this.IsVertical)
-			{
-				x = this.A.X;
-			}
-			else if(b.IsVertical)
-			{
-				x = b.A.X;
-			}
-			double y = (this.Slope * x) + this.YIntercept;
-			if(this.IsHorizontal)
-			{
-				y = this.A.Y;
-			}
-			else if(b.IsHorizontal)
-			{
-				y = b.A.Y;
-			}
-			WPoint interceptPoint = new WPoint(x, y);
-			if(this.Overlaps(interceptPoint) && b.Overlaps(interceptPoint))
-				return new Intersection(interceptPoint);
+			WLine thisLine = this.ToLine();
+			Intersection potentialIntersection = thisLine.GetIntersection(b);
+			if(this.Overlaps(potentialIntersection.Point))
+				return potentialIntersection;
 
-			//no intersection
 			return Intersection.NONE;
 		}
 
-		/// <summary>Returns intersection between a line segment and a line.</summary>
-		public Intersection GetIntersection(WLine b)
+		/// <summary>Returns false. An infinite line cannot be coincidental to a finite line.</summary>
+		public override bool Coincidental(WLine b)
 		{
-			//line may lie over the line segment
-			//line equation: y = mx + b, where m is slope and b is y-intercept
-			double slopeA = this.Slope;
-			double slopeB = b.Slope;
-			if(Geometry.WithinMarginOfError(slopeA, slopeB))
-			{
-				//parallel lines don't overlap unless they are right on top of each other
-				//meaning, one of the points must be on the other line
-				if(b.Overlaps(this.A) || b.Overlaps(this.B))
-					return new Intersection(this);
-				//parallel lines didn't touch
-				return Intersection.NONE;
-			}
+			return false;
+		}
 
-			//line may intersect at 1 point
-			double x = (b.YIntercept - this.YIntercept) / (this.Slope - b.Slope);
-			if(this.IsVertical)
-			{
-				x = this.A.X;
-			}
-			else if(b.IsVertical)
-			{
-				x = b.A.X;
-			}
-			double y = (this.Slope * x) + this.YIntercept;
-			if(this.IsHorizontal)
-			{
-				y = this.A.Y;
-			}
-			else if(b.IsHorizontal)
-			{
-				y = b.A.Y;
-			}
-			WPoint interceptPoint = new WPoint(x, y);
-			if(this.Overlaps(interceptPoint))
-				return new Intersection(interceptPoint);
-
-			//no intersection
-			return Intersection.NONE;
+		/// <summary>Returns true if lines are coincidental to each other.</summary>
+		/// <remarks>Coincidental means that every point on this line is also on the other, and vice versa. In short, the lines are equal.</remarks>
+		public override bool Coincidental(WLineSegment b)
+		{
+			return (this.A == b.A && this.B == b.B);
 		}
 
 		/// <summary>Format "(A.x,A.y) to (B.x,B.y)"</summary>

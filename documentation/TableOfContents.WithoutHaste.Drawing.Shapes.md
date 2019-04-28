@@ -2,6 +2,10 @@
 
 ## Concrete Types
 
+[**Intersection**](WithoutHaste.Drawing.Shapes.Intersection.md)  
+How two shapes intersected each other.  
+
+  
 [**WCircle**](WithoutHaste.Drawing.Shapes.WCircle.md)  
 A circle shape. Immutable.  
 
@@ -48,6 +52,10 @@ Global settings and miscellaneous operations.
 
 ## Abstract Types
 
+[**WClosedFigure**](WithoutHaste.Drawing.Shapes.WClosedFigure.md)  
+Represents any planar (2D) figure with a single outline. Outline/edges may include straight sections and curved sections.  
+
+  
 [**WShape**](WithoutHaste.Drawing.Shapes.WShape.md)  
 Represents a shape, a geometrical figure, a form.  
 
@@ -55,6 +63,10 @@ Represents a shape, a geometrical figure, a form.
 
 ## Interfaces
 
+[**IClosedFigure**](WithoutHaste.Drawing.Shapes.IClosedFigure.md)  
+Represents a closed figure shape.  
+
+  
 [**IDraw**](WithoutHaste.Drawing.Shapes.IDraw.md)  
 Represents anything that can be drawn on a Graphics object.  
 

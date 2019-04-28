@@ -186,6 +186,8 @@ If line _b_ lies within the circle, that counts as overlapping.
 Draw the figure on the _graphics_ with the _pen_.  
 
 **Parameters:**  
+* **[System.Drawing.Graphics](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics) graphics**:   
+* **[System.Drawing.Pen](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pen) pen**:   
 * **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
 ## PointAtDegrees(double degrees)

@@ -27,6 +27,8 @@ Maximum y coordinate required to draw the figure.
 Draw the figure on the _graphics_ with the _pen_.  
 
 **Parameters:**  
+* **[System.Drawing.Graphics](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics) graphics**:   
+* **[System.Drawing.Pen](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pen) pen**:   
 * **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
 # Implemented By
@@ -34,11 +36,17 @@ Draw the figure on the _graphics_ with the _pen_.
 [WithoutHaste.Drawing.Shapes.WCircle](WithoutHaste.Drawing.Shapes.WCircle.md)  
 A circle shape. Immutable.  
 
+[WithoutHaste.Drawing.Shapes.WClosedFigure](WithoutHaste.Drawing.Shapes.WClosedFigure.md)  
+Represents any planar (2D) figure with a single outline. Outline/edges may include straight sections and curved sections.  
+
 [WithoutHaste.Drawing.Shapes.WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md)  
 Line segment from point A to point B. Immutable.  
 
 [WithoutHaste.Drawing.Shapes.WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)  
 An (X, Y) coordinate. Immutable.  
+
+[WithoutHaste.Drawing.Shapes.WRectangle](WithoutHaste.Drawing.Shapes.WRectangle.md)  
+Represents a rectangle or square.  
 
 [WithoutHaste.Drawing.Shapes.WWedge](WithoutHaste.Drawing.Shapes.WWedge.md)  
 A wedge is a slice of a circle. It is also known as a circular sector. Immutable.  

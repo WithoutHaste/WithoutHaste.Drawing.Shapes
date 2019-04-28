@@ -10,7 +10,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// Represents a rectangle or square.
 	/// </summary>
-	public class WRectangle : WShape, IDraw, IClosedFigure
+	public class WRectangle : WShape, IDraw//, IClosedFigure
 	{
 		/// <summary>Refers to the top-left corner, regardless of the coordinate plane being used.</summary>
 		public readonly WPoint Corner;
@@ -24,6 +24,10 @@ namespace WithoutHaste.Drawing.Shapes
 
 		#region Properties
 
+		/// <summary>Minimum x coordinate required to draw the figure.</summary>
+		public double MinX { get { return Corners.Min(c => c.X); } }
+		/// <summary>Minimum y coordinate required to draw the figure.</summary>
+		public double MinY { get { return Corners.Min(c => c.Y); } }
 		/// <inheritdoc/>
 		public double MaxX { get { return Corners.Max(c => c.X); } }
 		/// <inheritdoc/>
@@ -169,18 +173,18 @@ namespace WithoutHaste.Drawing.Shapes
 			return Intersection.NONE;
 		}
 
-		/// <inheritdoc/>
-		public GraphicsPath Slice(WLine a, WLine b)
-		{
-			Intersection intersectionA = GetIntersection(a);
-			Intersection intersectionB = GetIntersection(b);
-			if(intersectionA == Intersection.NONE && intersectionB == Intersection.NONE)
-				return null; //TODO what if lines were on either side and actually enveloped the entire rect?
-			//one line off rect, one on it
-			//one line on a corner, one on it fully
-			//both lines on it fully
-				//but do they slice a corner or just a trapezoid?
-		}
+		///// <inheritdoc/>
+		//public GraphicsPath Slice(WLine a, WLine b)
+		//{
+		//	Intersection intersectionA = GetIntersection(a);
+		//	Intersection intersectionB = GetIntersection(b);
+		//	if(intersectionA == Intersection.NONE && intersectionB == Intersection.NONE)
+		//		return null; //TODO what if lines were on either side and actually enveloped the entire rect?
+		//	//one line off rect, one on it
+		//	//one line on a corner, one on it fully
+		//	//both lines on it fully
+		//		//but do they slice a corner or just a trapezoid?
+		//}
 
 		/// <inheritdoc/>
 		public void Paint(Graphics graphics, Pen pen, double unitsToPixels)

@@ -22,8 +22,10 @@ namespace WithoutHaste.Drawing.Shapes
 			Point,
 			/// <summary>Intersection at multiple points.</summary>
 			Points,
-			/// <summary>Intersectio along an entire line.</summary>
-			LineSegment
+			/// <summary>Intersection along an entire line segment.</summary>
+			LineSegment,
+			/// <summary>Lines are coincidental.</summary>
+			Line
 		};
 
 		/// <summary></summary>
@@ -32,32 +34,15 @@ namespace WithoutHaste.Drawing.Shapes
 		#region Properties
 
 		/// <summary></summary>
-		public bool IsNone {
-			get {
-				return (Type == IntersectionType.None);
-			}
-		}
-
+		public bool IsNone { get { return (Type == IntersectionType.None); } }
 		/// <summary></summary>
-		public bool IsPoint {
-			get {
-				return (Type == IntersectionType.Point);
-			}
-		}
-
+		public bool IsPoint { get { return (Type == IntersectionType.Point); } }
 		/// <summary></summary>
-		public bool IsPoints {
-			get {
-				return (Type == IntersectionType.Points);
-			}
-		}
-
+		public bool IsPoints { get { return (Type == IntersectionType.Points); } }
 		/// <summary></summary>
-		public bool IsLineSegment {
-			get {
-				return (Type == IntersectionType.LineSegment);
-			}
-		}
+		public bool IsLineSegment { get { return (Type == IntersectionType.LineSegment); } }
+		/// <summary></summary>
+		public bool IsLine { get { return (Type == IntersectionType.Line); } }
 
 		private List<WPoint> points;
 		/// <summary></summary>
@@ -81,6 +66,15 @@ namespace WithoutHaste.Drawing.Shapes
 			get {
 				if(Type != IntersectionType.LineSegment) throw new Exception("Wrong intersection type.");
 				return lineSegment;
+			}
+		}
+
+		private WLine line;
+		/// <summary></summary>
+		public WLine Line {
+			get {
+				if(Type != IntersectionType.Line) throw new Exception("Wrong intersection type.");
+				return line;
 			}
 		}
 
@@ -115,6 +109,13 @@ namespace WithoutHaste.Drawing.Shapes
 		{
 			Type = IntersectionType.LineSegment;
 			this.lineSegment = lineSegment;
+		}
+
+		/// <summary></summary>
+		public Intersection(WLine line)
+		{
+			Type = IntersectionType.Line;
+			this.line = line;
 		}
 
 		#endregion

@@ -59,6 +59,32 @@ namespace WithoutHaste.Drawing.Shapes
 			return line.Overlaps(this);
 		}
 
+		/// <summary>Returns true if this point lies between the lines or on either line.</summary>
+		/// <exception cref='ArgumentException'>Lines A and B must be parallel.</exception>
+		/// <exception cref='ArgumentException'>Lines A and B cannot be coincidental. (They must be different lines.)</exception>
+		public bool Between(WLine lineA, WLine lineB)
+		{
+			if(!lineA.Parallel(lineB))
+				throw new ArgumentException("Lines A and B must be parallel.");
+			if(lineA.Coincidental(lineB))
+				throw new ArgumentException("Lines A and B cannot be coincidental. (They must be different lines.)");
+
+			//vertical lines - just check the X value
+			if(lineA.IsVertical)
+				return (this.X >= Math.Min(lineA.A.X, lineB.A.X) && this.X <= Math.Max(lineA.A.X, lineB.A.X));
+			//horizontal lines - just check the Y value
+			if(lineA.IsHorizontal)
+				return (this.Y >= Math.Min(lineA.A.Y, lineB.A.Y) && this.Y <= Math.Max(lineA.A.Y, lineB.A.Y));
+			//otherwise
+			//find vertical line through "this" point
+			//if it intersects one line higher than "this" (or equal to it) and the other line lower than "this" (or equal to it), then "this" is between the lines
+			WLine verticalLine = WLine.Vertical(this);
+
+
+
+			return false;
+		}
+
 		/// <summary>Returns resulting point if this point is rotated around <paramref name='reference'/> by <paramref name='degrees'/>.</summary>
 		/// <param name='reference'>The center of the rotation.</param>
 		/// <param name='degrees'>Positive values means a counter-clockwise rotation.</param>
@@ -176,6 +202,12 @@ namespace WithoutHaste.Drawing.Shapes
 		public Point ToPoint()
 		{
 			return new Point((int)X, (int)Y);
+		}
+
+		/// <summary>Convert to System.Drawing.PointF.</summary>
+		public PointF ToPointF()
+		{
+			return new PointF((float)X, (float)Y);
 		}
 
 		/// <inheritdoc/>

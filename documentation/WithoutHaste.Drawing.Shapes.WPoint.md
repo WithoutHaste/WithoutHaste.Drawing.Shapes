@@ -42,6 +42,16 @@ Maximum y coordinate required to draw the figure.
 
 # Methods
 
+## Between([WLine](WithoutHaste.Drawing.Shapes.WLine.md) lineA, [WLine](WithoutHaste.Drawing.Shapes.WLine.md) lineB)
+
+**bool**  
+
+Returns true if this point lies between the lines or on either line.  
+
+**Exceptions:**  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Lines A and B must be parallel.  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Lines A and B cannot be coincidental. (They must be different lines.)  
+
 ## Distance([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b)
 
 **double**  
@@ -62,6 +72,12 @@ Returns the distance between this point and point _b_. Always positive.
 
 Returns true if this point overlaps any part of the .  
 
+## Overlaps([WLine](WithoutHaste.Drawing.Shapes.WLine.md) line)
+
+**bool**  
+
+Returns true if this point overlaps any part of the .  
+
 ## Paint([System.Drawing.Graphics](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics) graphics, [System.Drawing.Pen](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pen) pen, double unitsToPixels)
 
 **void**  
@@ -69,6 +85,8 @@ Returns true if this point overlaps any part of the .
 Draw the figure on the _graphics_ with the _pen_.  
 
 **Parameters:**  
+* **[System.Drawing.Graphics](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics) graphics**:   
+* **[System.Drawing.Pen](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pen) pen**:   
 * **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
 ## Rotate([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) reference, double degrees)
@@ -89,6 +107,18 @@ Returns resulting point if this point is rotated around the origin by _degrees_.
 
 **Parameters:**  
 * **double degrees**: Positive values means a counter-clockwise rotation.  
+
+## ToPoint()
+
+**[System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.point)**  
+
+Convert to System.Drawing.Point.  
+
+## ToPointF()
+
+**[System.Drawing.PointF](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pointf)**  
+
+Convert to System.Drawing.PointF.  
 
 ## ToString()
 

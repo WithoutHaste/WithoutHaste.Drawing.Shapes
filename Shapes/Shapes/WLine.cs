@@ -9,6 +9,17 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// Line of infinite length passing through points A and B. Immutable.
 	/// </summary>
+	/// <remarks>
+	/// General Form:         a*x + b*y = c
+	/// Slope-Intercept Form: y = m*x + b
+	/// Point-Slope Form:     y - y' = m*(x - x')
+	/// Vertical Line:        x = k
+	/// Horizontal Line:      y = k
+	/// 
+	/// Where "m" is Slope.
+	/// Where "a", "b", "c", and "k" are constants.
+	/// Where "a", "b", and "c" are integers and "a" > 0.
+	/// </remarks>
 	public class WLine : WShape
 	{
 		/// <summary></summary>
@@ -27,9 +38,9 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary></summary>
 		public double YIntercept { get { return A.Y - (Slope * A.X); } }
 		/// <summary></summary>
-		public bool IsVertical { get { return (A.X == B.X); } }
+		public bool IsVertical { get { return (A.X == B.X); } } //TODO: use margin of error?
 		/// <summary></summary>
-		public bool IsHorizontal { get { return (A.Y == B.Y); } }
+		public bool IsHorizontal { get { return (A.Y == B.Y); } } //TODO: use margin of error?
 
 		/// <exception cref='ArgumentException'>Points A and B cannot be the same.</exception>
 		public WLine(WPoint a, WPoint b)
@@ -49,6 +60,12 @@ namespace WithoutHaste.Drawing.Shapes
 			A = a;
 			B = b;
 			IsDirected = isDirected;
+		}
+
+		/// <summary>Generates a vertical line through the specified point.</summary>
+		public static WLine Vertical(WPoint point)
+		{
+			return new WLine(point, new WPoint(point.X, point.Y + 1));
 		}
 
 		/// <summary>Convert to <see cref="WLineSegment"/>.</summary>
@@ -93,6 +110,57 @@ namespace WithoutHaste.Drawing.Shapes
 			}
 
 			return true;
+		}
+
+		/// <summary>Returns the intersection between the two lines.</summary>
+		public virtual Intersection GetIntersection(WLine b)
+		{
+			if(this.Parallel(b))
+			{
+				if(this.Coincidental(b))
+					return new Intersection(this);
+				return Intersection.NONE;
+			}
+			//y = mx + b AND y = m'x + b'
+			//mx + b = m'x + b'
+			//mx - m'x = b' - b
+			//x(m - m') = b' - b
+			//x = (b' - b) / (m - m')
+			double intersectionX = (b.YIntercept - this.YIntercept) / (this.Slope - b.Slope);
+			if(this.IsVertical)
+				intersectionX = this.A.X;
+			//y = mx + b
+			double intersectionY = (this.Slope * intersectionX) + this.YIntercept;
+			if(this.IsHorizontal)
+				intersectionY = this.A.Y;
+
+			return new Intersection(new WPoint(intersectionX, intersectionY));
+		}
+
+		/// <summary>Returns intersection between a line segment and a line.</summary>
+		public virtual Intersection GetIntersection(WLineSegment b)
+		{
+			return b.GetIntersection(this);
+		}
+
+		/// <summary>Returns true if the lines are parallel to each other.</summary>
+		/// <remarks>Parallel means they have the same slope.</remarks>
+		public bool Parallel(WLine b)
+		{
+			return Geometry.WithinMarginOfError(this.Slope, b.Slope);
+		}
+
+		/// <summary>Returns true if lines are coincidental to each other.</summary>
+		/// <remarks>Coincidental means that every point on this line is also on the other, and vice versa. In short, the lines are equal.</remarks>
+		public virtual bool Coincidental(WLine b)
+		{
+			return (Parallel(b) && Geometry.WithinMarginOfError(this.YIntercept, b.YIntercept));
+		}
+
+		/// <summary>Returns false. An infinite line cannot be coincidental to a finite line.</summary>
+		public virtual bool Coincidental(WLineSegment b)
+		{
+			return false;
 		}
 
 		/// <summary>

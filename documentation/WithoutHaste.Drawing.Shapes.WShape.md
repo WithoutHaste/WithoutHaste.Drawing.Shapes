@@ -10,6 +10,9 @@ Represents a shape, a geometrical figure, a form.
 [WithoutHaste.Drawing.Shapes.WCircle](WithoutHaste.Drawing.Shapes.WCircle.md)  
 A circle shape. Immutable.  
 
+[WithoutHaste.Drawing.Shapes.WClosedFigure](WithoutHaste.Drawing.Shapes.WClosedFigure.md)  
+Represents any planar (2D) figure with a single outline. Outline/edges may include straight sections and curved sections.  
+
 [WithoutHaste.Drawing.Shapes.WLine](WithoutHaste.Drawing.Shapes.WLine.md)  
 Line of infinite length passing through points A and B. Immutable.  
 

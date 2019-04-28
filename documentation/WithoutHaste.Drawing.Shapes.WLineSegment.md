@@ -33,9 +33,30 @@ Maximum y coordinate required to draw the figure.
 
 # Methods
 
+## Coincidental([WLine](WithoutHaste.Drawing.Shapes.WLine.md) b)
+
+**virtual bool**  
+
+Returns false. An infinite line cannot be coincidental to a finite line.  
+
+## Coincidental([WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md) b)
+
+**virtual bool**  
+
+Returns true if lines are coincidental to each other.  
+
+**Remarks:**  
+Coincidental means that every point on this line is also on the other, and vice versa. In short, the lines are equal.  
+
+## GetIntersection([WLine](WithoutHaste.Drawing.Shapes.WLine.md) b)
+
+**virtual [Intersection](WithoutHaste.Drawing.Shapes.Intersection.md)**  
+
+Returns intersection between a line segment and a line.  
+
 ## Overlaps([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) c)
 
-**bool**  
+**virtual bool**  
 
 Returns true if point _c_ lies on this line segment.  
 
@@ -52,6 +73,8 @@ Returns true if this line segments overlaps line segment _b_ at any point.
 Draw the figure on the _graphics_ with the _pen_.  
 
 **Parameters:**  
+* **[System.Drawing.Graphics](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.graphics) graphics**:   
+* **[System.Drawing.Pen](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pen) pen**:   
 * **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
 ## ToLine()

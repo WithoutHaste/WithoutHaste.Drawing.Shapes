@@ -3,8 +3,11 @@
 ## [WithoutHaste.Drawing.Shapes](TableOfContents.WithoutHaste.Drawing.Shapes.md)
 
 [WithoutHaste.Drawing.Shapes.Geometry](WithoutHaste.Drawing.Shapes.Geometry.md)  
+[WithoutHaste.Drawing.Shapes.IClosedFigure](WithoutHaste.Drawing.Shapes.IClosedFigure.md)  
 [WithoutHaste.Drawing.Shapes.IDraw](WithoutHaste.Drawing.Shapes.IDraw.md)  
+[WithoutHaste.Drawing.Shapes.Intersection](WithoutHaste.Drawing.Shapes.Intersection.md)  
 [WithoutHaste.Drawing.Shapes.WCircle](WithoutHaste.Drawing.Shapes.WCircle.md)  
+[WithoutHaste.Drawing.Shapes.WClosedFigure](WithoutHaste.Drawing.Shapes.WClosedFigure.md)  
 [WithoutHaste.Drawing.Shapes.WLine](WithoutHaste.Drawing.Shapes.WLine.md)  
 [WithoutHaste.Drawing.Shapes.WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md)  
 [WithoutHaste.Drawing.Shapes.WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)  
