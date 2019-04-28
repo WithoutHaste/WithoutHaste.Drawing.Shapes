@@ -20,6 +20,8 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>
 		/// Draw the figure on the <paramref name='graphics'/> with the <paramref name='pen'/>.
 		/// </summary>
+		/// <param name="graphics"></param>
+		/// <param name="pen"></param>
 		/// <param name="unitsToPixels">
 		/// Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.
 		/// </param>

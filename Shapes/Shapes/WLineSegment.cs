@@ -37,7 +37,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>Returns true if point <paramref name='c'/> lies on this line segment.</summary>
-		public bool Overlaps(WPoint c)
+		public override bool Overlaps(WPoint c)
 		{
 			if(IsVertical)
 			{
@@ -56,37 +56,97 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>Returns true if this line segments overlaps line segment <paramref name='b'/> at any point.</summary>
 		public bool Overlaps(WLineSegment b)
 		{
+			Intersection intersection = GetIntersection(b);
+			return (intersection != Intersection.NONE);
+		}
+
+		/// <summary>Returns intersection between a line segment and another line segment.</summary>
+		public Intersection GetIntersection(WLineSegment b)
+		{
+
+			//line may lie over the line segment
 			//line equation: y = mx + b, where m is slope and b is y-intercept
-			WLineSegment a = this;
-			double slopeA = a.Slope; 
+			double slopeA = this.Slope;
 			double slopeB = b.Slope;
 			if(Geometry.WithinMarginOfError(slopeA, slopeB))
 			{
 				//parallel lines don't overlap unless they are right on top of each other
 				//meaning, one of the points must be on the other line
-				return (a.Overlaps(b.A) || a.Overlaps(b.B) || b.Overlaps(a.A) || b.Overlaps(a.B));
+				if(b.Overlaps(this.A) || b.Overlaps(this.B) || this.Overlaps(b.A) || this.Overlaps(b.B))
+					return new Intersection(this);
+				//parallel lines didn't touch
+				return Intersection.NONE;
 			}
-			//do lines intercept at a point?
-			double x = (b.YIntercept - a.YIntercept) / (a.Slope - b.Slope);
-			if(a.IsVertical)
+
+			//line may intersect at 1 point
+			double x = (b.YIntercept - this.YIntercept) / (this.Slope - b.Slope);
+			if(this.IsVertical)
 			{
-				x = a.A.X;
+				x = this.A.X;
 			}
 			else if(b.IsVertical)
 			{
 				x = b.A.X;
 			}
-			double y = (a.Slope * x) + a.YIntercept;
-			if(a.IsHorizontal)
+			double y = (this.Slope * x) + this.YIntercept;
+			if(this.IsHorizontal)
 			{
-				y = a.A.Y;
+				y = this.A.Y;
 			}
 			else if(b.IsHorizontal)
 			{
 				y = b.A.Y;
 			}
 			WPoint interceptPoint = new WPoint(x, y);
-			return (a.Overlaps(interceptPoint) && b.Overlaps(interceptPoint));
+			if(this.Overlaps(interceptPoint) && b.Overlaps(interceptPoint))
+				return new Intersection(interceptPoint);
+
+			//no intersection
+			return Intersection.NONE;
+		}
+
+		/// <summary>Returns intersection between a line segment and a line.</summary>
+		public Intersection GetIntersection(WLine b)
+		{
+			//line may lie over the line segment
+			//line equation: y = mx + b, where m is slope and b is y-intercept
+			double slopeA = this.Slope;
+			double slopeB = b.Slope;
+			if(Geometry.WithinMarginOfError(slopeA, slopeB))
+			{
+				//parallel lines don't overlap unless they are right on top of each other
+				//meaning, one of the points must be on the other line
+				if(b.Overlaps(this.A) || b.Overlaps(this.B))
+					return new Intersection(this);
+				//parallel lines didn't touch
+				return Intersection.NONE;
+			}
+
+			//line may intersect at 1 point
+			double x = (b.YIntercept - this.YIntercept) / (this.Slope - b.Slope);
+			if(this.IsVertical)
+			{
+				x = this.A.X;
+			}
+			else if(b.IsVertical)
+			{
+				x = b.A.X;
+			}
+			double y = (this.Slope * x) + this.YIntercept;
+			if(this.IsHorizontal)
+			{
+				y = this.A.Y;
+			}
+			else if(b.IsHorizontal)
+			{
+				y = b.A.Y;
+			}
+			WPoint interceptPoint = new WPoint(x, y);
+			if(this.Overlaps(interceptPoint))
+				return new Intersection(interceptPoint);
+
+			//no intersection
+			return Intersection.NONE;
 		}
 
 		/// <summary>Format "(A.x,A.y) to (B.x,B.y)"</summary>

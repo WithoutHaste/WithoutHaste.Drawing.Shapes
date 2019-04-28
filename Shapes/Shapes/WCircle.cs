@@ -10,7 +10,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <summary>
 	/// A circle shape. Immutable.
 	/// </summary>
-	public class WCircle : WShape, IDraw
+	public class WCircle : WShape, IDraw//, IClosedFigure
 	{
 		/// <summary></summary>
 		public static readonly int DEGREES_IN_CIRCLE = 360;

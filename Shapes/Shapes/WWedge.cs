@@ -13,7 +13,7 @@ namespace WithoutHaste.Drawing.Shapes
 	/// <remarks>
 	/// "Arc" refers to the segment of circle's circumference that makes up the curved edge of the wedge. And arc is 1-dimensional; an arc is a curved line.
 	/// </remarks>
-	public class WWedge : WWedgeUnbound, IDraw
+	public class WWedge : WWedgeUnbound, IDraw//, IClosedFigure
 	{
 		/// <summary>The radius of the full circle this wedge is a slice of. Also the length of either straight side of the wegde.</summary>
 		public readonly double Radius;

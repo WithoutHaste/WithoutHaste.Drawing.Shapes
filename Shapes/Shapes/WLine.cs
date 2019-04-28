@@ -79,6 +79,22 @@ namespace WithoutHaste.Drawing.Shapes
 			return new WPoint(x, y);
 		}
 
+		/// <summary>Returns true if point <paramref name='c'/> lies on this line.</summary>
+		public virtual bool Overlaps(WPoint c)
+		{
+			if(IsVertical)
+			{
+				return (Geometry.WithinMarginOfError(c.X, A.X));
+			}
+
+			if(!Geometry.WithinMarginOfError(c.Y, (Slope * c.X) + YIntercept))
+			{
+				return false;
+			}
+
+			return true;
+		}
+
 		/// <summary>
 		/// Scale line down by <paramref name='b'/> amount. Affects length and location measures.
 		/// </summary>

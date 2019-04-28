@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Intersection.cs" />
+    <Compile Include="Shapes\IClosedFigure.cs" />
     <Compile Include="Shapes\WCircle.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="Shapes\IDraw.cs" />

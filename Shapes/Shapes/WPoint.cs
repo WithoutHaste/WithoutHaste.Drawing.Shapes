@@ -53,6 +53,12 @@ namespace WithoutHaste.Drawing.Shapes
 			return lineSegment.Overlaps(this);
 		}
 
+		/// <summary>Returns true if this point overlaps any part of the <pararef name='line'/>.</summary>
+		public bool Overlaps(WLine line)
+		{
+			return line.Overlaps(this);
+		}
+
 		/// <summary>Returns resulting point if this point is rotated around <paramref name='reference'/> by <paramref name='degrees'/>.</summary>
 		/// <param name='reference'>The center of the rotation.</param>
 		/// <param name='degrees'>Positive values means a counter-clockwise rotation.</param>
@@ -164,6 +170,12 @@ namespace WithoutHaste.Drawing.Shapes
 		public override string ToString()
 		{
 			return String.Format("({0},{1})", X, Y);
+		}
+
+		/// <summary>Convert to System.Drawing.Point.</summary>
+		public Point ToPoint()
+		{
+			return new Point((int)X, (int)Y);
 		}
 
 		/// <inheritdoc/>
