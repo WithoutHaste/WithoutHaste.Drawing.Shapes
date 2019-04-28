@@ -26,6 +26,10 @@ A linear range of values. Immutable.
 A range on a circular scale. Immutable.  
 
   
+[**WRectangle**](WithoutHaste.Drawing.Shapes.WRectangle.md)  
+Represents a rectangle or square.  
+
+  
 [**WWedge**](WithoutHaste.Drawing.Shapes.WWedge.md)  
 A wedge is a slice of a circle. It is also known as a circular sector. Immutable.  
 

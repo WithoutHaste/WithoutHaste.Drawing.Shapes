@@ -5,7 +5,7 @@ using WithoutHaste.Drawing.Shapes;
 namespace GeometryTests
 {
 	[TestClass]
-	public class TestDot
+	public class TestPoint
 	{
 		[TestMethod]
 		[ExpectedException(typeof(ArgumentException))]
@@ -77,6 +77,528 @@ namespace GeometryTests
 			//act
 			WPoint Dot = new WPoint(x, y);
 			//expected exception
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_0Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 0;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(start, result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_45Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 45;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(1.414, 1.414), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_90Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 90;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(0, 2), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_135Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 135;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(-1.414, 1.414), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_180Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 180;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(-2, 0), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_225Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 225;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(-1.414, -1.414), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_270Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 270;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(0, -2), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_315Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 315;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(1.414, -1.414), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Paper_360Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 360;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(start, result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_0Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 0;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(start, result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_45Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 45;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(1.414, -1.414), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_90Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 90;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(0, -2), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_135Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 135;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(-1.414, -1.414), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_180Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 180;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(-2, 0), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_225Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 225;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(-1.414, 1.414), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_270Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 270;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(0, 2), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_315Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 315;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(new WPoint(1.414, 1.414), result);
+		}
+
+		[TestMethod]
+		public void RotateAroundOrigin_Screen_360Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			double degrees = 360;
+			//act
+			WPoint result = start.RotateAroundOrigin(degrees);
+			//assert
+			Assert.AreEqual(start, result);
+		}
+
+		[TestMethod]
+		public void Rotate_Paper_0Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 0;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(start, result);
+		}
+
+		[TestMethod]
+		public void Rotate_Paper_45Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 45;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(2.414, 1), result);
+		}
+		
+		[TestMethod]
+		public void Rotate_Paper_90Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 90;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(2, 2), result);
+		}
+		
+		[TestMethod]
+		public void Rotate_Paper_135Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 135;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(1, 2.414), result);
+		}
+		
+		[TestMethod]
+		public void Rotate_Paper_180Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 180;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(0, 2), result);
+		}
+		
+		[TestMethod]
+		public void Rotate_Paper_225Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 225;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(-0.414, 1), result);
+		}
+		
+		[TestMethod]
+		public void Rotate_Paper_270Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 270;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(0, 0), result);
+		}
+		
+		[TestMethod]
+		public void Rotate_Paper_315Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 315;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(1, -0.414), result);
+		}
+		
+		[TestMethod]
+		public void Rotate_Paper_360Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Paper;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 360;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(start, result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_0Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 0;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(start, result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_45Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 45;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(1, -0.414), result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_90Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 90;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(0, 0), result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_135Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 135;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(-0.414, 1), result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_180Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 180;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(0, 2), result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_225Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 225;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(1, 2.414), result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_270Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 270;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(2, 2), result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_315Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 315;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(new WPoint(2.414, 1), result);
+		}
+
+		[TestMethod]
+		public void Rotate_Screen_360Degrees()
+		{
+			//assign
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint start = new WPoint(2, 0);
+			WPoint reference = new WPoint(1, 1);
+			double degrees = 360;
+			//act
+			WPoint result = start.Rotate(reference, degrees);
+			//assert
+			Assert.AreEqual(start, result);
 		}
 
 		[TestMethod]

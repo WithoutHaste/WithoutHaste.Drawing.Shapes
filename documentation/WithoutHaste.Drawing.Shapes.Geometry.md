@@ -41,7 +41,27 @@ This coordinate plane is used in all Shape operations that require one.
 
 When determining equality, all values have a +/- margin of error. This setting is used in all Shape operations that check equality.  
 
+# Properties
+
+## IsCoordinatePlanePaper
+
+**bool { public get; }**  
+
+True if CoordinatePlanes.Paper is selected.  
+
+## IsCoordinatePlaneScreen
+
+**bool { public get; }**  
+
+True if CoordinatePlanes.Screen is selected.  
+
 # Static Methods
+
+## DegreesToRadians(double degrees)
+
+**static double**  
+
+Convert degrees to radians.  
 
 ## LineDirection([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) a, [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) b)
 

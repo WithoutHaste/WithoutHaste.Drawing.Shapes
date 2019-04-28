@@ -61,6 +61,7 @@
     <Compile Include="TestPoint.cs" />
     <Compile Include="TestRange.cs" />
     <Compile Include="TestRangeCircular.cs" />
+    <Compile Include="TestRectangle.cs" />
     <Compile Include="TestWedge.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>

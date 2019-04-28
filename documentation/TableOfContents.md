@@ -10,6 +10,7 @@
 [WithoutHaste.Drawing.Shapes.WPoint](WithoutHaste.Drawing.Shapes.WPoint.md)  
 [WithoutHaste.Drawing.Shapes.WRange](WithoutHaste.Drawing.Shapes.WRange.md)  
 [WithoutHaste.Drawing.Shapes.WRangeCircular](WithoutHaste.Drawing.Shapes.WRangeCircular.md)  
+[WithoutHaste.Drawing.Shapes.WRectangle](WithoutHaste.Drawing.Shapes.WRectangle.md)  
 [WithoutHaste.Drawing.Shapes.WShape](WithoutHaste.Drawing.Shapes.WShape.md)  
 [WithoutHaste.Drawing.Shapes.WWedge](WithoutHaste.Drawing.Shapes.WWedge.md)  
 [WithoutHaste.Drawing.Shapes.WWedgeUnbound](WithoutHaste.Drawing.Shapes.WWedgeUnbound.md)  

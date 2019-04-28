@@ -26,6 +26,20 @@ namespace WithoutHaste.Drawing.Shapes
 
 		//todo: why is enum CoordinatePlanes plural and Direction singular?
 
+		/// <summary>True if CoordinatePlanes.Screen is selected.</summary>
+		public static bool IsCoordinatePlaneScreen {
+			get {
+				return (CoordinatePlane == CoordinatePlanes.Screen);
+			}
+		}
+
+		/// <summary>True if CoordinatePlanes.Paper is selected.</summary>
+		public static bool IsCoordinatePlanePaper {
+			get {
+				return (CoordinatePlane == CoordinatePlanes.Paper);
+			}
+		}
+
 		/// <summary>
 		/// Determines how cardinal directions apply to coordinates.
 		/// </summary>
@@ -158,6 +172,12 @@ namespace WithoutHaste.Drawing.Shapes
 			{
 				return (a.Y < b.Y) ? Direction.NorthWest : Direction.SouthWest;
 			}
+		}
+
+		/// <summary>Convert degrees to radians.</summary>
+		public static double DegreesToRadians(double degrees)
+		{
+			return degrees * Math.PI / 180.0;
 		}
 
 	}

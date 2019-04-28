@@ -19,6 +19,9 @@ An (X, Y) coordinate. Immutable.
 [WithoutHaste.Drawing.Shapes.WRange](WithoutHaste.Drawing.Shapes.WRange.md)  
 A linear range of values. Immutable.  
 
+[WithoutHaste.Drawing.Shapes.WRectangle](WithoutHaste.Drawing.Shapes.WRectangle.md)  
+Represents a rectangle or square.  
+
 [WithoutHaste.Drawing.Shapes.WWedgeUnbound](WithoutHaste.Drawing.Shapes.WWedgeUnbound.md)  
 A wedge is a slice of a circle. An unbounded wedge is a slice of circle that extends outward from the center with no limit. Immutable.  
 

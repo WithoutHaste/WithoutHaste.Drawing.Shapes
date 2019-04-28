@@ -53,6 +53,35 @@ namespace WithoutHaste.Drawing.Shapes
 			return lineSegment.Overlaps(this);
 		}
 
+		/// <summary>Returns resulting point if this point is rotated around <paramref name='reference'/> by <paramref name='degrees'/>.</summary>
+		/// <param name='reference'>The center of the rotation.</param>
+		/// <param name='degrees'>Positive values means a counter-clockwise rotation.</param>
+		public WPoint Rotate(WPoint reference, double degrees)
+		{
+			WPoint a = this - reference;
+			WPoint b = a.RotateAroundOrigin(degrees);
+			return b + reference;
+		}
+
+		/// <summary>Returns resulting point if this point is rotated around the origin by <paramref name='degrees'/>.</summary>
+		/// <param name='degrees'>Positive values means a counter-clockwise rotation.</param>
+		public WPoint RotateAroundOrigin(double degrees)
+		{
+			double radians = Geometry.DegreesToRadians(degrees);
+			if(Geometry.CoordinatePlane == Geometry.CoordinatePlanes.Paper)
+			{
+				//radians remain the same
+			}
+			else if(Geometry.CoordinatePlane == Geometry.CoordinatePlanes.Screen)
+			{
+				radians = -1 * radians;
+			}
+			return new WPoint(
+				X * Math.Cos(radians) - Y * Math.Sin(radians),
+				Y * Math.Cos(radians) + X * Math.Sin(radians)
+				);
+		}
+
 		/// <summary></summary>
 		public static WPoint operator +(WPoint a, WPoint b)
 		{

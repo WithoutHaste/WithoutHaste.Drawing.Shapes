@@ -38,6 +38,8 @@ Uses [Semantic Versioning 2.0.0](https://semver.org/).
 
 v2.0.0 - Under Development  
 - All object names updated to start with a "W", to avoid namespace overlaps with System.Drawing/etc.
+- Operations to rotate a point.
+- New rectangle shape and operations.
 
 [Initial Release - v1.0.0](https://github.com/WithoutHaste/WithoutHaste.Drawing.Shapes/releases/tag/v1.0.0)
 

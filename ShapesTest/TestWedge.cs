@@ -12,6 +12,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 260, 280);
 			WLineSegment aEdge = new WLineSegment(a.Circle.Center, a.EndPoint);
 			WPoint centerB =  Geometry.PointOnLine(a.Circle.Center, a.EndPoint, a.Circle.Radius * 0.25);
@@ -31,6 +32,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 260, 280);
 			WLineSegment aEdge = new WLineSegment(a.Circle.Center, a.EndPoint);
 			WPoint centerB =  Geometry.PointOnLine(a.Circle.Center, a.EndPoint, a.Circle.Radius * 0.25);
@@ -50,6 +52,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 260, 280);
 			WLineSegment aEdge = new WLineSegment(a.Circle.Center, a.EndPoint);
 			WPoint centerB =  Geometry.PointOnLine(a.Circle.Center, a.EndPoint, a.Circle.Radius * 0.25);
@@ -70,6 +73,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 190, 230);
 			WWedge b = new WWedge(new WCircle(new WPoint(1.8, 2.3), 0.75), 190, 230);
 			//account
@@ -85,6 +89,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 190, 230);
 			WWedge b = new WWedge(new WCircle(new WPoint(1.8, 1.5), 0.75), 190, 230);
 			//account
@@ -100,6 +105,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 190, 230);
 			WWedge b = new WWedge(new WCircle(new WPoint(3.2, 1.5), 2.5), 190, 230);
 			//account
@@ -115,6 +121,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 190, 230);
 			WWedge b = new WWedge(new WCircle(new WPoint(2.7, 3.2), 2.5), 190, 230);
 			//account
@@ -130,6 +137,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 190, 230);
 			WWedge b = new WWedge(new WCircle(new WPoint(1.8, 2.3), 0.75), 260, 280);
 			//account
@@ -145,6 +153,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 190, 230);
 			WWedge b = new WWedge(new WCircle(new WPoint(2.2, 2.3), 0.75), 260, 280);
 			//account
@@ -160,6 +169,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(2, 2), 2), 190, 230);
 			WWedge b = new WWedge(new WCircle(new WPoint(1, 2.3), 2), 265, 275);
 			//account
@@ -175,6 +185,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), 100, 145);
 			WWedge b = new WWedge(new WCircle(new WPoint(1.8, 3.3), 0.5), 10, 170);
 			//account
@@ -190,6 +201,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), 100, 145);
 			WWedge b = new WWedge(new WCircle(new WPoint(2.1, 4.1), 0.5), 180, 300);
 			//account
@@ -205,6 +217,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), 100, 145);
 			WWedge b = new WWedge(new WCircle(new WPoint(5.5, 5), 3), 160, 230);
 			//account
@@ -220,6 +233,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), 0, 45);
 			WWedge b = new WWedge(new WCircle(new WPoint(3, 3), 1.5), 30, 35);
 			//account
@@ -235,6 +249,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), 0, 45);
 			WWedge b = new WWedge(new WCircle(new WPoint(3, 3), 3), 60, 90);
 			//account
@@ -250,6 +265,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), -45, 45);
 			WLineSegment edgeA = a.LineEdges[1];
 			WPoint centerB = Geometry.PointOnLine(edgeA.A, edgeA.B, a.Circle.Radius * 0.25);
@@ -267,6 +283,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), -45, 45);
 			WLineSegment edgeA = a.LineEdges[1];
 			WPoint centerB = Geometry.PointOnLine(edgeA.A, edgeA.B, a.Circle.Radius * 0.25);
@@ -284,6 +301,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), -45, 45);
 			WLineSegment edgeA = a.LineEdges[1];
 			WPoint centerB = Geometry.PointOnLine(edgeA.A, edgeA.B, a.Circle.Radius * 0.25);
@@ -301,6 +319,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), -45, 45);
 			WWedge b = new WWedge(new WCircle(new WPoint(4, 3), 0.5), 300, 330);
 			//account
@@ -316,6 +335,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), 250, 290);
 			WWedge b = new WWedge(new WCircle(new WPoint(3, 0.25), 1), 80, 100);
 			//account
@@ -331,6 +351,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(1, 1), 1), -30, 30);
 			WWedge b = new WWedge(new WCircle(new WPoint(3, 1), 1), 100, 200);
 			//account
@@ -346,6 +367,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(1, 1), 1), -30, 30);
 			WWedge b = new WWedge(new WCircle(new WPoint(2.9, 1), 1), 100, 230);
 			//account
@@ -361,6 +383,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(1, 1), 1), -30, 30);
 			WWedge b = new WWedge(new WCircle(new WPoint(2, 1), 1), -30, 30);
 			//account
@@ -376,6 +399,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(1342.5, 867.2), 187.338), 0, 360) / Utilities.UNITS_TO_PIXELS;
 			WWedge b = new WWedge(new WCircle(new WPoint(1170.45, 1133.45), 225.53), 631, 648) / Utilities.UNITS_TO_PIXELS;
 			//account
@@ -391,6 +415,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WCircle a = new WCircle(new WPoint(1342.5, 867.2), 187.338) / Utilities.UNITS_TO_PIXELS;
 			WWedge b = new WWedge(new WCircle(new WPoint(1170.45, 1133.45), 225.53), 631, 648) / Utilities.UNITS_TO_PIXELS;
 			//account
@@ -405,6 +430,8 @@ namespace GeometryTests
 		public void OverlapsCircle_Temp()
 		{
 			//assign
+			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(550.83386399939, 0), 235.084533229311), 73.6363636363638, 90.0000000000002) / Utilities.UNITS_TO_PIXELS;
 			WCircle b = new WCircle(new WPoint(444.902178042324, 244.587042149464), 149.14086054459278) / Utilities.UNITS_TO_PIXELS;
 			//account
@@ -420,6 +447,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), -45, 45);
 			//act
 			bool result = a.Degrees.Overlaps(355);
@@ -432,6 +460,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), -45, 45);
 			//act
 			bool result = a.Degrees.Overlaps(10);
@@ -444,6 +473,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), -45, 45);
 			//act
 			bool result = a.Degrees.Overlaps(-50);
@@ -456,6 +486,7 @@ namespace GeometryTests
 		{
 			//assign
 			Geometry.MarginOfError = 0.000001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
 			WWedge a = new WWedge(new WCircle(new WPoint(3, 3), 3), -45, 45);
 			//act
 			bool result = a.Degrees.Overlaps(55);

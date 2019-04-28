@@ -71,6 +71,25 @@ Draw the figure on the _graphics_ with the _pen_.
 **Parameters:**  
 * **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
+## Rotate([WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) reference, double degrees)
+
+**WPoint**  
+
+Returns resulting point if this point is rotated around _reference_ by _degrees_.  
+
+**Parameters:**  
+* **WPoint reference**: The center of the rotation.  
+* **double degrees**: Positive values means a counter-clockwise rotation.  
+
+## RotateAroundOrigin(double degrees)
+
+**WPoint**  
+
+Returns resulting point if this point is rotated around the origin by _degrees_.  
+
+**Parameters:**  
+* **double degrees**: Positive values means a counter-clockwise rotation.  
+
 ## ToString()
 
 **virtual string**  

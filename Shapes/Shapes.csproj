@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shapes\WRange.cs" />
     <Compile Include="Shapes\WRangeCircular.cs" />
+    <Compile Include="Shapes\WRectangle.cs" />
     <Compile Include="Shapes\WShape.cs" />
     <Compile Include="Shapes\WWedge.cs" />
     <Compile Include="Shapes\WWedgeUnbound.cs" />
