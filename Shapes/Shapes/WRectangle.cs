@@ -190,11 +190,11 @@ namespace WithoutHaste.Drawing.Shapes
 		public void Paint(Graphics graphics, Pen pen, double unitsToPixels)
 		{
 			graphics.DrawLines(pen, new Point[] {
-				(Corners[0] * unitsToPixels).ToPoint(),
-				(Corners[1] * unitsToPixels).ToPoint(),
-				(Corners[2] * unitsToPixels).ToPoint(),
-				(Corners[3] * unitsToPixels).ToPoint(),
-				(Corners[0] * unitsToPixels).ToPoint()
+				(Corners[0] * unitsToPixels),
+				(Corners[1] * unitsToPixels),
+				(Corners[2] * unitsToPixels),
+				(Corners[3] * unitsToPixels),
+				(Corners[0] * unitsToPixels)
 			});
 		}
 	}

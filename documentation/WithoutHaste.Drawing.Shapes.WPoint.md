@@ -108,18 +108,6 @@ Returns resulting point if this point is rotated around the origin by _degrees_.
 **Parameters:**  
 * **double degrees**: Positive values means a counter-clockwise rotation.  
 
-## ToPoint()
-
-**[System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.point)**  
-
-Convert to System.Drawing.Point.  
-
-## ToPointF()
-
-**[System.Drawing.PointF](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pointf)**  
-
-Convert to System.Drawing.PointF.  
-
 ## ToString()
 
 **virtual string**  
@@ -127,6 +115,14 @@ Convert to System.Drawing.PointF.
 Format "(X,Y)"  
 
 # Operators
+
+## implicit [System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.point)(WPoint point)
+
+Convert [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) to [System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.point).  
+
+## implicit [System.Drawing.PointF](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pointf)(WPoint point)
+
+Convert [WPoint](WithoutHaste.Drawing.Shapes.WPoint.md) to [System.Drawing.PointF](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pointf).  
 
 ## WPoint = WPoint a + WPoint b
 

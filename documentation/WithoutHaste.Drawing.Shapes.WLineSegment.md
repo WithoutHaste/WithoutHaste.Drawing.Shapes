@@ -48,6 +48,20 @@ Returns true if lines are coincidental to each other.
 **Remarks:**  
 Coincidental means that every point on this line is also on the other, and vice versa. In short, the lines are equal.  
 
+## Equals(object b)
+
+**virtual bool**  
+
+## GetHashCode()
+
+**virtual int**  
+
+## GetIntersection([WLineSegment](WithoutHaste.Drawing.Shapes.WLineSegment.md) that)
+
+**virtual [Intersection](WithoutHaste.Drawing.Shapes.Intersection.md)**  
+
+Returns intersection between a line segment and another line segment.  
+
 ## GetIntersection([WLine](WithoutHaste.Drawing.Shapes.WLine.md) b)
 
 **virtual [Intersection](WithoutHaste.Drawing.Shapes.Intersection.md)**  
@@ -77,15 +91,21 @@ Draw the figure on the _graphics_ with the _pen_.
 * **[System.Drawing.Pen](https://docs.microsoft.com/en-us/dotnet/api/system.drawing.pen) pen**:   
 * **double unitsToPixels**: Conversion ratio from figure units to pixels. A value of "2" means all figure measurements will be doubled.  
 
-## ToLine()
-
-**[WLine](WithoutHaste.Drawing.Shapes.WLine.md)**  
-
-Convert to [WLine](WithoutHaste.Drawing.Shapes.WLine.md).  
-
 ## ToString()
 
 **virtual string**  
 
 Format "(A.x,A.y) to (B.x,B.y)"  
+
+## ToWLine()
+
+**[WLine](WithoutHaste.Drawing.Shapes.WLine.md)**  
+
+Convert to [WLine](WithoutHaste.Drawing.Shapes.WLine.md).  
+
+# Operators
+
+## bool = WLineSegment a == WLineSegment b
+
+## bool = WLineSegment a != WLineSegment b
 

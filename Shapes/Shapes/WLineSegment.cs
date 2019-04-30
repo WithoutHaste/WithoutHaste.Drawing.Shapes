@@ -31,7 +31,7 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		/// <summary>Convert to <see cref="WLine"/>.</summary>
-		public WLine ToLine()
+		public WLine ToWLine()
 		{
 			return new WLine(A, B, IsDirected);
 		}
@@ -60,70 +60,54 @@ namespace WithoutHaste.Drawing.Shapes
 			return (intersection != Intersection.NONE);
 		}
 
-		///// <summary>Returns intersection between a line segment and another line segment.</summary>
-		//public override Intersection GetIntersection(WLineSegment b)
-		//{
-		//	if(this.Parallel(b))
-		//	{
-		//		if(this.A == b.A)
-		//		{
-		//			if(this.B.Overlaps(b))
-		//				return new Intersection(this);
-		//			if(b.B.Overlaps(this))
-		//				return new Intersection(b);
-		//			return new Intersection(this.A);
-		//		}
-		//		else if(this.A == b.B)
-		//		{
-		//			if(this.B.Overlaps(b))
-		//				return new Intersection(this);
-		//			if(b.A.Overlaps(this))
-		//				return new Intersection(b);
-		//			return new Intersection(this.A);
-		//		}
-		//		//TODO cont rewrite
-		//	}
+		/// <summary>Returns intersection between a line segment and another line segment.</summary>
+		public override Intersection GetIntersection(WLineSegment that)
+		{
+			if(this.Parallel(that))
+			{
+				bool thisAOnThat = this.A.Overlaps(that);
+				bool thisBOnThat = this.B.Overlaps(that);
+				bool thatAOnThis = that.A.Overlaps(this);
+				bool thatBOnThis = that.B.Overlaps(this);
 
-		//	////line may lie over the line segment
-		//	////line equation: y = mx + b, where m is slope and b is y-intercept
-		//	//double slopeA = this.Slope;
-		//	//double slopeB = b.Slope;
-		//	//if(Geometry.WithinMarginOfError(slopeA, slopeB))
-		//	//{
-		//	//	//parallel lines don't overlap unless they are right on top of each other
-		//	//	//meaning, one of the points must be on the other line
-		//	//	if(b.Overlaps(this.A) || b.Overlaps(this.B) || this.Overlaps(b.A) || this.Overlaps(b.B))
-		//	//		return new Intersection(this);
-		//	//	//parallel lines didn't touch
-		//	//	return Intersection.NONE;
-		//	//}
+				if(!thisAOnThat && !thisBOnThat && !thatAOnThis && !thatBOnThis)
+					return Intersection.NONE;
 
-		//	////line may intersect at 1 point
-		//	//double x = (b.YIntercept - this.YIntercept) / (this.Slope - b.Slope);
-		//	//if(this.IsVertical)
-		//	//{
-		//	//	x = this.A.X;
-		//	//}
-		//	//else if(b.IsVertical)
-		//	//{
-		//	//	x = b.A.X;
-		//	//}
-		//	//double y = (this.Slope * x) + this.YIntercept;
-		//	//if(this.IsHorizontal)
-		//	//{
-		//	//	y = this.A.Y;
-		//	//}
-		//	//else if(b.IsHorizontal)
-		//	//{
-		//	//	y = b.A.Y;
-		//	//}
-		//	//WPoint interceptPoint = new WPoint(x, y);
-		//	//if(this.Overlaps(interceptPoint) && b.Overlaps(interceptPoint))
-		//	//	return new Intersection(interceptPoint);
+				if(thisAOnThat && thisBOnThat)
+					return new Intersection(this);
 
-		//	////no intersection
-		//	//return Intersection.NONE;
-		//}
+				if(thatAOnThis && thatBOnThis)
+					return new Intersection(that);
+
+				WPoint overlapThis = null;
+				WPoint overlapThat = null;
+				if(thisAOnThat)
+					overlapThis = this.A;
+				else if(thisBOnThat)
+					overlapThis = this.B;
+				if(thatAOnThis)
+					overlapThat = that.A;
+				else if(thatBOnThis)
+					overlapThat = that.B;
+
+				if(overlapThis == null || overlapThat == null)
+				{
+					//should not reach this, but just in case
+					return Intersection.NONE;
+				}
+
+				if(overlapThis == overlapThat)
+					return new Intersection(overlapThis);
+
+				return new Intersection(new WLineSegment(overlapThis, overlapThat));
+			}
+
+			Intersection possibleIntersection = (this.ToWLine()).GetIntersection(that.ToWLine());
+			if(possibleIntersection.IsPoint && this.Overlaps(possibleIntersection.Point) && that.Overlaps(possibleIntersection.Point))
+				return possibleIntersection;
+
+			return Intersection.NONE;
+		}
 
 		/// <summary>Returns intersection between a line segment and a line.</summary>
 		public override Intersection GetIntersection(WLine b)
@@ -135,7 +119,7 @@ namespace WithoutHaste.Drawing.Shapes
 				return Intersection.NONE;
 			}
 
-			WLine thisLine = this.ToLine();
+			WLine thisLine = this.ToWLine();
 			Intersection potentialIntersection = thisLine.GetIntersection(b);
 			if(this.Overlaps(potentialIntersection.Point))
 				return potentialIntersection;
@@ -171,6 +155,45 @@ namespace WithoutHaste.Drawing.Shapes
 				(float)(B.X * unitsToPixels),
 				(float)(B.Y * unitsToPixels)
 			);
+		}
+
+		/// <summary></summary>
+		public static bool operator ==(WLineSegment a, WLineSegment b)
+		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return true;
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return false;
+			if(a.A == b.A && a.B == b.B)
+				return true;
+			if(!a.IsDirected || !b.IsDirected) //if at least one line is undirected, can try reversing one for a match
+			{
+				if(a.A == b.B && a.B == b.A)
+					return true;
+			}
+			return false;
+		}
+
+		/// <summary></summary>
+		public static bool operator !=(WLineSegment a, WLineSegment b)
+		{
+			return (!(a == b));
+		}
+
+		/// <summary></summary>
+		public override bool Equals(Object b)
+		{
+			if(object.ReferenceEquals(b, null))
+				return false;
+			if(!(b is WLineSegment))
+				return false;
+			return (this == (WLineSegment)b);
+		}
+
+		/// <summary></summary>
+		public override int GetHashCode()
+		{
+			return A.GetHashCode() ^ B.GetHashCode();
 		}
 	}
 }

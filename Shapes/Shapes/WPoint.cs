@@ -167,23 +167,31 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary></summary>
 		public static bool operator ==(WPoint a, WPoint b)
 		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return true;
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return false;
 			return (Geometry.WithinMarginOfError(a.X, b.X) && Geometry.WithinMarginOfError(a.Y, b.Y));
 		}
 
 		/// <summary></summary>
 		public static bool operator !=(WPoint a, WPoint b)
 		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return false;
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return true;
 			return (!Geometry.WithinMarginOfError(a.X, b.X) || !Geometry.WithinMarginOfError(a.Y, b.Y));
 		}
 
 		/// <summary></summary>
 		public override bool Equals(Object b)
 		{
-			if(b != null && b is WPoint)
-			{
-				return (this == (WPoint)b);
-			}
-			return false;
+			if(object.ReferenceEquals(b, null))
+				return false;
+			if(!(b is WPoint))
+				return false;
+			return (this == (WPoint)b);
 		}
 
 		/// <summary></summary>
@@ -198,16 +206,16 @@ namespace WithoutHaste.Drawing.Shapes
 			return String.Format("({0},{1})", X, Y);
 		}
 
-		/// <summary>Convert to System.Drawing.Point.</summary>
-		public Point ToPoint()
+		/// <summary>Convert <see cref='WPoint'/> to <see cref='System.Drawing.Point'/>.</summary>
+		public static implicit operator Point(WPoint point)
 		{
-			return new Point((int)X, (int)Y);
+			return new Point((int)point.X, (int)point.Y);
 		}
 
-		/// <summary>Convert to System.Drawing.PointF.</summary>
-		public PointF ToPointF()
+		/// <summary>Convert <see cref='WPoint'/> to <see cref='System.Drawing.PointF'/>.</summary>
+		public static implicit operator PointF(WPoint point)
 		{
-			return new PointF((float)X, (float)Y);
+			return new PointF((float)point.X, (float)point.Y);
 		}
 
 		/// <inheritdoc/>

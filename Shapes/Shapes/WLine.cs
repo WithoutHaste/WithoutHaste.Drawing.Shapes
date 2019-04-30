@@ -129,10 +129,16 @@ namespace WithoutHaste.Drawing.Shapes
 			double intersectionX = (b.YIntercept - this.YIntercept) / (this.Slope - b.Slope);
 			if(this.IsVertical)
 				intersectionX = this.A.X;
+			else if(b.IsVertical)
+				intersectionX = b.A.X;
 			//y = mx + b
 			double intersectionY = (this.Slope * intersectionX) + this.YIntercept;
-			if(this.IsHorizontal)
+			if(this.IsVertical)
+				intersectionY = (b.Slope * intersectionX) + b.YIntercept;
+			else if(this.IsHorizontal)
 				intersectionY = this.A.Y;
+			if(b.IsHorizontal)
+				intersectionY = b.A.Y;
 
 			return new Intersection(new WPoint(intersectionX, intersectionY));
 		}

@@ -150,7 +150,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// </remarks>
 		public bool Overlaps(WLineSegment b)
 		{
-			WPoint[] lineIntersectionPoints = GetIntersectionPoints(b.ToLine());
+			WPoint[] lineIntersectionPoints = GetIntersectionPoints(b.ToWLine());
 			if(lineIntersectionPoints == null)
 				return false;
 			foreach(WPoint point in lineIntersectionPoints)
@@ -359,7 +359,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <returns>Null (no intercepts), or array of length 1, or array of length 2.</returns>
 		public WPoint[] GetIntersectionPoints(WLineSegment lineSegment)
 		{
-			WPoint[] lineIntersectionPoints = GetIntersectionPoints(lineSegment.ToLine());
+			WPoint[] lineIntersectionPoints = GetIntersectionPoints(lineSegment.ToWLine());
 			if(lineIntersectionPoints == null)
 				return null;
 			List<WPoint> segmentIntersectionPoints = new List<WPoint>();
