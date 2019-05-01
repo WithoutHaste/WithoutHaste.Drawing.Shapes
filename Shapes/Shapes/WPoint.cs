@@ -209,7 +209,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>Convert <see cref='WPoint'/> to <see cref='System.Drawing.Point'/>.</summary>
 		public static implicit operator Point(WPoint point)
 		{
-			return new Point((int)point.X, (int)point.Y);
+			return new Point((int)Math.Round(point.X, 0), (int)Math.Round(point.Y, 0));
 		}
 
 		/// <summary>Convert <see cref='WPoint'/> to <see cref='System.Drawing.PointF'/>.</summary>
