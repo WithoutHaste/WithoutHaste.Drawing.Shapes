@@ -46,6 +46,66 @@ namespace GeometryTests
 		}
 
 		[TestMethod]
+		public void IsVertical_MarginOfError_Yes()
+		{
+			//arrange (from real example)
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint a = new WPoint(160.00000000000006, 1);
+			WPoint b = new WPoint(159.99999999999994, 10);
+			WLine line = new WLine(a, b);
+			//act
+			bool result = line.IsVertical;
+			//assert
+			Assert.IsTrue(result);
+		}
+
+		[TestMethod]
+		public void IsVertical_MarginOfError_No()
+		{
+			//arrange (from real example)
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint a = new WPoint(160.06, 1);
+			WPoint b = new WPoint(159.94, 10);
+			WLine line = new WLine(a, b);
+			//act
+			bool result = line.IsVertical;
+			//assert
+			Assert.IsFalse(result);
+		}
+
+		[TestMethod]
+		public void IsHorizontal_MarginOfError_Yes()
+		{
+			//arrange (from real example)
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint a = new WPoint(1,  160.00000000000006);
+			WPoint b = new WPoint(10, 159.99999999999994);
+			WLine line = new WLine(a, b);
+			//act
+			bool result = line.IsHorizontal;
+			//assert
+			Assert.IsTrue(result);
+		}
+
+		[TestMethod]
+		public void IsHorizontal_MarginOfError_No()
+		{
+			//arrange (from real example)
+			Geometry.MarginOfError = 0.001;
+			Geometry.CoordinatePlane = Geometry.CoordinatePlanes.Screen;
+			WPoint a = new WPoint(1,  160.06);
+			WPoint b = new WPoint(10, 159.94);
+			WLine line = new WLine(a, b);
+			//act
+			bool result = line.IsHorizontal;
+			//assert
+			Assert.IsFalse(result);
+		}
+
+		[TestMethod]
 		public void GetIntersection_WLine_FirstLineVertical()
 		{
 			//arrange

@@ -38,9 +38,9 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary></summary>
 		public double YIntercept { get { return A.Y - (Slope * A.X); } }
 		/// <summary></summary>
-		public bool IsVertical { get { return (A.X == B.X); } } //TODO: use margin of error?
+		public bool IsVertical { get { return Geometry.WithinMarginOfError(A.X, B.X); } }
 		/// <summary></summary>
-		public bool IsHorizontal { get { return (A.Y == B.Y); } } //TODO: use margin of error?
+		public bool IsHorizontal { get { return Geometry.WithinMarginOfError(A.Y, B.Y); } }
 
 		/// <exception cref='ArgumentException'>Points A and B cannot be the same.</exception>
 		public WLine(WPoint a, WPoint b)

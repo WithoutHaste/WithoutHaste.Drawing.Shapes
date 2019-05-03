@@ -77,6 +77,12 @@ Constant value for "no intersection".
 
 ## Intersection([WLine](WithoutHaste.Drawing.Shapes.WLine.md) line)
 
+# Methods
+
+## ToString()
+
+**virtual string**  
+
 # Nested Types
 
 [IntersectionType](WithoutHaste.Drawing.Shapes.Intersection.IntersectionType.md)  

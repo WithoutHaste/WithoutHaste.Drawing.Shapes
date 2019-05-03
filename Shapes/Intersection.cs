@@ -119,5 +119,16 @@ namespace WithoutHaste.Drawing.Shapes
 		}
 
 		#endregion
+
+		/// <summary></summary>
+		public override string ToString()
+		{
+			if(IsNone) return "NONE";
+			if(IsPoint) return Point.ToString();
+			if(IsPoints) return Points.ToString();
+			if(IsLineSegment) return LineSegment.ToString();
+			if(IsLine) return Line.ToString();
+			return "UNKNOWN";
+		}
 	}
 }

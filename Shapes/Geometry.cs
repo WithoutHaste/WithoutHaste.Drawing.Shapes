@@ -177,7 +177,7 @@ namespace WithoutHaste.Drawing.Shapes
 		/// <summary>Convert degrees to radians.</summary>
 		public static double DegreesToRadians(double degrees)
 		{
-			return degrees * Math.PI / 180.0;
+			return degrees * Math.PI / 180d;
 		}
 
 	}
