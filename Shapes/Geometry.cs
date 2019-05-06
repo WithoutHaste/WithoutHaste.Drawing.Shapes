@@ -98,8 +98,8 @@ namespace WithoutHaste.Drawing.Shapes
 			if(lineLength == 0)
 				throw new ArgumentException("Point A and B cannot be the same.");
 			double lengthRatio = distance / lineLength;
-			double x = ((1 - lengthRatio) * a.X) + (lengthRatio * b.X);
-			double y = ((1 - lengthRatio) * a.Y) + (lengthRatio * b.Y);
+			double x = ((1d - lengthRatio) * a.X) + (lengthRatio * b.X);
+			double y = ((1d - lengthRatio) * a.Y) + (lengthRatio * b.Y);
 			return new WPoint(x, y);
 		}
 
